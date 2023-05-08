@@ -1,0 +1,1930 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReporteInstalacion">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/Controles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <RadioButton
+                android:id="@+id/DatosVer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="VerDatos"
+                android:text="Datos"
+                android:visibility="visible" />
+
+            <RadioButton
+                android:id="@+id/EquiposIns"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="VerEquipos"
+                android:text="Equipos Instalados"
+                android:visibility="visible" />
+
+            <RadioButton
+                android:id="@+id/FotosVer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="VerFotos"
+                android:text="Fotos"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E6E6E6"
+            android:clickable="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/seguritech" />
+
+            <LinearLayout
+                android:layout_width="279dp"
+                android:layout_height="wrap_content"
+                android:background="#63FFFFFF"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="right|left"
+                    android:text="REPORTE FOTOGÁFICO DE INSTALACIÓN"
+                    android:textColor="#EF0B0B"
+                    android:textSize="10sp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="12dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView211"
+                        android:layout_width="171dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="RNP"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/RNPV"
+                        android:layout_width="312dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView181"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Nombre de la embarcación"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/Nombreembarcaciónv"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView171"
+                        android:layout_width="173dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Puerto Base"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/PuertobaseV"
+                        android:layout_width="312dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/textView47"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Fecha de Oficio:"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/FechaOficio"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="41dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="No. de aprobacion"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/NoOficio"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="65dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Folio Fijo"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/NoReporte"
+                        android:layout_width="122dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="49dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Fecha de Instalación:"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/FechaInstalacion"
+                        android:layout_width="105dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Localidad o puerto"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/LocalidadPuerto"
+                        android:layout_width="138dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/Justificacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center|start|top"
+            android:hint="Justificación de No instalación"
+            android:inputType="textMultiLine"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/EquiposInstalados"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#361458BD"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageButton
+                android:id="@+id/imageButton18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Save"
+                app:srcCompat="@drawable/ic_baseline_save_24" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Equipos Transreceptor"
+                    android:textColor="#1B4598"
+                    android:textColorHighlight="#3AC4D6"
+                    android:textSize="14sp"
+                    android:textStyle="bold|italic" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="209dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView39"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="No.Sello Transreceptor" />
+
+                        <EditText
+                            android:id="@+id/NoSelloTrans"
+                            android:layout_width="205dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView40"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="No.Sello ConBox" />
+
+                        <EditText
+                            android:id="@+id/NoSelloConBox"
+                            android:layout_width="201dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView29"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Iridium Satelite LLC"
+                    android:textColor="#C82B2B"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView32RFf"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="IMEI:"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/IMEIIridium"
+                        android:layout_width="171dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton13tR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="59dp"
+                        android:layout_weight="1"
+                        android:onClick="Scan2"
+                        app:srcCompat="@drawable/ic_baseline_qr_code_scanner_24" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView32f"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="No. Serie:"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/NSerieIridium"
+                        android:layout_width="171dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton13t"
+                        android:layout_width="wrap_content"
+                        android:layout_height="59dp"
+                        android:layout_weight="1"
+                        android:onClick="Scan1"
+                        app:srcCompat="@drawable/ic_baseline_qr_code_scanner_24" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView36"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="ConBox"
+                    android:textColor="#C82B2B"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textVgirew3e2"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="No. Serie"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/NSerieConBox"
+                        android:layout_width="171dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/imageBufttofnf13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="59dp"
+                        android:layout_weight="1"
+                        android:onClick="Scan4"
+                        app:srcCompat="@drawable/ic_baseline_qr_code_scanner_24" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView35"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Transreceptor"
+                    android:textColor="#C82B2B"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textVieFw32f"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="No. Serie:"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/NSerieTransreceptor"
+                        android:layout_width="171dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton1c3t"
+                        android:layout_width="wrap_content"
+                        android:layout_height="59dp"
+                        android:layout_weight="1"
+                        android:onClick="Scan3"
+                        app:srcCompat="@drawable/ic_baseline_qr_code_scanner_24" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView67"
+                        android:layout_width="308dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Voltaje de Batería" />
+
+                    <EditText
+                        android:id="@+id/VBateria"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/Button6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="ModificaCheck"
+                        android:text="Cable de Comuncación" />
+
+                    <CheckBox
+                        android:id="@+id/Button7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="ModificaCheck"
+                        android:text="Mica de seguridad" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView48"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Verificación y Pruebas"
+                        android:textColor="#1B4598"
+                        android:textStyle="bold|italic" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/Button8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:onClick="ModificaCheck"
+                            android:text="Encendido" />
+
+                        <CheckBox
+                            android:id="@+id/Button9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:onClick="ModificaCheck"
+                            android:text="Emegencia" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/Button10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:onClick="ModificaCheck"
+                            android:text="Leds" />
+
+                        <CheckBox
+                            android:id="@+id/Button11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:onClick="ModificaCheck"
+                            android:text="Alarma Audible" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView46"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Pre-Instalación"
+                    android:textColor="#1B4598"
+                    android:textColorHighlight="#1B4598"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/Button1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="ModificaCheck"
+                        android:text="Base BlueTraker" />
+
+                    <CheckBox
+                        android:id="@+id/Button2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="ModificaCheck"
+                        android:text="Base ConBox" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/Button3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="ModificaCheck"
+                        android:text="Tubo Base" />
+
+                    <CheckBox
+                        android:id="@+id/Button4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="ModificaCheck"
+                        android:text="Cable Eléctrico" />
+
+                    <CheckBox
+                        android:id="@+id/Button5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="ModificaCheck"
+                        android:text="Orificio" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/charging"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="446dp"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/DatosView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#3614BD58"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView72"
+                        android:layout_width="37dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Responsable Seguritech"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/NombreSeguritechVi"
+                        android:layout_width="104dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/imageButton22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="SelectIngeniero"
+                    app:srcCompat="@drawable/ic_baseline_engineering_24" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView68"
+                        android:layout_width="345dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Telefono de contacto"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/Contacto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView1tr8"
+                        android:layout_width="233dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Cargo Responsable"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/CargoResponsable"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView1t8"
+                        android:layout_width="239dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Responsable por parte permisionario
+"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/NombrePermisionariov"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textVietw1t8"
+                        android:layout_width="239dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Observaciones
+"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/Observaciones"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView50"
+                        android:layout_width="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Pesqueria:" />
+
+                    <TextView
+                        android:id="@+id/Pesqueria"
+                        android:layout_width="256dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/Button12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="ModificaCheck"
+                        android:text="Camarón"
+                        android:textSize="12sp" />
+
+                    <CheckBox
+                        android:id="@+id/Button13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="ModificaCheck"
+                        android:text="Tunidos"
+                        android:textSize="12sp" />
+
+                    <CheckBox
+                        android:id="@+id/Button14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="ModificaCheck"
+                        android:text="Tiburon y Raya" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/Button15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="ModificaCheck"
+                        android:text="Escama"
+                        android:textSize="12sp" />
+
+                    <CheckBox
+                        android:id="@+id/Button16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="ModificaCheck"
+                        android:text="Pelagicos Menores"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/Button17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="ModificaCheck"
+                        android:text="Otros"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/OtrosPermiso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Permisionario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#361458BD"
+                android:clickable="true"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Datos del permisionario"
+                    android:textColor="#1B4598"
+                    android:textColorHighlight="#3AC4D6"
+                    android:textSize="10sp"
+                    android:textStyle="bold|italic" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/Button18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:onClick="ModificaCheck"
+                        android:text="Persona Fisica"
+                        android:textSize="11sp" />
+
+                    <CheckBox
+                        android:id="@+id/Button19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_weight="1"
+                        android:onClick="ModificaCheck"
+                        android:text="Persona Moral"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="168dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Permisionario"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/Permisionariov"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="168dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="R Legal"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/RLegalV"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="168dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="R.N.P.A. Titular"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/RNPATV"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="165dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Correo Electronico"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/CorreoEV"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView21"
+                        android:layout_width="166dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Telefono Fijo"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/TelefonoFijoV"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="168dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Telefono Movil"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/TelefonoMovilV"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView24f4"
+                        android:layout_width="168dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Estado"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/Estado"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView244g"
+                        android:layout_width="168dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Municipio"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/Municipio"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView24f4g"
+                        android:layout_width="168dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Localidad"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/Localidad"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView234"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Domicilio"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/DomicilioV"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Barco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#361458BD"
+                android:clickable="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView101"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Datos de la embarcación"
+                    android:textColor="#1B4598"
+                    android:textColorHighlight="#3AC4D6"
+                    android:textSize="10sp"
+                    android:textStyle="bold|italic" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView191"
+                        android:layout_width="168dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Matricula"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/MatriculaV"
+                        android:layout_width="312dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView201"
+                        android:layout_width="172dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Marca Motor"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/MarcaMotorV"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView221"
+                        android:layout_width="177dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Potencia Motor (HP)"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/PotenciaMotorV"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView2343"
+                        android:layout_width="174dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Eslora (Mts)"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/EsloraV"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView23f4"
+                        android:layout_width="177dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Ton Neto"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/TonNetoV"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView244"
+                        android:layout_width="177dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Ton Bruto"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/TonBrutoV"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Permisos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Permisos de embaración"
+                    android:textColor="#1B4598"
+                    android:textSize="10sp"
+                    android:textStyle="bold|italic" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView531"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Permiso 1:"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/Permiso1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView551"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fecha Inicial"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/FeInicial1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView571"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fecha Final"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/FeFinal1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView53G1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Permiso 2:"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/Permiso2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView55G1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fecha Inicial"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/FeInicial2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView571F"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fecha Final"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/FeFinal2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView5R31"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Permiso 3:"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/Permiso3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView55WR1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fecha Inicial"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/FeInicial3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView57E1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fecha Final"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/FeFinal3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView53"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Permiso 4:"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/Permiso4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView55"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fecha Inicial"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/FeInicial4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView57"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fecha Final"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/FeFinal4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView53R1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Permiso 5:"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/Permiso5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView55R1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fecha Inicial"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/FeInicial5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView5741"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fecha Final"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/FeFinal5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Entraslado"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="EN TRASLADO..." />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_width="match_parent"
+                android:layout_height="290dp"
+                android:background="#fff"
+                android:src="@drawable/automovimiento" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/Save2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="Save"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_baseline_save_24" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/FotosRFP"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:clickable="false"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/CambioEs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/AsignaTickettext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Cambio de estatus"
+                    android:textSize="12sp" />
+
+                <ImageButton
+                    android:id="@+id/AgregaANAM"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="CambiaEstatus"
+                    app:srcCompat="@drawable/ic_baseline_content_paste_go_24" />
+
+                <TextView
+                    android:id="@+id/CancelaV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Cancelar servicio"
+                    android:textSize="12sp" />
+
+                <ImageButton
+                    android:id="@+id/Cancela"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="CancelaServicio"
+                    app:srcCompat="@drawable/ic_baseline_cancel_presentation_24" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

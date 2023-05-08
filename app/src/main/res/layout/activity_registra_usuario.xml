@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegistraUsuario">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/Usuario_ApellidoPaterno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Apellido Paterno"
+            android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/Usuario_ApellidoMaterno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Apellido Materno"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/Usuario_Nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Nombre(s)"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/Usuario_Correo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Correo Electronico"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/Usuario_Numero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Numero de telefono"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/DomicilioUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Calle y Numero"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/DomicilioUser2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Colonia"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/DomicilioUser3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Municipio"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/DomicilioUser4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Ciudad"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/DomicilioUser5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Entidad Federativa"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/DomicilioUser6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="C.P"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/CredElector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Cred Elector"
+            android:inputType="textPersonName" />
+
+        <Spinner
+            android:id="@+id/PuestoSelec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/Usuario_Contraseña"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Escribe tu contraseña"
+            android:inputType="textPersonName|textPassword" />
+
+        <EditText
+            android:id="@+id/Usuario_Contraseña2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Confirma tu contraseña"
+            android:inputType="textPersonName|textPassword" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Credencial"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="208dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="126dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="207dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Foto frontal" />
+
+                <ImageView
+                    android:id="@+id/Credencial_View"
+                    android:layout_width="match_parent"
+                    android:layout_height="166dp"
+                    app:srcCompat="@drawable/image" />
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="SeleccionaCredencial"
+                    app:srcCompat="@drawable/ic_baseline_drive_folder_upload_24" />
+
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/Subiendo"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="182dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="gone" />
+
+            <Space
+                android:layout_width="126dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="RegistraUsuario"
+            android:text="Registrar" />
+
+    </LinearLayout>
+
+
+</ScrollView>

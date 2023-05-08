@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/TicketName_View"
+                android:layout_width="287dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="TicketName"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/Edit"
+                android:layout_width="126dp"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="424dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/Estatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Estatus" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView51"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nombre embarcacion"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/NBarco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/RNPBarco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="RNP embarcacion"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/RNBarco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/IngView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ingeniero asignado"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Ingeniero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/FechaHora1view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Fecha de creacion"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/FechaHora1Edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ProgressBar
+                android:id="@+id/Cargandoinformacion"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/FechaHora2view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Hora de creación"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/FechaHora2Edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Buttons"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/RDigital"
+                android:layout_width="170dp"
+                android:layout_height="43dp"
+                android:layout_weight="1"
+                android:text="Reporte Digital"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/RFotografico"
+                android:layout_width="wrap_content"
+                android:layout_height="43dp"
+                android:layout_weight="1"
+                android:text="Abrir Ticket"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/Actividad"
+            android:layout_width="423dp"
+            android:layout_height="wrap_content"
+            android:text="Ver Actividad"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

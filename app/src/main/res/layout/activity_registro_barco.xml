@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistroBarco">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Registro de barco"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/DatosBarco"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Características de la embaración."
+                android:textSize="14sp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/NombreBarcoV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre de embarcación"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/NombreBarco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Nombre de embarcación"
+                android:inputType="textPersonName"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/nombreBarco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="RNP Embacación"
+                android:inputType="textPersonName"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/Puertobase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Puerto base"
+                android:inputType="textPersonName"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/Matricula"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Matrícula"
+                android:inputType="textPersonName"
+                android:textSize="12sp"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/TonBruto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Tonalaje bruto"
+                android:inputType="phone"
+                android:textSize="12sp"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/TonNeto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Tonalaje neto"
+                android:inputType="phone"
+                android:textSize="12sp"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/Eslora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Eslora"
+                android:inputType="textPersonName"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/DatosMotor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Características del motor"
+                android:textSize="14sp"
+                android:textStyle="bold|italic" />
+
+            <EditText
+                android:id="@+id/MarcaMotor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Marca"
+                android:inputType="textPersonName"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/PotenciaMotor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Potencia"
+                android:inputType="phone"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/SerieMotor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Numero de serie"
+                android:inputType="textPersonName"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/DatosPermisionario"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Datos del permisionario/consecionario"
+                android:textSize="14sp"
+                android:textStyle="bold|italic" />
+
+            <Spinner
+                android:id="@+id/PersonaFisica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/EntidadFed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Entidad Federativa"
+                android:inputType="textPersonName"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/Tmovil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Teléfono móvil"
+                android:inputType="phone"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/Domicilio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Domicilio"
+                android:inputType="textPersonName"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/CP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Código Postal"
+                android:inputType="phone"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/Municipio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Municipio"
+                android:inputType="textPersonName"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/TFijo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Teléfono fijo"
+                android:inputType="phone"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/RNPAT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="R.N.P.A Titular"
+                android:inputType="textPersonName"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/Colonia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Colonia"
+                android:inputType="text"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/CorreoEP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Correo Electrónico"
+                android:inputType="textPersonName"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/Ciudad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Ciudad"
+                android:inputType="textPersonName"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/Permisionario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Permisionario/Razón Social"
+                android:inputType="textPersonName"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/RLegal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Representante legal"
+                android:inputType="textPersonName"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/Encargado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Encargado de la embarcación"
+                android:inputType="textPersonName"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Permisos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Permisos de embaración"
+                android:textStyle="bold|italic" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/Comercial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="ComercialClick"
+                    android:text="Comercial" />
+
+                <RadioButton
+                    android:id="@+id/PescaDidactica"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="PescaClick"
+                    android:text="Pesca Didáctica" />
+
+                <RadioButton
+                    android:id="@+id/Fomento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="FomentoClick"
+                    android:text="Fomento" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/Camarón"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:linksClickable="false"
+                    android:onClick="CamaronClick"
+                    android:text="Camarón" />
+
+                <EditText
+                    android:id="@+id/FolioCamarón"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="No.Folio"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/Tunidos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="TunidosClick"
+                    android:text="Tunidos" />
+
+                <EditText
+                    android:id="@+id/FolioTunidos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="No.Folio"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/TiburonRaya"
+                    android:layout_width="84dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="TiburonClick"
+                    android:text="Tiburón y Raya" />
+
+                <EditText
+                    android:id="@+id/FolioTiburon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="No.Folio"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/Escama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="EscamaClick"
+                    android:text="Escama" />
+
+                <EditText
+                    android:id="@+id/FolioEscama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="No.Folio"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/PelagiosM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="SardinaClick"
+                    android:text="Sardina" />
+
+                <EditText
+                    android:id="@+id/FolioSardina"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="No.Folio"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/Otros"
+                    android:layout_width="84dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="OtrosClick"
+                    android:text="Otros" />
+
+                <EditText
+                    android:id="@+id/FolioOtros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="No.Folio"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/RegistrandoBarco"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="RegistraBarco"
+            android:text="Registrar" />
+
+    </LinearLayout>
+</ScrollView>

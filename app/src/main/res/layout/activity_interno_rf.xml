@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".InternoRF">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#E6E6E6"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/seguritech" />
+
+        <LinearLayout
+            android:layout_width="279dp"
+            android:layout_height="wrap_content"
+            android:background="#63FFFFFF"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="right|left"
+                android:text="REPORTE FOTOGÁFICO DE SERVICIO INTERNO"
+                android:textColor="#EF0B0B"
+                android:textSize="10sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/TrimestreRFC"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="92dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="97dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="No de Reporte:"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/TicketRFC"
+                    android:layout_width="122dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="124dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="52dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Fecha:"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/FechaRFC"
+                    android:layout_width="114dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="92dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#361458BD"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Datos del equipo"
+            android:textColor="#1B4598"
+            android:textColorHighlight="#3AC4D6"
+            android:textSize="10sp"
+            android:textStyle="bold|italic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="267dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="     Nombre de la embarcación:"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/AduanaRFC"
+                android:layout_width="325dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="11dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="      Matricula:"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/EquipoRFC"
+                android:layout_width="64dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="     RNPA:"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/SerieRFC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="      Puerto base:"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/UbicacionRFC"
+                android:layout_width="275dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/FotosRFC"
+        android:layout_width="match_parent"
+        android:layout_height="473dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/añadefoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_baseline_add_24" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="127dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Sube fotos" />
+
+            <ImageButton
+                android:id="@+id/Subefotos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_baseline_cloud_upload_24" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="138dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="CrearDocumento" />
+
+            <ImageButton
+                android:id="@+id/CreaDocumento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_baseline_content_paste_go_24" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="129dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Reporte Digital" />
+
+            <ImageButton
+                android:id="@+id/RFC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_baseline_chevron_right_24" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

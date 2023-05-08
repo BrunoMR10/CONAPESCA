@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PDFViewer">
+
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">>
+        <ProgressBar
+            android:id="@+id/Subiendo"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="152dp"
+            android:layout_height="147dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true" />
+
+        <TextView
+            android:id="@+id/EstatusView"
+            android:layout_width="254dp"
+            android:layout_height="89dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="297dp"
+            android:layout_marginEnd="61dp"
+            android:layout_marginBottom="346dp"
+            android:background="#090909"
+            android:gravity="center"
+            android:text="Subiendo"
+            android:textColor="#F1EDED"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/SubePDF"
+            android:layout_width="76dp"
+            android:layout_height="56dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="638dp"
+            android:onClick="SubirPDF"
+            app:srcCompat="@drawable/ic_baseline_cloud_upload_24" />
+
+        <TextView
+            android:id="@+id/TextPDF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SubePDF"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="0dp"
+            android:text="DRIVE" />
+
+        <TextView
+            android:id="@+id/TextTodo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SubePDF"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="297dp"
+            android:layout_marginTop="6dp"
+            android:text="COMPARTIR" />
+
+        <ImageButton
+            android:id="@+id/SubeTodo"
+            android:layout_width="74dp"
+            android:layout_height="54dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="298dp"
+            android:layout_marginTop="636dp"
+            android:onClick="CompartirPDF"
+            app:srcCompat="@drawable/ic_baseline_cloud_upload_24" />
+
+        <RadioButton
+            android:id="@+id/RF"
+            android:layout_width="106dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="285dp"
+            android:layout_marginTop="9dp"
+            android:onClick="CLICKRF"
+            android:text="RF" />
+
+        <RadioButton
+            android:id="@+id/RD"
+            android:layout_width="106dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="10dp"
+            android:onClick="CLICKRD"
+            android:text="RD" />
+
+        <RadioButton
+            android:id="@+id/Convenio"
+            android:layout_width="106dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="151dp"
+            android:layout_marginTop="10dp"
+            android:onClick="CLICKCONVENIO"
+            android:text="Convenio" />
+    </com.github.barteksc.pdfviewer.PDFView><![CDATA[
+
+    />
+
+
+
+    ]]>
+</androidx.constraintlayout.widget.ConstraintLayout>

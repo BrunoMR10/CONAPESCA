@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "963628207645",
+    "project_id": "conapesca-fc179",
+    "storage_bucket": "conapesca-fc179.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963628207645:android:92a72c376133b811a040f4",
+        "android_client_info": {
+          "package_name": "com.bmr.conapesca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963628207645-4mdhipj068quh94qs5d253j91g3jgcsb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj_TRhAiA_JG3-n5Yko5XUVHK9GGDp550"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963628207645-4mdhipj068quh94qs5d253j91g3jgcsb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

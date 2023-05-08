@@ -1,0 +1,1092 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RInstalacion">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#E6E6E6"
+            android:clickable="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/seguritech" />
+
+            <LinearLayout
+                android:layout_width="279dp"
+                android:layout_height="wrap_content"
+                android:background="#63FFFFFF"
+                android:orientation="vertical">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="12dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="right|left"
+                    android:text="REPORTE FOTOGÁFICO DE INSTALACIÓN"
+                    android:textColor="#EF0B0B"
+                    android:textSize="10sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Space
+                        android:layout_width="57dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="No. de aprobacion"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/NoOficio"
+                        android:layout_width="88dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Space
+                        android:layout_width="92dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="97dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="No de Reporte:"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/NoReporte"
+                        android:layout_width="122dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Space
+                        android:layout_width="79dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Fecha de Instalación:"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/FechaInstalacion"
+                        android:layout_width="105dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Space
+                        android:layout_width="85dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Localidad o puerto"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/LocalidadPuerto"
+                        android:layout_width="138dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Entraslado"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="EN TRASLADO..." />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_width="match_parent"
+                android:layout_height="290dp"
+                android:background="#fff"
+                android:src="@drawable/automovimiento" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/DatosVer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="VerDatos"
+                android:text="Datos"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/EquiposIns"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="VerEquipos"
+                android:text="Equipos Instalados"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/FotosVer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="VerFotos"
+                android:text="Fotos"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/EquiposInstalados"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#361458BD"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Equipos Instalados"
+                android:textColor="#1B4598"
+                android:textColorHighlight="#3AC4D6"
+                android:textSize="14sp"
+                android:textStyle="bold|italic" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/imageButton14"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="Guarda"
+                    app:srcCompat="@drawable/ic_baseline_save_24" />
+
+                <LinearLayout
+                    android:layout_width="161dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView39"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="No.Sello Transreceptor" />
+
+                    <EditText
+                        android:id="@+id/NoSelloTrans"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView40"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="No.Sello ConBox" />
+
+                    <EditText
+                        android:id="@+id/NoSelloConBox"
+                        android:layout_width="156dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Iridium Satelite LLC"
+                android:textColor="#C82B2B"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView32f"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="No. Serie:"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/NSerieIridium"
+                    android:layout_width="171dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imageButton13t"
+                    android:layout_width="wrap_content"
+                    android:layout_height="59dp"
+                    android:layout_weight="1"
+                    android:onClick="Scan1"
+                    app:srcCompat="@drawable/ic_baseline_qr_code_scanner_24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView32"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="No. Parte:"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/NParteIridium"
+                    android:layout_width="171dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imageButton13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="59dp"
+                    android:layout_weight="1"
+                    android:onClick="Scan2"
+                    app:srcCompat="@drawable/ic_baseline_qr_code_scanner_24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView32RFf"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="IMEI:"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/IMEIIridium"
+                    android:layout_width="171dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imageButton13tR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="59dp"
+                    android:layout_weight="1"
+                    android:onClick="Scan3"
+                    app:srcCompat="@drawable/ic_baseline_qr_code_scanner_24" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Transreceptor"
+                android:textColor="#C82B2B"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textVieFw32f"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="No. Serie:"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/NSerieTransreceptor"
+                    android:layout_width="171dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imageButton1c3t"
+                    android:layout_width="wrap_content"
+                    android:layout_height="59dp"
+                    android:layout_weight="1"
+                    android:onClick="Scan4"
+                    app:srcCompat="@drawable/ic_baseline_qr_code_scanner_24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textVirew32"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="No. Parte:"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/NParteTransreceptor"
+                    android:layout_width="171dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imageButtofn13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="59dp"
+                    android:layout_weight="1"
+                    android:onClick="Scan5"
+                    app:srcCompat="@drawable/ic_baseline_qr_code_scanner_24" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="ConBox"
+                android:textColor="#C82B2B"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textVirew3e2"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="No. Parte:"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/NParteConBox"
+                    android:layout_width="171dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imageButtofnf13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="59dp"
+                    android:layout_weight="1"
+                    android:onClick="Scan6"
+                    app:srcCompat="@drawable/ic_baseline_qr_code_scanner_24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textVgirew3e2"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="No. Serie"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/NSerieConBox"
+                    android:layout_width="171dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imageBufttofnf13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="59dp"
+                    android:layout_weight="1"
+                    android:onClick="Scan7"
+                    app:srcCompat="@drawable/ic_baseline_qr_code_scanner_24" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/DatosView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="ActualizaBarco"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#361458BD"
+                android:clickable="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Datos del permisionario"
+                    android:textColor="#1B4598"
+                    android:textColorHighlight="#3AC4D6"
+                    android:textSize="10sp"
+                    android:textStyle="bold|italic" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="114dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Nombre del permisionario"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/PermisionarioNombre"
+                        android:layout_width="325dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="11dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Representante legal"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/Razonsocial"
+                        android:layout_width="64dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView195"
+                        android:layout_width="18dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="R.N.P.A Títular"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/RNPA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="67dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Resposbale de la embarcación"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/Responsable"
+                        android:layout_width="275dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView115"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Datos del permisionario"
+                android:textColor="#1B4598"
+                android:textColorHighlight="#3AC4D6"
+                android:textSize="10sp"
+                android:textStyle="bold|italic" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView175"
+                    android:layout_width="114dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nombre de la embarcación"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/Nombreembarcación"
+                    android:layout_width="325dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView135"
+                    android:layout_width="11dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Puerto base"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/Puertobaseview"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="18dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Litoral"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/Litoralview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Matricula:"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/Matriculaview"
+                    android:layout_width="275dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Permisos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Permisos de embaración"
+                    android:textColor="#1B4598"
+                    android:textSize="10sp"
+                    android:textStyle="bold|italic" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/Camarón"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:text="Camarón"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/FolioCamarón"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="No.Folio"
+                        android:inputType="textPersonName" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/Tunidos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:text="Tunidos"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/FolioTunidos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="No.Folio"
+                        android:inputType="textPersonName" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/TiburonRaya"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:text="Tiburón y Raya"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/FolioTiburon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="No.Folio"
+                        android:inputType="textPersonName" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/Escama"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:text="Escama"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/FolioEscama"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="No.Folio"
+                        android:inputType="textPersonName" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/PelagiosM"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:text="Sardina"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/FolioSardina"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="No.Folio"
+                        android:inputType="textPersonName" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/Otros"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:text="Otros"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/FolioOtros"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="No.Folio"
+                        android:inputType="textPersonName" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView41"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Consentimiento"
+                    android:textColor="#1B4598"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="117dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="208dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView42"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Responsable Seguritech" />
+
+                        <TextView
+                            android:id="@+id/NombreSeguritech"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/nombreSeguritech2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Firma"
+                            android:textColor="#3CA9F1"
+                            android:textStyle="normal|italic" />
+
+                        <ImageView
+                            android:id="@+id/FirmaSeguritech"
+                            android:layout_width="match_parent"
+                            android:layout_height="59dp"
+                            android:clickable="true"
+                            android:onClick="ToFirmas"
+                            app:srcCompat="@drawable/ic_baseline_draw_24" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView43"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Responsable Embacación" />
+
+                        <TextView
+                            android:id="@+id/nombrebarco"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/nombreSeguritech3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Firma"
+                            android:textColor="#3CA9F1"
+                            android:textStyle="normal|italic" />
+
+                        <ImageView
+                            android:id="@+id/FirmaBarco"
+                            android:layout_width="match_parent"
+                            android:layout_height="59dp"
+                            android:clickable="true"
+                            android:onClick="ToFirmas2"
+                            app:srcCompat="@drawable/ic_baseline_draw_24" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/FotosRFP"
+            android:layout_width="375dp"
+            android:layout_height="530dp"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/AsignaTickettext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Cambio de estatus"
+                    android:textSize="12sp" />
+
+                <ImageButton
+                    android:id="@+id/AgregaANAM"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="CrearArchivo"
+                    app:srcCompat="@drawable/ic_baseline_content_paste_go_24" />
+
+                <TextView
+                    android:id="@+id/CancelaV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Cancelar servicio"
+                    android:textSize="12sp" />
+
+                <ImageButton
+                    android:id="@+id/Cancela"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_baseline_cancel_presentation_24" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
