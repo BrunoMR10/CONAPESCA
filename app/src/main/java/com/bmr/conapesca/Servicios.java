@@ -67,6 +67,12 @@ public class Servicios extends AppCompatActivity {
         i.putExtra("Datos",Datos);
         startActivity(i);
     }
+    public void ToTicketListCancelado(View view){
+        Intent i = new Intent(this,ListaServicios.class);
+        Datos[8]="Cancelado";
+        i.putExtra("Datos",Datos);
+        startActivity(i);
+    }
     public void ToTicketListInstalacion(View view){
         Intent i = new Intent(this,ListaServicios.class);
         Datos[8]="Instalacion";

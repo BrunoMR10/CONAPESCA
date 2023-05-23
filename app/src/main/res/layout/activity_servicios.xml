@@ -11,7 +11,7 @@
         android:layout_width="104dp"
         android:layout_height="111dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="576dp"
         android:onClick="ToTicketListCorrect"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -59,11 +59,24 @@
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="192dp"
-        android:layout_marginTop="624dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="268dp"
         android:clickable="true"
         android:onClick="ToTicketListInstalacion"
         android:text="Instalacion"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView53"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="268dp"
+        android:clickable="true"
+        android:onClick="ToTicketListInstalacion"
+        android:text="No Instalacion"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -73,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="192dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="632dp"
         android:clickable="true"
         android:onClick="ToTicketListCorrect"
         android:text="Correctivos"
@@ -98,12 +111,24 @@
         android:layout_width="104dp"
         android:layout_height="111dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="576dp"
+        android:layout_marginTop="140dp"
         android:onClick="ToTicketListInstalacion"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_work_24" />
+
+    <ImageButton
+        android:id="@+id/imageButton23"
+        android:layout_width="104dp"
+        android:layout_height="111dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="140dp"
+        android:onClick="ToTicketListCancelado"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_browser_not_supported_24" />
 
     <ImageButton
         android:id="@+id/AsignaTicket"

@@ -91,7 +91,9 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketsVie
         //holder.Barco = listaTickets.get(position).getNombreBarco();
         //holder.FechaInicio = listaTickets.get(position).getFechaInicio();
 
-        if (listaTickets.get(position).getTipoServicio().equals("Instalacion")) holder.RDigital.setVisibility(View.GONE);
+        if (listaTickets.get(position).getTipoServicio().equals("Instalacion")||
+                listaTickets.get(position).getTipoServicio().equals("Interno")||
+                  listaTickets.get(position).getTipoServicio().equals("Cancelado")) holder.RDigital.setVisibility(View.GONE);
         try{
         refTickets.child(listaTickets.get(position).getTipoServicio()).child(listaTickets.get(position).getTicket()).addListenerForSingleValueEvent(new ValueEventListener(){
             @Override
@@ -289,6 +291,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketsVie
                             if (TipoServicio.equals("Correctivo")) intent2 = new Intent(context2, CorrectivosRF.class);
                             else if (TipoServicio.equals("Interno")) intent2 = new Intent(context2, ReporteInstalacion.class);
                             else if (TipoServicio.equals("Instalacion")) intent2 = new Intent(context2, ReporteInstalacion.class);
+                            else if (TipoServicio.equals("Cancelado")) intent2 = new Intent(context2, ReporteInstalacion.class);
                             else intent2 = new Intent(context2, PreventivoRF.class);
                             intent2.putExtra("Datos",Datos);
                             intent2.putExtra("DatosBarco",DatosBarco);

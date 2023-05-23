@@ -47,8 +47,8 @@ public class Datos {
     };
 
     public String[] FotosNoInstalacion = new String[]{
-            "Foto 1",//0
-            "Foto 2",//1
+            "Evidencia fotográfica.",//0
+            "Evidencia fotográfica.",//1
             "Foto 3",//2
             "Foto 4",//2
     };

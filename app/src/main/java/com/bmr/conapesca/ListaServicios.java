@@ -67,6 +67,7 @@ public class ListaServicios extends AppCompatActivity implements SearchView.OnQu
         if (Datos[8].equals("Correctivo")) Clave= "C-";
         else if (Datos[8].equals("Interno")) Clave= "I-";
         else if (Datos[8].equals("Instalacion")) Clave= "S-";
+        else if (Datos[8].equals("Cancelado")) Clave= "N-";
         else Clave = "P-";
 
         MisTickets();

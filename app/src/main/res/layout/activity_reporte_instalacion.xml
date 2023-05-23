@@ -731,10 +731,12 @@
             android:visibility="gone">
 
             <LinearLayout
+                android:id="@+id/DatosPermisionario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#3614BD58"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -745,7 +747,7 @@
                     <TextView
                         android:id="@+id/textView72"
                         android:layout_width="37dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="26dp"
                         android:layout_weight="1"
                         android:text="Responsable Seguritech"
                         android:textSize="11sp"
@@ -757,6 +759,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textSize="11sp" />
+
                 </LinearLayout>
 
                 <ImageButton
@@ -773,22 +776,24 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView68"
-                        android:layout_width="345dp"
+                        android:id="@+id/textView1t8"
+                        android:layout_width="239dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Telefono de contacto"
+                        android:gravity="center|left"
+                        android:text="Responsable por parte permisionario
+"
                         android:textSize="11sp"
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/Contacto"
-                        android:layout_width="match_parent"
+                        android:id="@+id/NombrePermisionariov"
+                        android:layout_width="312dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textSize="12sp" />
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -824,24 +829,112 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView1t8"
-                        android:layout_width="239dp"
+                        android:id="@+id/textView1tr8d"
+                        android:layout_width="233dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center|left"
-                        android:text="Responsable por parte permisionario
-"
+                        android:text="Correo Resposable"
                         android:textSize="11sp"
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/NombrePermisionariov"
+                        android:id="@+id/CorreoResponsable"
                         android:layout_width="312dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textSize="11sp"
                         android:textStyle="bold" />
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView1tr8fd"
+                        android:layout_width="233dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Numero de INE Resposable"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/INEResponsable"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tefxtView1tr8fd"
+                        android:layout_width="233dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Direccion Resposable"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/DireccionResponsable"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="textMultiLine"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tefxtViefw1tr8fd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:text="Calle y No.  Colonia  Municipio  Ciudad o Puerto  Entidad Federativa    CP"
+                    android:textSize="11sp"
+                    android:textStyle="normal|italic" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView68"
+                        android:layout_width="345dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Telefono de contacto"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/Contacto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -880,7 +973,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/textView50"
@@ -901,7 +995,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <CheckBox
                         android:id="@+id/Button12"
@@ -934,7 +1029,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <CheckBox
                         android:id="@+id/Button15"
@@ -958,7 +1054,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <CheckBox
                         android:id="@+id/Button17"
@@ -1183,6 +1280,7 @@
                         android:textStyle="bold" />
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1485,6 +1583,7 @@
                     android:textStyle="bold|italic" />
 
                 <LinearLayout
+                    android:id="@+id/P1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -1495,7 +1594,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView531"
+                            android:id="@+id/permiso1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -1555,6 +1654,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/P2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -1565,7 +1665,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView53G1"
+                            android:id="@+id/permiso2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -1625,6 +1725,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/P3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -1635,7 +1736,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView5R31"
+                            android:id="@+id/permiso3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -1695,6 +1796,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/P4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -1705,7 +1807,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView53"
+                            android:id="@+id/permiso4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -1765,6 +1867,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/P5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -1775,7 +1878,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView53R1"
+                            android:id="@+id/permiso5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -1913,13 +2016,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Cancelar servicio"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:visibility="gone" />
 
                 <ImageButton
                     android:id="@+id/Cancela"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="CancelaServicio"
+                    android:visibility="gone"
                     app:srcCompat="@drawable/ic_baseline_cancel_presentation_24" />
 
             </LinearLayout>

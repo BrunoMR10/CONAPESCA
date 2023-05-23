@@ -457,6 +457,12 @@ public class Firebase {
         UsuarioNuevo.put("IMEIIridium",DatosTicket2[9]);
         UsuarioNuevo.put("NSerieTransreceptor",DatosTicket2[10]);
         UsuarioNuevo.put("NSerieConBox",DatosTicket2[11]);
+
+        UsuarioNuevo.put("CredResponsable",DatosTicket2[12]);
+        UsuarioNuevo.put("DireccionResponsable",DatosTicket2[13]);
+        UsuarioNuevo.put("CorreoResposable",DatosTicket2[14]);
+
+
         for (int i=0; i<Checks.length;i++){
             UsuarioNuevo.put("Check"+i, Checks[i]);
         }
@@ -486,6 +492,7 @@ public class Firebase {
                     if (DatosTicket[4].equals("Correctivo")) Clave = "C-";
                     else if (DatosTicket[4].equals("Interno")) Clave = "I-";
                     else if (DatosTicket[4].equals("Instalacion")) Clave = "S-";
+                    else if (DatosTicket[4].equals("Cancelado")) Clave = "N-";
                     else Clave ="P-";
                     try{int PosIn = NumeroVigente.indexOf(Clave);
                         int PosFin =NumeroVigente.length();
@@ -901,11 +908,19 @@ public class Firebase {
                                 myEdit.commit();
 
                                 if (Estatus.equals("Cerrado")){
-                                    System.out.println("CERRADO");
-                                    Intent i = new Intent(context, PDFViewer.class);
-                                    i.putExtra("Iden", "RD");
-                                    i.putExtra("Datos", Datos);
-                                    context.startActivity(i);
+                                    if (sh.getString("DatosTicket4","").equals("Cancelado")){
+                                        Intent i = new Intent(context, PDFViewer.class);
+                                        i.putExtra("Iden", "NI");
+                                        i.putExtra("Datos", Datos);
+                                        context.startActivity(i);
+                                    }
+                                    else {
+                                        System.out.println("CERRADO");
+                                        Intent i = new Intent(context, PDFViewer.class);
+                                        i.putExtra("Iden", "RD");
+                                        i.putExtra("Datos", Datos);
+                                        context.startActivity(i);
+                                    }
                                 }
                                 else{
                                     System.out.println("NO CERRADO");

@@ -78,7 +78,7 @@ public class ReporteInstalacion extends AppCompatActivity {
     private SheetsServiceHelper mSheetServiceHelper;
     private static final int REQUEST_CODE_SIGN_IN = 1;
     RadioButton DatosVer,EquiposIns,FotosVer;
-    LinearLayout Controles,DatosView,Entraslado,EquiposInstalados,CambioEs;
+    LinearLayout Controles,DatosView,Entraslado,EquiposInstalados,CambioEs,DatosPermisionario;
     ProgressBar Charging;
     RecyclerView FotosRFP;
     TextView CancelaV;
@@ -88,7 +88,7 @@ public class ReporteInstalacion extends AppCompatActivity {
     String Ticket,NombreBarco,Noficio,CrearArchivo;
     Datos dt = new Datos();
     TextView CambioEstatus;
-    EditText VBateria,NoSelloTrans,NoSelloConBox,Justificacion,OtrosPermiso,Domicilio,NombrePermisionariov,CargoResponsable,Observaciones,Contacto;
+    EditText VBateria,NoSelloTrans,NoSelloConBox,Justificacion,OtrosPermiso,Domicilio,NombrePermisionariov,INEResponsable,DireccionResponsable,CargoResponsable,CorreoResponsable,Observaciones,Contacto;
     CheckBox Button1,Button2,Button3,Button4,Button5,Button6,Button7,Button8,Button9,Button10,Button11,
             Button12,Button13,Button14,Button15,Button16,Button17,Button18,Button19;
     TextView NSerieIridium,IMEIIridium,NSerieTransreceptor,NSerieConBox;
@@ -97,9 +97,7 @@ public class ReporteInstalacion extends AppCompatActivity {
     TextView Nombreembarcaciónv,PuertobaseV,MatriculaV,MarcaMotorV,RNPV,PotenciaMotorV,EsloraV,TonNetoV,TonBrutoV;
     TextView Permiso1,Permiso2,Permiso3,Permiso4,Permiso5,FeInicial1,FeInicial2,FeInicial3,FeInicial4,FeInicial5,FeFinal1,FeFinal2,FeFinal3,FeFinal4,FeFinal5,Pesqueria;
     TextView NombreSeguritechVi;
-
-
-
+    TextView permiso1,permiso2,permiso3,permiso4,permiso5;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +108,7 @@ public class ReporteInstalacion extends AppCompatActivity {
         Entraslado = (LinearLayout)findViewById(R.id.Entraslado);
         CambioEs = (LinearLayout)findViewById(R.id.CambioEs);
         Controles = (LinearLayout)findViewById(R.id.Controles);
+        DatosPermisionario = (LinearLayout)findViewById(R.id.DatosPermisionario);
         FotosRFP = (RecyclerView) findViewById(R.id.FotosRFP);
         DatosVer = (RadioButton) findViewById(R.id.DatosVer) ;
         EquiposIns = (RadioButton) findViewById(R.id.EquiposIns) ;
@@ -143,6 +142,11 @@ public class ReporteInstalacion extends AppCompatActivity {
         VBateria = (EditText) findViewById(R.id.VBateria);
         Contacto = (EditText) findViewById(R.id.Contacto);
         NombrePermisionariov = (EditText) findViewById(R.id.NombrePermisionariov);
+
+        INEResponsable = (EditText) findViewById(R.id.INEResponsable);
+        DireccionResponsable = (EditText) findViewById(R.id.DireccionResponsable);
+        CorreoResponsable = (EditText) findViewById(R.id.CorreoResponsable);
+
         CargoResponsable = (EditText) findViewById(R.id.CargoResponsable);
         NoSelloTrans = (EditText) findViewById(R.id.NoSelloTrans);
         NoSelloConBox = (EditText) findViewById(R.id.NoSelloConBox);
@@ -187,6 +191,13 @@ public class ReporteInstalacion extends AppCompatActivity {
         Permiso3 = (TextView) findViewById(R.id.Permiso3);
         Permiso4 = (TextView) findViewById(R.id.Permiso4);
         Permiso5 = (TextView) findViewById(R.id.Permiso5);
+
+        permiso1 = (TextView) findViewById(R.id.permiso1);
+        permiso2 = (TextView) findViewById(R.id.permiso2);
+        permiso3 = (TextView) findViewById(R.id.permiso3);
+        permiso4 = (TextView) findViewById(R.id.permiso4);
+        permiso5 = (TextView) findViewById(R.id.permiso5);
+
         FeInicial1 = (TextView) findViewById(R.id.FeInicial1);
         FeInicial2 = (TextView) findViewById(R.id.FeInicial2);
         FeInicial3 = (TextView) findViewById(R.id.FeInicial3);
@@ -219,10 +230,12 @@ public class ReporteInstalacion extends AppCompatActivity {
             if (Datos != null) {
                 Ticket = Datos[3];
                 System.out.println(Datos[7]);
+                System.out.println(Datos[8]);
             } else {
                 SharedPreferences sh = getSharedPreferences("TempShared", MODE_PRIVATE);
                 Ticket = sh.getString("Ticket", "");
             }
+
             SharedPreferences sh3 = getSharedPreferences("TempShared", MODE_PRIVATE);
             SharedPreferences.Editor myEdit3 = sh3.edit();
             myEdit3.putString("Ticket", Ticket);
@@ -285,7 +298,7 @@ public class ReporteInstalacion extends AppCompatActivity {
             //NombreBarco = "";
             // Noficio ="";
 
-            if (Noficio.equals("")||Datos[7].equals("Actualizacion")) GuardaDatosTicket();
+            if (Noficio.equals("")||Datos[7].equals("Actualizacion")||Datos[7].equals("Re-asignacion")) GuardaDatosTicket();
             requestSignIn();
         }
     }
@@ -304,24 +317,49 @@ public class ReporteInstalacion extends AppCompatActivity {
             CambioEstatus.setText("Poner en curso");
         }
         else if (sh.getString("DatosTicket7","").equals("En curso")){
-            CambioEstatus.setText("Cerrar Servicio");
-            Entraslado.setVisibility(View.GONE);
-            Charging.setVisibility(View.GONE);
-            Controles.setVisibility(View.VISIBLE);
-            if (sh.getString("Pantalla","").equals("Fotos"))RutinaFotos();
-            else if (sh.getString("Pantalla","").equals("Equipos"))RutinaEquipos();
-            else RutinaDatos();
+            if (sh.getString("DatosTicket4", "").equals("Cancelado")){
+                CambioEstatus.setText("Genera Documento No Instalacion");
+                Entraslado.setVisibility(View.GONE);
+                Charging.setVisibility(View.GONE);
+                Controles.setVisibility(View.VISIBLE);
+                Cancela.setVisibility(View.GONE);
+                CancelaV.setVisibility(View.GONE);
+                Justificacion.setVisibility(View.VISIBLE);
+                DatosPermisionario.setVisibility(View.GONE);
+                RutinaCancelado();
+            }else {
+
+                CambioEstatus.setText("Cerrar Servicio");
+                Entraslado.setVisibility(View.GONE);
+                Charging.setVisibility(View.GONE);
+                Controles.setVisibility(View.VISIBLE);
+                if (sh.getString("Pantalla", "").equals("Fotos")) RutinaFotos();
+                else if (sh.getString("Pantalla", "").equals("Equipos")) RutinaEquipos();
+                else RutinaDatos();
+            }
         }
         else if (sh.getString("DatosTicket7","").equals("Cerrado")){
-            CambioEstatus.setText("Genera Documento Instalacion");
-            Entraslado.setVisibility(View.GONE);
-            Charging.setVisibility(View.GONE);
-            Controles.setVisibility(View.VISIBLE);
-            Cancela.setVisibility(View.GONE);
-            CancelaV.setVisibility(View.GONE);
-            if (sh.getString("Pantalla","").equals("Fotos"))RutinaFotos();
-            else if (sh.getString("Pantalla","").equals("Equipos"))RutinaEquipos();
-            else RutinaDatos();
+            if (sh.getString("DatosTicket4", "").equals("Cancelado")){
+                CambioEstatus.setText("Genera Documento No Instalacion");
+                Entraslado.setVisibility(View.GONE);
+                Charging.setVisibility(View.GONE);
+                Controles.setVisibility(View.VISIBLE);
+                Cancela.setVisibility(View.GONE);
+                CancelaV.setVisibility(View.GONE);
+                Justificacion.setVisibility(View.VISIBLE);
+                DatosPermisionario.setVisibility(View.GONE);
+                RutinaCancelado();
+            }else {
+                CambioEstatus.setText("Genera Documento Instalacion");
+                Entraslado.setVisibility(View.GONE);
+                Charging.setVisibility(View.GONE);
+                Controles.setVisibility(View.VISIBLE);
+                Cancela.setVisibility(View.GONE);
+                CancelaV.setVisibility(View.GONE);
+                if (sh.getString("Pantalla", "").equals("Fotos")) RutinaFotos();
+                else if (sh.getString("Pantalla", "").equals("Equipos")) RutinaEquipos();
+                else RutinaDatos();
+            }
         }
         else if (sh.getString("DatosTicket7","").equals("Cancelado")){
             CambioEstatus.setText("Genera Documento No Instalacion");
@@ -329,10 +367,12 @@ public class ReporteInstalacion extends AppCompatActivity {
             Charging.setVisibility(View.GONE);
             Controles.setVisibility(View.VISIBLE);
             Cancela.setVisibility(View.GONE);
-            CancelaV.setVisibility(View.VISIBLE);
+            CancelaV.setVisibility(View.GONE);
             Justificacion.setVisibility(View.VISIBLE);
+            DatosPermisionario.setVisibility(View.GONE);
             RutinaCancelado();
-        }else{
+        }
+        else{
             Entraslado.setVisibility(View.GONE);
             Charging.setVisibility(View.GONE);
             Controles.setVisibility(View.VISIBLE);
@@ -380,6 +420,10 @@ public class ReporteInstalacion extends AppCompatActivity {
                     System.out.println(dataSnapshot.child("NSerieIridium").getValue(String.class));
 
 
+
+                    myEdit.putString("CredResponsable",dataSnapshot.child("CredResponsable").getValue(String.class));
+                    myEdit.putString("CorreoResposable",dataSnapshot.child("CorreoResposable").getValue(String.class));
+                    myEdit.putString("DireccionResponsable",dataSnapshot.child("DireccionResponsable").getValue(String.class));
 
                     myEdit.putString("Contacto",dataSnapshot.child("Contacto").getValue(String.class));
                     myEdit.putString("NombreResponable",dataSnapshot.child("NombreResponable").getValue(String.class));
@@ -443,6 +487,10 @@ public class ReporteInstalacion extends AppCompatActivity {
         NombrePermisionariov.setText(sh.getString("NombreResponable",""));
         CargoResponsable.setText(sh.getString("CargoResponsable",""));
         Observaciones.setText(sh.getString("Observaciones",""));
+        CorreoResponsable.setText(sh.getString("CorreoResposable",""));
+        DireccionResponsable.setText(sh.getString("DireccionResponsable",""));
+        INEResponsable.setText(sh.getString("CredResponsable",""));
+
 
         FechaOficio.setText(sh.getString("DatosTicket13",""));
         NoOficio.setText(sh.getString("DatosTicket12",""));
@@ -491,11 +539,36 @@ public class ReporteInstalacion extends AppCompatActivity {
         FeFinal4 .setText(sh.getString("DatoBarco56",""));
         FeFinal5 .setText(sh.getString("DatoBarco63",""));
 
+
+
+
         Pesqueria.setText(sh.getString("DatoBarco6","")+", "+
                 sh.getString("DatoBarco7","")+", "+
                 sh.getString("DatoBarco8","")+", "+
                 sh.getString("DatoBarco9","")+", "+
                 sh.getString("DatoBarco10","")+", ");
+
+        String Permiso1 = sh.getString("DatoBarco6","");
+        String Permiso2 = sh.getString("DatoBarco7","");
+        String Permiso3 = sh.getString("DatoBarco8","");
+        String Permiso4 = sh.getString("DatoBarco9","");
+        String Permiso5 = sh.getString("DatoBarco10","");
+        if (!Permiso1.equals("")&&!Permiso1.equals("NA")&&!Permiso1.equals("N/A")){
+            permiso1 .setText("Permiso 1 : "+Permiso1);
+        }
+        if (!Permiso2.equals("")&&!Permiso2.equals("NA")&&!Permiso2.equals("N/A")){
+            permiso2 .setText("Permiso 2 : "+Permiso2);
+        }
+        if (!Permiso3.equals("")&&!Permiso3.equals("NA")&&!Permiso2.equals("N/A")){
+            permiso3 .setText("Permiso 3 : "+Permiso3);
+        }
+        if (!Permiso4.equals("")&&!Permiso4.equals("NA")&&!Permiso2.equals("N/A")){
+            permiso4 .setText("Permiso 4 : "+Permiso4);
+        }
+        if (!Permiso5.equals("")&&!Permiso5.equals("NA")&&!Permiso2.equals("N/A")){
+            permiso5 .setText("Permiso 5 : "+Permiso5);
+        }
+
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void GuardaDatosBarco(){
@@ -601,8 +674,18 @@ public class ReporteInstalacion extends AppCompatActivity {
                 NSerieIridium.getText().toString(),
                 IMEIIridium.getText().toString(),
                 NSerieTransreceptor.getText().toString(),
-                NSerieConBox.getText().toString()
+                NSerieConBox.getText().toString(),
+                INEResponsable.getText().toString(),
+                DireccionResponsable.getText().toString(),
+                CorreoResponsable.getText().toString()
         };
+
+
+
+        myEdit.putString("CredResponsable",INEResponsable.getText().toString());
+        myEdit.putString("DireccionResponsable",DireccionResponsable.getText().toString());
+        myEdit.putString("CorreoResposable",CorreoResponsable.getText().toString());
+
         myEdit.putString("FechaCerrado",FechaInstalacion.getText().toString());
         myEdit.putString("Contacto",Contacto.getText().toString());
         myEdit.putString("NombreResponable",NombrePermisionariov.getText().toString());
@@ -689,7 +772,7 @@ public class ReporteInstalacion extends AppCompatActivity {
         int NumeroFotos;
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
         if (Cancelado.equals("Cancelado")){
-            NumeroFotos = 4;
+            NumeroFotos = 2;
         }else{
             NumeroFotos = 10;
 
@@ -709,8 +792,8 @@ public class ReporteInstalacion extends AppCompatActivity {
         int NumeroFotos;
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
         System.out.println(sh.getString("DatosTicket7",""));
-        if (sh.getString("DatosTicket7","").equals("Cancelado")){
-            NumeroFotos = 4;
+        if (sh.getString("DatosTicket7","").equals("Cancelado")||(sh.getString("DatosTicket4", "").equals("Cancelado"))){
+            NumeroFotos = 2;
         }else{
             NumeroFotos = 10;
 
@@ -723,12 +806,14 @@ public class ReporteInstalacion extends AppCompatActivity {
         if (Desc.equals("")) GuardaComentariosFotos("Instalacion");
         for (int i=0;i<NumeroFotos;i=i+2){
             Bitmap bitmapi,bitmapi2 = null;
-            if (sh.getString("DatosTicket7","").equals("Cancelado")){
+            if (sh.getString("DatosTicket7","").equals("Cancelado")||(sh.getString("DatosTicket4", "").equals("Cancelado"))){
                 Comen1 =ObtenComentarios()[i];
                 Comen2 =ObtenComentarios()[i+1];
+                System.out.println("Cancelado"+Comen1+Comen2);
             }else{
                 Comen1 =dt.FotosReporteInstalacion[i];
                 Comen2 =dt.FotosReporteInstalacion[i+1];
+                System.out.println("En curso"+Comen1+Comen2);
             }
             bitmapi = ObtenImagen(Ticket,i+1);
             bitmapi2 = ObtenImagen(Ticket,i+2);
@@ -861,8 +946,8 @@ public class ReporteInstalacion extends AppCompatActivity {
     private boolean ValidaFotos(){
         int NumeroFotos;
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
-        if (sh.getString("DatosTicket7","").equals("Cancelado")){
-            NumeroFotos = 4;
+        if (sh.getString("DatosTicket7","").equals("Cancelado")||(sh.getString("DatosTicket4", "").equals("Cancelado"))){
+            NumeroFotos = 2;
         }else{
             NumeroFotos = 10;
 
@@ -1022,72 +1107,101 @@ public class ReporteInstalacion extends AppCompatActivity {
     public void CambiaEstatus(View view) {
         GuardaDatosInstalacion();
         SharedPreferences sh2 = getSharedPreferences(Ticket, MODE_PRIVATE);
-        if (sh2.getString("DatosTicket7", "").equals("Cerrado") || sh2.getString("DatosTicket7", "").equals("Cancelado")) {
-            Toast.makeText(this, "Generando Archivo", Toast.LENGTH_SHORT).show();
-            if (sh2.getString("DatosTicket7", "").equals("Cerrado")) {
-                RutinaCreaArchivoInstalacion(false);
-            } else {
-                if (!ValidaJuatificacion()) {
-                    Toast.makeText(this, "Añada justificacion", Toast.LENGTH_SHORT).show();
-                    RutinaFotos();
-                } else if (ValidaFotos()) {
-                    Toast.makeText(this, "Complete las Fotos", Toast.LENGTH_SHORT).show();
-                    RutinaFotos();
+
+
+            if (sh2.getString("DatosTicket7", "").equals("Cerrado") || sh2.getString("DatosTicket7", "").equals("Cancelado")) {
+                Toast.makeText(this, "Generando Archivo", Toast.LENGTH_SHORT).show();
+                if (sh2.getString("DatosTicket7", "").equals("Cerrado")) {
+                    if (sh2.getString("DatosTicket4", "").equals("Cancelado")){
+                        RutinaCreaArchivoNOInstalacion();
+                        Intent i = new Intent(this, PDFViewer.class);
+                        i.putExtra("Iden", "NI");
+                        i.putExtra("Datos", ObtenDatosTicket());
+                        startActivity(i);
+                    }else {
+                        RutinaCreaArchivoInstalacion(false);
+                    }
                 } else {
-                    RutinaCreaArchivoNOInstalacion();
-                    Intent i = new Intent(this, PDFViewer.class);
-                    i.putExtra("Iden", "NI");
-                    i.putExtra("Datos", ObtenDatosTicket());
-                    startActivity(i);
+                    if (!ValidaJuatificacion()) {
+                        Toast.makeText(this, "Añada justificacion", Toast.LENGTH_SHORT).show();
+                        RutinaFotos();
+                    } else if (ValidaFotos()) {
+                        Toast.makeText(this, "Complete las Fotos", Toast.LENGTH_SHORT).show();
+                        RutinaFotos();
+                    } else {
+
+                    }
                 }
             }
-        }
-        else {
+            else {
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(ReporteInstalacion.this);
-            builder.setTitle("Cambio de Estatus");
-            builder.setMessage("¿Esta seguro de cambiar el estatus?").setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    RutinaActualiza();
-                }
-            }).setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(getApplicationContext(), "Canceled", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(ReporteInstalacion.this);
+                builder.setTitle("Cambio de Estatus");
+                builder.setMessage("¿Esta seguro de cambiar el estatus?").setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        RutinaActualiza();
+                    }
+                }).setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(), "Canceled", Toast.LENGTH_SHORT).show();
 
-                }
-
-
-            }).show();
+                    }
 
 
+                }).show();
 
 
-        }
+            }
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void RutinaActualiza(){
         SharedPreferences sh2 = getSharedPreferences(Ticket, MODE_PRIVATE);
+        System.out.println(sh2.getString("DatosTicket7", ""));
         if (sh2.getString("DatosTicket7", "").equals("En traslado")) {
             RutinaCharging();
             ActualizaEstatus("FechaCurso", "HoraCurso", "En curso", 3);
             Toast.makeText(this, "Cambiando Estatus", Toast.LENGTH_SHORT).show();
         } else if (sh2.getString("DatosTicket7", "").equals("En curso")) {
-            if (!ValidaInstalacion()) {
-                Toast.makeText(this, "Complete los campos requeridos", Toast.LENGTH_SHORT).show();
-                RutinaEquipos();
-            }else if (ValidaFotos()){
-                Toast.makeText(this,"Complete las Fotos",Toast.LENGTH_SHORT).show();
-                RutinaFotos();
-            } else {
-                RutinaCharging();
-                ActualizaEstatus("FechaCerrado", "HoraCerrado", "Cerrado", 4);
-                Toast.makeText(this, "Cambiando Estatus", Toast.LENGTH_SHORT).show();
+            if(sh2.getString("DatosTicket4","").equals("Cancelado")){
+                if (!ValidaJuatificacion()) {
+                    Toast.makeText(this, "Añada justificacion", Toast.LENGTH_SHORT).show();
+                    RutinaEquipos();
+                } else if (ValidaFotos()) {
+                    Toast.makeText(this, "Complete las Fotos", Toast.LENGTH_SHORT).show();
+                    RutinaFotos();
+                } else {
+                    RutinaCharging();
+                    ActualizaEstatus("FechaCerrado", "HoraCerrado", "Cerrado", 4);
+                    Toast.makeText(this, "Cambiando Estatus", Toast.LENGTH_SHORT).show();
+                }
+            }else {
+                if (!ValidaInstalacion()) {
+                    Toast.makeText(this, "Complete los campos requeridos", Toast.LENGTH_SHORT).show();
+                    RutinaEquipos();
+                } else if (ValidaFotos()) {
+                    Toast.makeText(this, "Complete las Fotos", Toast.LENGTH_SHORT).show();
+                    RutinaFotos();
+                } else {
+                    RutinaCharging();
+                    ActualizaEstatus("FechaCerrado", "HoraCerrado", "Cerrado", 4);
+                    Toast.makeText(this, "Cambiando Estatus", Toast.LENGTH_SHORT).show();
+                }
             }
         } else if (sh2.getString("DatosTicket7", "").equals("Cerrado")) {
 
-            RutinaCreaArchivoInstalacion(false);
+            System.out.println("Intentanto generar archivo");
+            if(sh2.getString("DatosTicket4","").equals("Cancelado")){
+                RutinaCreaArchivoNOInstalacion();
+                Intent i = new Intent(this, PDFViewer.class);
+                i.putExtra("Iden", "NI");
+                i.putExtra("Datos", ObtenDatosTicket());
+                startActivity(i);
+            }
+            else {
+                RutinaCreaArchivoInstalacion(false);
+            }
         } else {
             if (!ValidaJuatificacion()) {
                 Toast.makeText(this, "Añada justificacion", Toast.LENGTH_SHORT).show();
@@ -1123,7 +1237,10 @@ public class ReporteInstalacion extends AppCompatActivity {
 
         };
         if ((Estatus).equals("Cerrado")){
-            RutinaCreaArchivoInstalacion(false);
+            System.out.println("Cerrando servicio");
+            if(sh.getString("DatosTicket4","").equals("Cancelado")){
+                RutinaCreaArchivoNOInstalacion();
+            }else{RutinaCreaArchivoInstalacion(false); }
             mSheetServiceHelper.Escribeentabla4(HoraFecha,Ticket)
                     .addOnSuccessListener(ok ->mSheetServiceHelper.ActualizaBitacora(ObtenDatosTicket()[10],"Ticket"+Estatus,HoraFecha[1],HoraFecha[0],"-",0)
                             .addOnSuccessListener(OK -> fb.ActualizaEstatus(ObtenDatosTicket(),this,HoraFecha,Estatus,ID)  )
@@ -1144,6 +1261,9 @@ public class ReporteInstalacion extends AppCompatActivity {
                     .addOnFailureListener(Fail -> System.out.println("Esribe en tabla 2"+Fail));
         }
         else {
+            if(sh.getString("DatosTicket4","").equals("Cancelado")){
+                GuardaComentariosFotos("Cancelado");
+            }
             mSheetServiceHelper.Escribeentabla3(HoraFecha,Ticket)
                     .addOnSuccessListener(ok -> mSheetServiceHelper.ActualizaBitacora(ObtenDatosTicket()[10], "Ticket" + Estatus, HoraFecha[1], HoraFecha[0], "-", 0)
                             .addOnSuccessListener(OK -> fb.ActualizaEstatus(ObtenDatosTicket(), this, HoraFecha, Estatus, ID))
@@ -1304,7 +1424,7 @@ public class ReporteInstalacion extends AppCompatActivity {
                     System.out.println("Nombre Barco"+sh.getString("DatoBarco0",""));
                     System.out.println(Ticket);
                     if (DatosBarco!=null) {
-                        if(NombreBarco.equals("")||Datos[7].equals("Actualizacion"))GuardaDatosBarco();
+                        if(NombreBarco.equals("")||Datos[7].equals("Actualizacion")||Datos[7].equals("Re-asignacion"))GuardaDatosBarco();
                         ConfiguraIncio();
                     }
                     else {

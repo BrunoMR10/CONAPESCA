@@ -47,6 +47,7 @@ public class SheetsServiceHelper {
     public Task<Boolean> Escribeentablareasignacion(String[]Datos) {
         return Tasks.call(mExecutor, () -> {
             String spreadsheetId ;
+            System.out.println("Asignando ticket tipo:"+Datos[4]);
             if (Datos[4].equals("Preventivo")){
                 spreadsheetId= "197jGRK3XtNai23J_OWKOPmXa98Ov5ib5aKoxT8flQds";
             }else if (Datos[4].equals("Correctivo")){
@@ -56,7 +57,11 @@ public class SheetsServiceHelper {
                 //spreadsheetId = "1gdmQZXedP4l0Cm_jahXt7LCOJkOlC7GXagc7LPp0CCs";Version1
                 spreadsheetId = "1b1G86lx9GagfW72X58GUJm3U9y7sAbGC8o1lmx2oDhY";
 
-            }else{
+            }else if (Datos[4].equals("Cancelado")){
+                System.out.println("Servicio Cancelado");
+                spreadsheetId = "1QTcSPMcDxnDooJOufgQtybdEYTB1IyHLJo3ltWF1Rfw";
+            }
+            else{
                 spreadsheetId= "1kmGFG6T5tJNne2C2lQD9G7LL9Qh24vbxNL5d4hLMRFI";
             }
             String range = "E2:E3000";
@@ -136,7 +141,12 @@ public class SheetsServiceHelper {
             else if (Datos[4].contains("Instal")){
                 //spreadsheetId = "1gdmQZXedP4l0Cm_jahXt7LCOJkOlC7GXagc7LPp0CCs";Version1
                 spreadsheetId = "1b1G86lx9GagfW72X58GUJm3U9y7sAbGC8o1lmx2oDhY";
-            }else{
+            }
+            else if (Datos[4].equals("Cancelado")){
+                System.out.println("Servicio Cancelado");
+                spreadsheetId = "1QTcSPMcDxnDooJOufgQtybdEYTB1IyHLJo3ltWF1Rfw";
+            }
+            else{
                 spreadsheetId= "1kmGFG6T5tJNne2C2lQD9G7LL9Qh24vbxNL5d4hLMRFI";
             }
             String range = "B1:B1";
@@ -213,6 +223,10 @@ public class SheetsServiceHelper {
             else if (Datos[2].contains("Instal")){
                 //spreadsheetId = "1gdmQZXedP4l0Cm_jahXt7LCOJkOlC7GXagc7LPp0CCs";Version1
                 spreadsheetId = "1b1G86lx9GagfW72X58GUJm3U9y7sAbGC8o1lmx2oDhY";
+            }
+            else if (Datos[2].equals("Cancelado")){
+                System.out.println("Servicio Cancelado");
+                spreadsheetId = "1QTcSPMcDxnDooJOufgQtybdEYTB1IyHLJo3ltWF1Rfw";
             }else{
                 spreadsheetId= "1kmGFG6T5tJNne2C2lQD9G7LL9Qh24vbxNL5d4hLMRFI";
             }
@@ -272,7 +286,11 @@ public class SheetsServiceHelper {
             else if (Datos[2].contains("Instal")){
                 //spreadsheetId = "1gdmQZXedP4l0Cm_jahXt7LCOJkOlC7GXagc7LPp0CCs";Version1
                 spreadsheetId = "1b1G86lx9GagfW72X58GUJm3U9y7sAbGC8o1lmx2oDhY";
-            }else{
+            }else if (Datos[2].equals("Cancelado")){
+                System.out.println("Servicio Cancelado");
+                spreadsheetId = "1QTcSPMcDxnDooJOufgQtybdEYTB1IyHLJo3ltWF1Rfw";
+            }
+            else{
                 spreadsheetId= "1kmGFG6T5tJNne2C2lQD9G7LL9Qh24vbxNL5d4hLMRFI";
             }
             String range = "E2:E3000";
@@ -390,7 +408,11 @@ public class SheetsServiceHelper {
             else if (Datos[2].contains("Instal")){
                 //spreadsheetId = "1gdmQZXedP4l0Cm_jahXt7LCOJkOlC7GXagc7LPp0CCs";Version1
                 spreadsheetId = "1b1G86lx9GagfW72X58GUJm3U9y7sAbGC8o1lmx2oDhY";
-            }else{
+            }else if (Datos[2].equals("Cancelado")){
+                System.out.println("Servicio Cancelado");
+                spreadsheetId = "1QTcSPMcDxnDooJOufgQtybdEYTB1IyHLJo3ltWF1Rfw";
+            }
+            else{
                 spreadsheetId= "1kmGFG6T5tJNne2C2lQD9G7LL9Qh24vbxNL5d4hLMRFI";
             }
             String range = "E2:E3000";
@@ -476,7 +498,11 @@ public class SheetsServiceHelper {
             else if (Datos[2].contains("Instal")){
                 //spreadsheetId = "1gdmQZXedP4l0Cm_jahXt7LCOJkOlC7GXagc7LPp0CCs";Version1
                 spreadsheetId = "1b1G86lx9GagfW72X58GUJm3U9y7sAbGC8o1lmx2oDhY";
-            }else{
+            }else if (Datos[2].equals("Cancelado")){
+                System.out.println("Servicio Cancelado");
+                spreadsheetId = "1QTcSPMcDxnDooJOufgQtybdEYTB1IyHLJo3ltWF1Rfw";
+            }
+            else{
                 spreadsheetId= "1kmGFG6T5tJNne2C2lQD9G7LL9Qh24vbxNL5d4hLMRFI";
             }
             String range = "E2:E3000";
@@ -596,7 +622,11 @@ public class SheetsServiceHelper {
             else if (Datos[2].contains("Instal")){
                 //spreadsheetId = "1gdmQZXedP4l0Cm_jahXt7LCOJkOlC7GXagc7LPp0CCs";Version1
                 spreadsheetId = "1b1G86lx9GagfW72X58GUJm3U9y7sAbGC8o1lmx2oDhY";
-            }else{
+            }else if (Datos[2].equals("Cancelado")){
+                System.out.println("Servicio Cancelado");
+                spreadsheetId = "1QTcSPMcDxnDooJOufgQtybdEYTB1IyHLJo3ltWF1Rfw";
+            }
+            else{
                 spreadsheetId= "1kmGFG6T5tJNne2C2lQD9G7LL9Qh24vbxNL5d4hLMRFI";
             }
             String range = "E2:E3000";
