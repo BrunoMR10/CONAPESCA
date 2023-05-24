@@ -16,7 +16,8 @@ public class CaracteristicasCuadros {
     String Ticket = sh.getString("Ticket","");
     SharedPreferences sh2 = getApplicationContext().getSharedPreferences(Ticket, Context.MODE_PRIVATE);
     String Ciudad=sh2.getString("DatoBarco2",""),EntidadFederativa="Estado",Hora=sh2.getString("HoraCerrado",""),fecha=sh2.getString("FechaCerrado",""),Dia="Dia",Mes="Mes",SerieTransreceptor=sh2.getString("NSerieTransreceptor",""),SerieConBox=sh2.getString("NSerieConBox",""),Consecionario=sh2.getString("DatoBarco21",""),
-            Barco=sh2.getString("DatoBarco3",""),NombreResposable =sh2.getString("NombreResponable",""),Ingeniero = sh2.getString("DatosUsuario1","");
+            Barco=sh2.getString("DatoBarco3",""),NombreResposable =sh2.getString("NombreResponable",""),Ingeniero = sh2.getString("DatosUsuario1",""),
+            INEPermisionario=sh2.getString("CredResponsable","");
     SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
     SimpleDateFormat formatter = new SimpleDateFormat("dd");
     SimpleDateFormat formatter2 = new SimpleDateFormat("MMMM");
@@ -52,7 +53,7 @@ public class CaracteristicasCuadros {
             "la permanencia en la embarcación pesquera y su buen uso… , se hace constar que Seguritech Privada, S.A. de C.V. llevó a cabo la instalación y configuración del equipo " +
             "Transreceptor con <neg Número de Serie: neg> <neg"+SerieTransreceptor+"neg> marca <neg BlueTraker neg>, y  <neg ConBox2018 neg> con <neg Número de Serie: "+SerieConBox+"neg> " +
             "completamente nuevo en la embarcación pesquera identificada como <neg"+Barco+"neg> del concesionario y/o " +
-            "permisionario de nombre <neg"+NombreResposable+"neg> identificándose con _____________________ número ____________________ vigente," +
+            "permisionario de nombre <neg"+NombreResposable+"neg> identificándose con INE o IFE número <neg"+INEPermisionario+"neg> vigente," +
             " con el cual se llevará a cabo la Localización y Monitoreo Satelital a la embarcación referida.\n";
 
     String Texto5 = "En términos de lo antes citado, el concesionario y/o permisionario de la embarcación pesquera se obliga frente a " +

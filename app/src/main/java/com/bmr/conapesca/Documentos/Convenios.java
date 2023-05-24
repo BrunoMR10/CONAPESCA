@@ -243,14 +243,20 @@ public class Convenios {
                 while (ce[15].indexOf(textonegritasapertura) > -1 || ce[15].indexOf(textosubrayadoapertura) > -1) {
                     int posnegrita = ce[15].indexOf(textonegritasapertura);
                     int posSub =ce[15].indexOf(textosubrayadoapertura);
+                    String lineas = "_____________________";
                     System.out.println("Posicion negrita: "+posnegrita);
                     System.out.println("Posicion subrayado: "+posSub);
                     if ((posnegrita<posSub || posSub<0) && posnegrita>0 ){
                     textonormal = ce[15].substring(inicionormal,ce[15].indexOf(
                             textonegritasapertura));
-                    textonegrita = ce[15].substring(
-                            ce[15].indexOf(textonegritasapertura)+textonegritasapertura.length(),
-                            ce[15].indexOf(textonegritascierre));
+                    System.out.println("Index1: "+(ce[15].indexOf(textonegritasapertura)+textonegritasapertura.length())+"Index2: "+(ce[15].indexOf(textonegritascierre)-1));
+                    if (ce[15].indexOf(textonegritasapertura)+textonegritasapertura.length()==ce[15].indexOf(textonegritascierre)){
+                        textonegrita=lineas;
+                    }else{
+                        textonegrita = ce[15].substring(
+                                ce[15].indexOf(textonegritasapertura)+textonegritasapertura.length(),
+                                ce[15].indexOf(textonegritascierre));
+                    }
                     //finalnegritas=ce[15].indexOf(textonegritascierre)+textonegritascierre.length();
                     //inicionormal= ce[15].indexOf(textonegritascierre)+textonegritascierre.length();
                     ce[15] = ce[15].substring(ce[15].indexOf(
