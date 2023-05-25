@@ -943,7 +943,7 @@ public class InstalacionOficial {
            /* AgregaContenidoCuadroDatosCENTER(font, page, 40, 670+180, 510, 13,"En seguimiento a la solicitud de instalación de equipo según oficio DGIV.-"+sh.getString("DatosTicket12","")+" de fecha: "
                     +sh.getString("DatosTicket12","")+" A continuacion presento lo siguiente:" ,7);*/
             AgregaContenidoCuadroDatosLEFT(font, page, 40, 660+200, 520, 13,"En seguimiento a la solicitud de instalación de equipo según oficio DGIV.-"+sh.getString("DatosTicket12","")+" de fecha: "
-                    +sh.getString("DatosTicket13","")+" A continuacion presento lo siguiente:" ,8);
+                    +sh.getString("DatosTicket13","")+" A continuación presento lo siguiente:" ,10);
 
             AgregaContenidoCuadroDatosLEFT(font, page, 350, 713+200, 150, 13, sh.getString("DatosTicket12",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page, 350, 700+200, 150, 13, sh.getString("DatoBarco25",""),8);
@@ -1343,7 +1343,7 @@ public class InstalacionOficial {
            /* AgregaContenidoCuadroDatosCENTER(font, page, 40, 670+180, 510, 13,"En seguimiento a la solicitud de instalación de equipo según oficio DGIV.-"+sh.getString("DatosTicket12","")+" de fecha: "
                     +sh.getString("DatosTicket12","")+" A continuacion presento lo siguiente:" ,7);*/
             AgregaContenidoCuadroDatosLEFT(font, page, 40, 660+200, 520, 13,"En seguimiento a la solicitud de instalación de equipo según oficio DGIV.-"+sh.getString("DatosTicket12","")+" de fecha: "
-                    +sh.getString("DatosTicket13","")+" A continuacion presento lo siguiente:" ,8);
+                    +sh.getString("DatosTicket13","")+" A continuación presento lo siguiente:" ,9);
 
             AgregaContenidoCuadroDatosLEFT(font, page, 350, 713+200, 150, 13, sh.getString("DatosTicket12",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page, 350, 700+200, 150, 13, sh.getString("DatoBarco25",""),8);

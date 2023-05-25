@@ -127,7 +127,7 @@ public class InstalacionOficialCarta {
         pdfCanvas.rectangle(rectangle2);
         pdfCanvas.stroke().closePathStroke();
         Canvas canvas2 = new Canvas(pdfCanvas, rectangle2);
-        Text DatosEquipo = new Text("Datos de la persona designada para atención del equipo transreceptor").setFont(bold).setFontSize(8);
+        Text DatosEquipo = new Text("Datos de la persona designada para atención 24 horas del equipo transreceptor").setFont(bold).setFontSize(8);
         Paragraph b = new Paragraph().add(DatosEquipo).setTextAlignment(TextAlignment.CENTER);
         canvas2.add(b).close();
         canvas.close();
@@ -1000,7 +1000,7 @@ public class InstalacionOficialCarta {
         PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
         AñadirLineas2(page);
         //InsertaSquare(page,Ticket);
-        CuadroDatosArchivo2(pdfCanvas,font,bold,36, 660+60, 530, 80,imageData);
+        CuadroDatosArchivo2(pdfCanvas,font,bold,36, 660+72, 530, 73,imageData);
         CuadroDatos2(pdfCanvas,bold,36, 565+50, 530, 70);
         CuadroDatos4(pdfCanvas,bold,36, 460+30+50, 530, 60);
         CuadroDatos5Archivo2(pdfCanvas,bold,36, 450, 530, 75);
@@ -1024,7 +1024,7 @@ public class InstalacionOficialCarta {
         Text title2 = new Text("").setFont(font).setFontColor(ColorConstants.BLACK).setFontSize(10);
         Text Space = new Text(".          .").setFont(font).setUnderline().setFontSize(9).setFontColor(ColorConstants.WHITE);
         Paragraph a = new Paragraph().add(title).add(Space).setTextAlignment(TextAlignment.RIGHT);
-        InsertaImagenLogo(imageData,canvas,50,680+50,170);
+        InsertaImagenLogo(imageData,canvas,50,680+57,170);
         canvas.add(a);
         canvas.close();
     }
@@ -1064,19 +1064,19 @@ public class InstalacionOficialCarta {
 
             PdfFont font = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
             PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
-            AgregaContenidoCuadroDatosRIGHT(bold, page, 240, 726+35+40, 325, 13, Ticket,10);
+            AgregaContenidoCuadroDatosRIGHT(bold, page, 240, 726+35+46, 325, 13, Ticket,10);
             //AgregaContenidoCuadroDatosRIGHT(font, page, 240, 726+200, 310, 13, sh.getString("DatosTicket3",""),9);
-            AgregaContenidoCuadroDatosRIGHT(bold, page, 300, 713+40, 47, 13,"No. de oficio:" ,8);
-            AgregaContenidoCuadroDatosRIGHT(bold, page, 300, 700+40, 47, 13, "Lugar:",8);
-            AgregaContenidoCuadroDatosRIGHT(bold, page, 300, 687+40, 47, 13, "Fecha:",8);
+            AgregaContenidoCuadroDatosRIGHT(bold, page, 300, 713+50, 47, 13,"No. de oficio:" ,8);
+            AgregaContenidoCuadroDatosRIGHT(bold, page, 300, 700+50, 47, 13, "Lugar:",8);
+            AgregaContenidoCuadroDatosRIGHT(bold, page, 300, 687+50, 47, 13, "Fecha:",8);
            /* AgregaContenidoCuadroDatosCENTER(font, page, 40, 670+180, 510, 13,"En seguimiento a la solicitud de instalación de equipo según oficio DGIV.-"+sh.getString("DatosTicket12","")+" de fecha: "
                     +sh.getString("DatosTicket12","")+" A continuacion presento lo siguiente:" ,7);*/
-            AgregaContenidoCuadroDatosLEFT(font, page, 40, 660+45, 520, 13,"En seguimiento a la solicitud de instalación de equipo según oficio DGIV.-"+sh.getString("DatosTicket12","")+" de fecha: "
-                    +sh.getString("DatosTicket13","")+" A continuacion presento lo siguiente:" ,8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 40, 660+41, 520, 36,"En seguimiento a la solicitud de instalación de equipo según oficio DGIV.-"+sh.getString("DatosTicket12","")+" de fecha: "
+                    +sh.getString("DatosTicket13","")+" A continuación presento lo siguiente:" ,10);
 
-            AgregaContenidoCuadroDatosLEFT(font, page, 350, 713+40, 150, 13,"DGIV-" +sh.getString("DatosTicket12",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page, 350, 700+40, 150, 13, sh.getString("DatoBarco25",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page, 350, 687+40, 150, 13, sh.getString("FechaCerrado",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 350, 713+50, 150, 13,"DGIV-" +sh.getString("DatosTicket12",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 350, 700+50, 150, 13, sh.getString("DatoBarco25",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 350, 687+50, 150, 13, sh.getString("FechaCerrado",""),8);
 
             //AgregaContenidoCuadroDatosLEFT(font, page, 445, 713, 100, 13, " Aqui va el número",8);
             //AgregaContenidoCuadroDatosLEFT(font, page, 445, 700, 100, 13, " Aqui va la localidad",8);
@@ -1217,12 +1217,12 @@ public class InstalacionOficialCarta {
         PdfCanvas canvas = new PdfCanvas(page);
         // Create a 100% Magenta color
         canvas
-                .moveTo(350, 688+40)
-                .lineTo(500, 688+40)
-                .moveTo(350, 701+40)
-                .lineTo(500, 701+40)
-                .moveTo(350, 714+40)
-                .lineTo(500, 714+40) ///CUADRO1
+                .moveTo(350, 688+50)
+                .lineTo(500, 688+50)
+                .moveTo(350, 701+50)
+                .lineTo(500, 701+50)
+                .moveTo(350, 714+50)
+                .lineTo(500, 714+50) ///CUADRO1
 
                 .moveTo(180, 621+50)
                 .lineTo(380, 621+50)
@@ -1338,7 +1338,7 @@ public class InstalacionOficialCarta {
         PdfFont font = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
         PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
         AñadirLineas3(page);
-        CuadroDatosArchivo3(pdfCanvas,font,bold,36, 675, 530, 85,imageData);
+        CuadroDatosArchivo3(pdfCanvas,font,bold,36, 683, 530, 77,imageData);
         CuadroDatos2(pdfCanvas,bold,36, 565, 530, 70);
         CuadroDatos4(pdfCanvas,bold,36, 460+30, 530, 60);
         //CuadroDatos5Archivo2(pdfCanvas,bold,36, 360+200, 530, 80);
@@ -1488,8 +1488,8 @@ public class InstalacionOficialCarta {
             AgregaContenidoCuadroDatosRIGHT(bold, page, 300, 687+0, 47, 13, "Fecha:",8);
            /* AgregaContenidoCuadroDatosCENTER(font, page, 40, 670+180, 510, 13,"En seguimiento a la solicitud de instalación de equipo según oficio DGIV.-"+sh.getString("DatosTicket12","")+" de fecha: "
                     +sh.getString("DatosTicket12","")+" A continuacion presento lo siguiente:" ,7);*/
-            AgregaContenidoCuadroDatosLEFT(font, page, 40, 660+0, 520, 13,"En seguimiento a la solicitud de instalación de equipo según oficio DGIV.-"+sh.getString("DatosTicket12","")+" de fecha: "
-                    +sh.getString("DatosTicket13","")+" A continuacion presento lo siguiente:" ,8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 40, 651+0, 520, 36,"En seguimiento a la solicitud de instalación de equipo según oficio DGIV.-"+sh.getString("DatosTicket12","")+" de fecha: "
+                    +sh.getString("DatosTicket13","")+" A continuación presento lo siguiente:" ,10);
 
             AgregaContenidoCuadroDatosLEFT(font, page, 350, 713+0, 150, 13, "DGIV.-"+sh.getString("DatosTicket12",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page, 350, 700+0, 150, 13, sh.getString("DatoBarco25",""),8);
@@ -1589,7 +1589,7 @@ public class InstalacionOficialCarta {
         Text title2 = new Text("").setFont(font).setFontColor(ColorConstants.BLACK).setFontSize(10);
         Text Space = new Text(".          .").setFont(font).setUnderline().setFontSize(9).setFontColor(ColorConstants.WHITE);
         Paragraph a = new Paragraph().add(title).add(Space).setTextAlignment(TextAlignment.RIGHT);
-        InsertaImagenLogo(imageData,canvas,50,680,170);
+        InsertaImagenLogo(imageData,canvas,50,687,170);
         canvas.add(a);
         canvas.close();
     }
