@@ -44,6 +44,7 @@ public class ListaServicios extends AppCompatActivity implements SearchView.OnQu
     ProgressBar Actualizando;
     String Clave;
     int Size1=0,Size2=0;
+    Boolean cambiofitrado = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,11 +107,27 @@ public class ListaServicios extends AppCompatActivity implements SearchView.OnQu
 
     private void ObtenDatosTickets(String[]Tickets){
         ArrayList<Ticket> listatickets = new ArrayList<>();
-         for (int i = 0;i<Tickets.length;i++){
-             if (Tickets[i].contains(Clave)) {
+        String []Ticketalrevez = new String[Tickets.length];
+        String []TicketFinal = new String[Tickets.length];
+        int j=Tickets.length-1;
+
+         if (cambiofitrado){
+             for (int i=0;i<Tickets.length;i++){
+                 System.out.println("Ticket: "+Tickets[i]);
+                 Ticketalrevez[i]=Tickets[j];
+                 System.out.println("j: "+j);
+                 j=j-1;
+             }
+             TicketFinal = Ticketalrevez;
+         }
+         else {
+             TicketFinal = Tickets;
+         }
+         for (int i = 0;i<TicketFinal.length;i++){
+             if (TicketFinal[i].contains(Clave)) {
                  Ticket ticket = null;
                  ticket = new Ticket();
-                 ticket.setTicket(Tickets[i]);
+                 ticket.setTicket(TicketFinal[i]);
                  //ticket.setNombreBarco(Barcos[i]);
                  //ticket.setFechaInicio(Fechas[i]);
                  ticket.setTipoServicio(Datos[8]);
@@ -128,6 +145,14 @@ public class ListaServicios extends AppCompatActivity implements SearchView.OnQu
     @Override
     public boolean onQueryTextSubmit(String query) {
         return false;
+    }
+    public void Derecho(View view){
+        cambiofitrado = false;
+        MisTickets();
+    }
+    public void Alreves(View view){
+        cambiofitrado = true;
+        MisTickets();
     }
     @Override
     public boolean onQueryTextChange(String newText) {

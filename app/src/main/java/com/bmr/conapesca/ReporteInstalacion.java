@@ -325,6 +325,7 @@ public class ReporteInstalacion extends AppCompatActivity {
                 Cancela.setVisibility(View.GONE);
                 CancelaV.setVisibility(View.GONE);
                 Justificacion.setVisibility(View.VISIBLE);
+                Save2.setVisibility(View.VISIBLE);
                 DatosPermisionario.setVisibility(View.GONE);
                 RutinaCancelado();
             }else {
@@ -347,6 +348,7 @@ public class ReporteInstalacion extends AppCompatActivity {
                 Cancela.setVisibility(View.GONE);
                 CancelaV.setVisibility(View.GONE);
                 Justificacion.setVisibility(View.VISIBLE);
+                Save2.setVisibility(View.VISIBLE);
                 DatosPermisionario.setVisibility(View.GONE);
                 RutinaCancelado();
             }else {
@@ -369,6 +371,7 @@ public class ReporteInstalacion extends AppCompatActivity {
             Cancela.setVisibility(View.GONE);
             CancelaV.setVisibility(View.GONE);
             Justificacion.setVisibility(View.VISIBLE);
+            Save2.setVisibility(View.VISIBLE);
             DatosPermisionario.setVisibility(View.GONE);
             RutinaCancelado();
         }

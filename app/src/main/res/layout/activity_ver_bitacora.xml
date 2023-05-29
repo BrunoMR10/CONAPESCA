@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="VerInstalacion"
-            android:text="Instalación"
+            android:text="Instal"
             android:textSize="12sp" />
 
         <RadioButton
@@ -52,7 +52,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="VerPreventivos"
-            android:text="Preventivos"
+            android:text="Prev"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/NoinstallButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="NoInstalacion"
+            android:text="No instal"
             android:textSize="12sp" />
 
     </LinearLayout>

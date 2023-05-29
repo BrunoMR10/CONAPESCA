@@ -31,7 +31,7 @@ public class VerBitacora extends AppCompatActivity implements SearchView.OnQuery
     RecyclerView Ticketsview;
     SearchView buscarTickets;
     ProgressBar Actualizando;
-    RadioButton InternoButton,CorrectivoButton,PreventivoButton,InstalacionButton;
+    RadioButton InternoButton,CorrectivoButton,PreventivoButton,InstalacionButton,NoinstallButton;
     String TipoServicio;
     int Size1=0,Size2=0;
     @Override
@@ -45,6 +45,7 @@ public class VerBitacora extends AppCompatActivity implements SearchView.OnQuery
         CorrectivoButton = (RadioButton)findViewById(R.id.CorrectivoButton);
         PreventivoButton = (RadioButton)findViewById(R.id.PreventivoButton);
         InstalacionButton = (RadioButton)findViewById(R.id.InstalacionButton);
+        NoinstallButton= (RadioButton)findViewById(R.id.NoinstallButton);
         Ticketsview.setLayoutManager(new LinearLayoutManager(this));
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -94,6 +95,7 @@ public class VerBitacora extends AppCompatActivity implements SearchView.OnQuery
         PreventivoButton.setChecked(false);
         CorrectivoButton.setChecked(false);
         InstalacionButton.setChecked(false);
+        NoinstallButton.setChecked(false);
         ListadeTickets();
     }
     public void VerCorrectivos(View view){
@@ -102,6 +104,7 @@ public class VerBitacora extends AppCompatActivity implements SearchView.OnQuery
         PreventivoButton.setChecked(false);
         CorrectivoButton.setChecked(true);
         InstalacionButton.setChecked(false);
+        NoinstallButton.setChecked(false);
         ListadeTickets();
     }
     public void VerPreventivos(View view){
@@ -110,6 +113,7 @@ public class VerBitacora extends AppCompatActivity implements SearchView.OnQuery
         PreventivoButton.setChecked(true);
         CorrectivoButton.setChecked(false);
         InstalacionButton.setChecked(false);
+        NoinstallButton.setChecked(false);
         ListadeTickets();
     }
     public void VerInstalacion(View view){
@@ -118,6 +122,16 @@ public class VerBitacora extends AppCompatActivity implements SearchView.OnQuery
         PreventivoButton.setChecked(false);
         CorrectivoButton.setChecked(false);
         InstalacionButton.setChecked(true);
+        NoinstallButton.setChecked(false);
+        ListadeTickets();
+    }
+    public void NoInstalacion(View view){
+        TipoServicio="Cancelado";
+        InternoButton.setChecked(false);
+        PreventivoButton.setChecked(false);
+        CorrectivoButton.setChecked(false);
+        InstalacionButton.setChecked(false);
+        NoinstallButton.setChecked(true);
         ListadeTickets();
     }
     private void ObtenDatosTickets(String[]Tickets){

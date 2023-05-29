@@ -1000,10 +1000,10 @@ public class InstalacionOficialCarta {
         PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
         AñadirLineas2(page);
         //InsertaSquare(page,Ticket);
-        CuadroDatosArchivo2(pdfCanvas,font,bold,36, 660+72, 530, 73,imageData);
-        CuadroDatos2(pdfCanvas,bold,36, 565+50, 530, 70);
-        CuadroDatos4(pdfCanvas,bold,36, 460+30+50, 530, 60);
-        CuadroDatos5Archivo2(pdfCanvas,bold,36, 450, 530, 75);
+        CuadroDatosArchivo2(pdfCanvas,font,bold,36, 660+64, 530, 93,imageData);
+        CuadroDatos2(pdfCanvas,bold,36, 565+40, 530, 70);
+        CuadroDatos4(pdfCanvas,bold,36, 460+30+40, 530, 60);
+        CuadroDatos5Archivo2(pdfCanvas,bold,36, 440, 530, 75);
         CuadroDatos6Archivo2(pdfCanvas,bold,36, 90, 530, 90);
         AgregaContenidoCuadro1Archivo2(page,Ticket);
         AgregaContenidoCuadro2Archivo2(page,Ticket);
@@ -1064,19 +1064,23 @@ public class InstalacionOficialCarta {
 
             PdfFont font = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
             PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
-            AgregaContenidoCuadroDatosRIGHT(bold, page, 240, 726+35+46, 325, 13, Ticket,10);
+            AgregaContenidoCuadroDatosRIGHT(bold, page, 240, 726+35+46+14, 325, 13, Ticket,10);
+            AgregaContenidoCuadroDatosCENTER(font, page, 240, 717+40, 310, 45,
+                    "SERVICIO INTEGRAL DE TELECOMUNICACIÓN PARA LA LOCALIZACIÓN Y MONITOREO SATELITAL DE " +
+                            "EMBARCACIONES PESQUERAS \n                           " +
+                            "CONTRATO  LPIE/006/12/22",8);
             //AgregaContenidoCuadroDatosRIGHT(font, page, 240, 726+200, 310, 13, sh.getString("DatosTicket3",""),9);
-            AgregaContenidoCuadroDatosRIGHT(bold, page, 300, 713+50, 47, 13,"No. de oficio:" ,8);
-            AgregaContenidoCuadroDatosRIGHT(bold, page, 300, 700+50, 47, 13, "Lugar:",8);
-            AgregaContenidoCuadroDatosRIGHT(bold, page, 300, 687+50, 47, 13, "Fecha:",8);
+            AgregaContenidoCuadroDatosRIGHT(bold, page, 300, 713+40, 47, 13,"No. de oficio:" ,8);
+            AgregaContenidoCuadroDatosRIGHT(bold, page, 300, 700+40, 47, 13, "Lugar:",8);
+            AgregaContenidoCuadroDatosRIGHT(bold, page, 300, 687+40, 47, 13, "Fecha:",8);
            /* AgregaContenidoCuadroDatosCENTER(font, page, 40, 670+180, 510, 13,"En seguimiento a la solicitud de instalación de equipo según oficio DGIV.-"+sh.getString("DatosTicket12","")+" de fecha: "
                     +sh.getString("DatosTicket12","")+" A continuacion presento lo siguiente:" ,7);*/
-            AgregaContenidoCuadroDatosLEFT(font, page, 40, 660+41, 520, 36,"En seguimiento a la solicitud de instalación de equipo según oficio DGIV.-"+sh.getString("DatosTicket12","")+" de fecha: "
+            AgregaContenidoCuadroDatosLEFT(font, page, 40, 660+31, 520, 36,"En seguimiento a la solicitud de instalación de equipo según oficio DGIV.-"+sh.getString("DatosTicket12","")+" de fecha: "
                     +sh.getString("DatosTicket13","")+" A continuación presento lo siguiente:" ,10);
 
-            AgregaContenidoCuadroDatosLEFT(font, page, 350, 713+50, 150, 13,"DGIV-" +sh.getString("DatosTicket12",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page, 350, 700+50, 150, 13, sh.getString("DatoBarco25",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page, 350, 687+50, 150, 13, sh.getString("FechaCerrado",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 350, 713+40, 150, 13,"DGIV-" +sh.getString("DatosTicket12",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 350, 700+40, 150, 13, sh.getString("DatoBarco25",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 350, 687+40, 150, 13, sh.getString("FechaCerrado",""),8);
 
             //AgregaContenidoCuadroDatosLEFT(font, page, 445, 713, 100, 13, " Aqui va el número",8);
             //AgregaContenidoCuadroDatosLEFT(font, page, 445, 700, 100, 13, " Aqui va la localidad",8);
@@ -1095,24 +1099,24 @@ public class InstalacionOficialCarta {
             PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
             PdfFont italic = PdfFontFactory.createFont(StandardFonts.TIMES_ITALIC);
 
-            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 620+50, 140, 13,"Titular del permisionario/concesión:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 390, 620+50, 70, 13,"Persona Física",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 490, 620+50, 70, 13,"Persona Moral",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 390, 607+50, 70, 13,"R.N.P.A. Titular:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 607+50, 140, 13,"Representante Legal (Persona Moral):",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 594+50, 80, 13,"Correo electrónico:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 260, 594+50, 55, 13,"Teléfono Fijo:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 390, 594+50, 60, 13,"Teléfono Móvil:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 581+50, 80, 13,"Domicilio:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 120, 568+50, 440, 13,"Calle y No.                Colonia                Municipio                Ciudad o Puerto                Entidad Federativa                Código Postal",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 620+40, 140, 13,"Titular del permisionario/concesión:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 390, 620+40, 70, 13,"Persona Física",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 490, 620+40, 70, 13,"Persona Moral",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 390, 607+40, 70, 13,"R.N.P.A. Titular:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 607+40, 140, 13,"Representante Legal (Persona Moral):",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 594+40, 80, 13,"Correo electrónico:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 260, 594+40, 55, 13,"Teléfono Fijo:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 390, 594+40, 60, 13,"Teléfono Móvil:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 581+40, 80, 13,"Domicilio:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 120, 568+40, 440, 13,"Calle y No.                Colonia                Municipio                Ciudad o Puerto                Entidad Federativa                Código Postal",8);
 
-            AgregaContenidoCuadroDatosLEFT(font, page, 180, 620+50, 200, 13, sh.getString("DatoBarco21",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page, 180, 607+50, 200, 13, sh.getString("DatoBarco28",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,460, 607+50, 100, 13, sh.getString("DatoBarco20",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,120, 594+50, 140, 13, sh.getString("DatoBarco29",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,315, 594+50, 75, 13, sh.getString("DatoBarco27",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,460, 594+50, 100, 13, sh.getString("DatoBarco67",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,120, 581+50, 440, 13, sh.getString("DatoBarco26",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 180, 620+40, 200, 13, sh.getString("DatoBarco21",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 180, 607+40, 200, 13, sh.getString("DatoBarco28",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,460, 607+40, 100, 13, sh.getString("DatoBarco20",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,120, 594+40, 140, 13, sh.getString("DatoBarco29",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,315, 594+40, 75, 13, sh.getString("DatoBarco27",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,460, 594+40, 100, 13, sh.getString("DatoBarco67",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,120, 581+40, 440, 13, sh.getString("DatoBarco26",""),8);
 
 
             /*AgregaContenidoCuadroDatosLEFT(font, page, 180, 620, 200, 13, "Aqui va el nombre del permisionario/Conseción.",8);
@@ -1136,25 +1140,25 @@ public class InstalacionOficialCarta {
             PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
             PdfFont italic = PdfFontFactory.createFont(StandardFonts.TIMES_ITALIC);
 
-            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 620-115+40+40, 100, 13,"Nombre de la embarcación:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 390, 607-115+40+40, 82, 13,"R.N.P.A. Embarcación:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 607-115+40+40, 55, 13,"Puerto Base:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 594-115+40+40, 55, 13,"Matrícula:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 260, 594-115+40+40, 55, 13,"Tonelaje Bruto:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 390, 594-115+40+40, 60, 13,"Tonelaje Neto:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 581-115+40+40, 55, 13,"Marca Motor:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 260, 581-115+40+40, 76, 13,"Potencia Motor (HP):",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 390, 581-115+40+40, 65, 13,"Eslora (Mts):",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 620-115+40+30, 100, 13,"Nombre de la embarcación:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 390, 607-115+40+30, 82, 13,"R.N.P.A. Embarcación:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 607-115+40+30, 55, 13,"Puerto Base:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 594-115+40+30, 55, 13,"Matrícula:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 260, 594-115+40+30, 55, 13,"Tonelaje Bruto:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 390, 594-115+40+30, 60, 13,"Tonelaje Neto:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 581-115+40+30, 55, 13,"Marca Motor:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 260, 581-115+40+30, 76, 13,"Potencia Motor (HP):",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 390, 581-115+40+30, 65, 13,"Eslora (Mts):",8);
 
-            AgregaContenidoCuadroDatosLEFT(font, page, 145, 620-115+40+40, 235, 13, sh.getString("DatoBarco3",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page, 100, 607-115+40+40, 280, 13, sh.getString("DatoBarco2",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,473, 607-115+40+40, 100, 13, sh.getString("DatoBarco4",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,100, 594-115+40+40, 160, 13,sh.getString("DatoBarco5",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,337, 594-115+40+40, 43, 13, sh.getString("DatoBarco11",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,473, 594-115+40+40, 100, 13, sh.getString("DatoBarco12",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,100, 581-115+40+40, 460, 13, sh.getString("DatoBarco18",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,337, 581-115+40+40, 43, 13, sh.getString("DatoBarco19",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,473, 581-115+40+40, 100, 13, sh.getString("DatoBarco15",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 145, 620-115+40+30, 235, 13, sh.getString("DatoBarco3",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 100, 607-115+40+30, 280, 13, sh.getString("DatoBarco2",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,473, 607-115+40+30, 100, 13, sh.getString("DatoBarco4",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,100, 594-115+40+30, 160, 13,sh.getString("DatoBarco5",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,337, 594-115+40+30, 43, 13, sh.getString("DatoBarco11",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,473, 594-115+40+30, 100, 13, sh.getString("DatoBarco12",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,100, 581-115+40+30, 460, 13, sh.getString("DatoBarco18",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,337, 581-115+40+30, 43, 13, sh.getString("DatoBarco19",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,473, 581-115+40+30, 100, 13, sh.getString("DatoBarco15",""),8);
 
 
             //AgregaContenidoCuadroDatosLEFT(font, page, 475, 736, 100, 13,sh.getString("DatosTicket13",""),8);
@@ -1171,7 +1175,7 @@ public class InstalacionOficialCarta {
             PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
             PdfFont italic = PdfFontFactory.createFont(StandardFonts.TIMES_ITALIC);
 
-            AgregaContenidoCuadroDatosLEFT(font, page, 40, 360+121, 520, 43,sh.getString("Justificacion",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 40, 360+111, 520, 43,sh.getString("Justificacion",""),8);
             //AgregaContenidoCuadroDatosLEFT(font, page, 475, 736, 100, 13,sh.getString("DatosTicket13",""),8);
             //AgregaContenidoCuadroDatosLEFT(font, page, 475, 716, 120, 13, sh.getString("DatosTicket5",""),8);
         } catch (IOException e) {
@@ -1186,9 +1190,9 @@ public class InstalacionOficialCarta {
             PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
             PdfFont italic = PdfFontFactory.createFont(StandardFonts.TIMES_ITALIC);
 
-            AgregaContenidoCuadroDatosCENTER(font, page, 40, 160, 520, 19,"ATENTAMENTE",8);
-            AgregaContenidoCuadroDatosCENTER(font, page, 40, 100, 520, 19,"ENRIQUE JUAN MORENO AGUILLÓN",8);
-            AgregaContenidoCuadroDatosCENTER(bold, page, 40, 87, 520, 19,"DIRECTOR DE PROYECTO",8);
+            AgregaContenidoCuadroDatosCENTER(font, page, 40, 160, 510, 19,"ATENTAMENTE",8);
+            AgregaContenidoCuadroDatosCENTER(font, page, 40, 100, 510, 19,"_________________________________",8);
+            AgregaContenidoCuadroDatosCENTER(bold, page, 40, 87, 510, 19,"DIRECTOR DE PROYECTO",8);
             //AgregaContenidoCuadroDatosLEFT(font, page, 475, 736, 100, 13,sh.getString("DatosTicket13",""),8);
             //AgregaContenidoCuadroDatosLEFT(font, page, 475, 716, 120, 13, sh.getString("DatosTicket5",""),8);
         } catch (IOException e) {
@@ -1217,59 +1221,59 @@ public class InstalacionOficialCarta {
         PdfCanvas canvas = new PdfCanvas(page);
         // Create a 100% Magenta color
         canvas
-                .moveTo(350, 688+50)
-                .lineTo(500, 688+50)
-                .moveTo(350, 701+50)
-                .lineTo(500, 701+50)
-                .moveTo(350, 714+50)
-                .lineTo(500, 714+50) ///CUADRO1
+                .moveTo(350, 688+40)
+                .lineTo(500, 688+40)
+                .moveTo(350, 701+40)
+                .lineTo(500, 701+40)
+                .moveTo(350, 714+40)
+                .lineTo(500, 714+40) ///CUADRO1
 
-                .moveTo(180, 621+50)
-                .lineTo(380, 621+50)
-                .moveTo(180, 608+50)
-                .lineTo(380, 608+50)
-                .moveTo(460, 608+50)
-                .lineTo(560, 608+50)
-                .moveTo(120, 595+50)
-                .lineTo(250, 595+50)
-                .moveTo(315, 595+50)
-                .lineTo(380, 595+50)
-                .moveTo(460, 595+50)
-                .lineTo(560, 595+50)
-                .moveTo(120, 582+50)
-                .lineTo(560, 582+50) ///CUADRO2
+                .moveTo(180, 621+40)
+                .lineTo(380, 621+40)
+                .moveTo(180, 608+40)
+                .lineTo(380, 608+40)
+                .moveTo(460, 608+40)
+                .lineTo(560, 608+40)
+                .moveTo(120, 595+40)
+                .lineTo(250, 595+40)
+                .moveTo(315, 595+40)
+                .lineTo(380, 595+40)
+                .moveTo(460, 595+40)
+                .lineTo(560, 595+40)
+                .moveTo(120, 582+40)
+                .lineTo(560, 582+40) ///CUADRO2
 
 
-                .moveTo(145, 621-115+80)
-                .lineTo(380, 621-115+80)
-                .moveTo(100, 608-115+80)
-                .lineTo(380, 608-115+80)
-                .moveTo(473, 608-115+80)
-                .lineTo(560, 608-115+80)
-                .moveTo(100, 595-115+80)
-                .lineTo(250, 595-115+80)
-                .moveTo(337, 595-115+80)
-                .lineTo(380, 595-115+80)
-                .moveTo(473, 595-115+80)
-                .lineTo(560, 595-115+80)
-                .moveTo(100, 582-115+80)
-                .lineTo(250, 582-115+80)
-                .lineTo(250, 582-115+80)
-                .moveTo(337, 582-115+80)
-                .lineTo(380, 582-115+80)
-                .moveTo(473, 582-115+80)
-                .lineTo(560, 582-115+80)///CUADRO4
+                .moveTo(145, 621-115+70)
+                .lineTo(380, 621-115+70)
+                .moveTo(100, 608-115+70)
+                .lineTo(380, 608-115+70)
+                .moveTo(473, 608-115+70)
+                .lineTo(560, 608-115+70)
+                .moveTo(100, 595-115+70)
+                .lineTo(250, 595-115+70)
+                .moveTo(337, 595-115+70)
+                .lineTo(380, 595-115+70)
+                .moveTo(473, 595-115+70)
+                .lineTo(560, 595-115+70)
+                .moveTo(100, 582-115+70)
+                .lineTo(250, 582-115+70)
+                .lineTo(250, 582-115+70)
+                .moveTo(337, 582-115+70)
+                .lineTo(380, 582-115+70)
+                .moveTo(473, 582-115+70)
+                .lineTo(560, 582-115+70)///CUADRO4
 
-                .moveTo(40,360+151 )
-                .lineTo(560, 360+151)
-                .moveTo(40,347+151 )
-                .lineTo(560, 347+151)
-                .moveTo(40,334+151 )
-                .lineTo(560, 334+151)
-                .moveTo(40,321+151 )
-                .lineTo(560, 321+151)
-                .moveTo(40,308+151 )
-                .lineTo(560, 308+151)
+                .moveTo(40,360+141 )
+                .lineTo(560, 360+141)
+                .moveTo(40,347+141 )
+                .lineTo(560, 347+141)
+                .moveTo(40,334+141 )
+                .lineTo(560, 334+141)
+                .moveTo(40,321+141 )
+                .lineTo(560, 321+141)
+                .moveTo(40,308+141 )
+                .lineTo(560, 308+141)
 
                 .setLineWidth(1).closePathStroke();
 
@@ -1317,10 +1321,10 @@ public class InstalacionOficialCarta {
     }
     private void InsertaSquare2(PdfPage page,String Ticket){
         SharedPreferences sh = getApplicationContext().getSharedPreferences(Ticket,Context.MODE_PRIVATE);
-        if (sh.getBoolean("CheckSec17",false)) squareX(page, 628+50, 450);
-        else    square(page, 628+50, 450);
-        if (sh.getBoolean("CheckSec18",false)) squareX(page, 628+50, 550);
-        else   square(page, 628+50, 550);
+        if (sh.getBoolean("CheckSec17",false)) squareX(page, 628+40, 450);
+        else    square(page, 628+40, 450);
+        if (sh.getBoolean("CheckSec18",false)) squareX(page, 628+40, 550);
+        else   square(page, 628+40, 550);
 
     }
     ////RF
