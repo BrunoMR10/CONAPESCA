@@ -261,7 +261,7 @@ public class InstalacionOficialCarta {
             AgregaContenidoCuadroDatosLEFT(bold, page, 20, 499+30, 75, 13,"Correo electrónico:",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 20, 486+30, 75, 13,"Domicilio:",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 120, 473+30, 440, 13,"Calle y No.                Colonia                Municipio                Ciudad o Puerto                Entidad Federativa                Código Postal",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 20, 460+30, 75, 13,"Observaciónes:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 20, 460+30, 75, 13,"Observaciones:",8);
 
             AgregaContenidoCuadroDatosLEFT(font, page, 95, 525+30, 465, 13, sh.getString("NombreResponable",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page, 95, 512+30, 220, 13, sh.getString("CredResponsable",""),8);
