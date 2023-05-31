@@ -185,15 +185,6 @@ public class DriveServiceHelper {
     public Task<Boolean> DescargaImagen(String FileId ) {
         return Tasks.call(mExecutor, () -> {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
-               /* DownloadProgressListener listener = new DownloadProgressListener() {
-                    @Override
-                    public void onProgress(long bytesDownloaded, long bytesExpected) {
-                        // Update progress dialog with the latest progress.
-                        int progress = (int) (bytesDownloaded * 100 / bytesExpected);
-                        Log.d(TAG, String.format("Loading progress: %d percent", progress));
-                        mProgressBar.setProgress(progress);
-                    }
-                };*/
                 try {
                     OutputStream oOutputStream = new FileOutputStream("sDestinationPath");
                     mDriveService.files().get(FileId).executeMediaAndDownloadTo(oOutputStream);

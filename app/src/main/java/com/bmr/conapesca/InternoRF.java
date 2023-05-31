@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.bmr.conapesca.Adapters.AdapterFotos;
 import com.bmr.conapesca.Datos.Datos;
 import com.bmr.conapesca.Documentos.Correctivo;
+import com.bmr.conapesca.Documentos.Correctivos;
 import com.bmr.conapesca.Documentos.Interno;
 import com.bmr.conapesca.Entidades.DatosFoto;
 import com.bmr.conapesca.Entidades.Fotos;
@@ -29,6 +30,7 @@ import com.itextpdf.io.image.ImageDataFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class InternoRF extends AppCompatActivity implements View.OnClickListener {
@@ -42,6 +44,7 @@ public class InternoRF extends AppCompatActivity implements View.OnClickListener
     DatosFoto Data;
     boolean Reporte;
     String ID;
+    Correctivos correctivos = new Correctivos();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,6 +142,7 @@ public class InternoRF extends AppCompatActivity implements View.OnClickListener
                 //SubeFotosC();
                 break;
             case R.id.CreaDocumento:
+                //CreaDocumento();
                 CrearArchivo();
                 break;
             case R.id.RFC:
@@ -148,9 +152,14 @@ public class InternoRF extends AppCompatActivity implements View.OnClickListener
     }
     private void AñadeFoto(){
         Intent i = new Intent(this,SelectFoto.class);
-        String Where ="Interno";
-        i.putExtra("Where",Where);
+        SharedPreferences sh = getSharedPreferences(Datos[3], MODE_PRIVATE);
+
+        SharedPreferences.Editor myEdit = sh.edit();
+        int ID = sh.getInt("ID", 1);
         i.putExtra("Datos",Datos);
+        i.putExtra("ID",String.valueOf(ID));
+        i.putExtra("Where","Correctivo");
+        System.out.println(Datos[3]+String.valueOf(ID));
         startActivity(i);
     }
 
@@ -165,6 +174,7 @@ public class InternoRF extends AppCompatActivity implements View.OnClickListener
             SharedPreferences sh = getSharedPreferences(Datos[3], MODE_PRIVATE);
             SharedPreferences.Editor myEdit = sh.edit();
             int ID = sh.getInt("ID", 1);
+            correctivos.CreaDocumento(Datos[3]);
             interno.CreaRF(Datos,imageData,ID-1,ObtenComentarios());
             Intent intent = new Intent(this,PDFViewer.class);
             intent.putExtra("Iden","RFD");
@@ -205,5 +215,12 @@ public class InternoRF extends AppCompatActivity implements View.OnClickListener
         Intent i = new Intent(this,Servicios.class);
         i.putExtra("Datos",Datos);
         startActivity(i);
+    }
+    public void CreaDocumento(){
+        try {
+            correctivos.CreaDocumento(Datos[3]);
+        } catch (IOException e) {
+            Toast.makeText(this,"Error:"+e.toString(),Toast.LENGTH_SHORT).show();
+        }
     }
 }

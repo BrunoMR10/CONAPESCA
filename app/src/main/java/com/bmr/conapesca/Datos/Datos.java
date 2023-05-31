@@ -12,6 +12,7 @@ public class Datos {
             "Numero",//7
             "Where",//8
     };
+
     public String[] DatosTicketAReporte = new String[]{
             "Libre",//0
             "NombreIngeniero",//1

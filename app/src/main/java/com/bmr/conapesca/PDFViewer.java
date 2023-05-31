@@ -93,6 +93,7 @@ public class PDFViewer extends AppCompatActivity {
         PDF = (ImageButton)findViewById(R.id.SubePDF) ;
         TODO = (ImageButton)findViewById(R.id.SubeTodo) ;
         Subiendo = (ProgressBar)findViewById(R.id.Subiendo) ;
+
         if (Iden.equals("NI")){
             RF.setVisibility(View.GONE);
             RD.setVisibility(View.GONE);

@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.bmr.conapesca.Datos.Cache;
 import com.bmr.conapesca.Datos.Datos;
-import com.bmr.conapesca.Documentos.Convenio;
+
 import com.bmr.conapesca.Documentos.Convenios;
 import com.bmr.conapesca.Documentos.PruebaMetododocumentos;
 import com.bmr.conapesca.Herramientas.Firebase;
@@ -40,7 +40,7 @@ public class PantallaPrincipal extends AppCompatActivity {
     Button ToServicios,ToUsuarios,ToANAM;
     TextView Usuario;
     String[]Datos;
-    Convenio convenio = new Convenio();
+
     PruebaMetododocumentos pruebaMetododocumentos = new PruebaMetododocumentos();
     Convenios convenios = new Convenios();
 

@@ -137,8 +137,8 @@ public class CaracteristicasCuadros {
             "texto",//Type       13 Tipo de contenido (imagen,text)
             "7",//LSize-Ncar 14 Tamaño de letra o ruta de carpeta
             Texto1,//Text-Nima  15 Texto o nombre de la imagen
-            "center",//LeterAlig    16 Alineacion de letra
-            "bold",//Tipoletra    17 Tipo de letra
+            "center",//LeterAlig    16 Alineacion de letra center right left justified
+            "bold",//Tipoletra    17 Tipo de letra bold normal
 
             //Elemento3
             //Parametros de cuadro

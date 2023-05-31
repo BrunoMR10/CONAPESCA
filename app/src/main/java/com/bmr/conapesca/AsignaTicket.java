@@ -135,7 +135,7 @@ public class AsignaTicket extends AppCompatActivity {
             PermisionarioV.setText(DatosTickets[16]);
             GuardaDatosTickets();
         }else {
-            String[] opciones = {"", "Interno", "Instalacion","Cancelado"};
+            String[] opciones = {"", "Interno", "Instalacion","Cancelado","Correctivo"};
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opciones);
             Tipodeservicio.setAdapter(adapter);
             TipoServicio.setText(sh.getString("TipoServicio", ""));

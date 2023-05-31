@@ -69,7 +69,7 @@ import java.util.Collections;
 public class SelectFoto extends AppCompatActivity {
     Permisos permisos = new Permisos();
     RFPAdapter adapterFotos;
-    String rutaImagen,rutacarpeta,rutacarpeta2;
+    String rutaImagen,rutacarpeta,rutacarpeta2,Where;
     ImageView FotoPreview;
     EditText Descripcion;
     Bitmap bitmap,bitmap2;
@@ -120,12 +120,15 @@ public class SelectFoto extends AppCompatActivity {
                 Datos = extras.getStringArray("Datos");
                 ID = extras.getString("ID");
                 Sube = extras.getBoolean("Sube");
+                Where = extras.getString("Where");
+
             }
         }
         else{
             Datos = (String[]) savedInstanceState.getSerializable("Datos");
             ID = (String) savedInstanceState.getSerializable("ID");
             Sube = (Boolean) savedInstanceState.getSerializable("Sube");
+            Where = (String) savedInstanceState.getSerializable("Where");
         }
 
         if (Datos!=null){
@@ -310,7 +313,7 @@ public class SelectFoto extends AppCompatActivity {
         myEdit.putString("NSerieTransreceptor", SerieTransreceptor.getText().toString());
         myEdit.putString("NSerieConBox", SerieConboxV.getText().toString());
         myEdit.commit();
-        if (ID == null){
+        if (Where != null){
             IDint++;
             myEdit.putInt("ID", IDint);
             myEdit.commit();
@@ -457,7 +460,7 @@ public class SelectFoto extends AppCompatActivity {
 
     private void Regresa(){
         Intent i;
-        if (Datos[4].equals("Correctivo")) i = new Intent(this,CorrectivosRF.class);
+        if (Datos[4].equals("Correctivo")) i = new Intent(this,InternoRF.class);
         else if (Datos[4].equals("Preventivo")) i = new Intent(this,PreventivoRF.class);
         else if (Datos[4].equals("Instalacion")) i = new Intent(this,ReporteInstalacion.class);
         else i = new Intent(this,ReporteInstalacion.class);
