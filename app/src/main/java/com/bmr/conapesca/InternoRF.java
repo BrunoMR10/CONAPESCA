@@ -36,6 +36,7 @@ import java.util.ArrayList;
 public class InternoRF extends AppCompatActivity implements View.OnClickListener {
     Datos dt = new Datos();
     Interno interno = new Interno();
+    Correctivo correctivo = new Correctivo();
     String []Datos;
     RecyclerView FotosView;
     TextView TrimestreRFC,TicketRFC,FechaRFC,
@@ -175,7 +176,8 @@ public class InternoRF extends AppCompatActivity implements View.OnClickListener
             SharedPreferences.Editor myEdit = sh.edit();
             int ID = sh.getInt("ID", 1);
             correctivos.CreaDocumento(Datos[3]);
-            interno.CreaRF(Datos,imageData,ID-1,ObtenComentarios());
+            if (Datos[3].contains("C-")) correctivo.CreaRF(Datos,imageData,ID-1,ObtenComentarios());
+            else interno.CreaRF(Datos,imageData,ID-1,ObtenComentarios());
             Intent intent = new Intent(this,PDFViewer.class);
             intent.putExtra("Iden","RFD");
             intent.putExtra("Datos",Datos);

@@ -34,7 +34,7 @@ public class Interno {
         //String ExternalStorageDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + File.separator;
         //String  rutacarpetaImagenes = "CONAPESCA/"+Datos[0]+"/"+Datos[1]+"/" + Datos[1] + "(CF)/";
         //String  rutacarpeta = "CONAPESCA/"+Datos[0]+"/"+Datos[1]+"/" ;
-        String Name = Datos[3]+"(RFD).pdf";
+        String Name = Datos[3]+"(RF).pdf";
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
         File directory = cw.getDir(Datos[3], Context.MODE_PRIVATE);
         File file = new File(directory, Name);
@@ -43,25 +43,29 @@ public class Interno {
         PdfCanvas pdfCanvas = new PdfCanvas(page);
         PdfFont font = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
         PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
-        CuadroDatos(Datos,pdfCanvas,font,bold,36, 700, 530, 100,imageData);
-        CuadroDatos2(pdfCanvas,bold,36, 615, 530, 50);
+        CuadroDatos(pdfCanvas,font,bold,10, 680, 570, 140,imageData);
+        CuadroDatos2(pdfCanvas,bold,10, 655-70, 570, 70);
+        CuadroDatos3(pdfCanvas,bold,10, 640-70-83, 570, 83);
+        CuadroDatos4(pdfCanvas,bold,10, 640-70-83, 570, 83);
         //Fotos(page,pdf,Datos,font,bold,imageData,id,Comentarios,rutacarpetaImagenes);
         Fotos2(page,pdf,Datos,font,bold,imageData,id,Comentarios,Datos[3]);
         InsertaPiedePagina(pdf);
         pdf.close();
     }
-    private void CuadroDatos(String[] Datos,PdfCanvas pdfCanvas,PdfFont font,PdfFont bold,int x,int y,int w,int h,ImageData imageData){
+    private void CuadroDatos(PdfCanvas pdfCanvas,PdfFont font,PdfFont bold,int x,int y,int w,int h,ImageData imageData){
         Rectangle rectangle = new Rectangle(x, y, w, h);
         pdfCanvas.rectangle(rectangle);
         pdfCanvas.stroke().closePathStroke();
         Canvas canvas = new Canvas(pdfCanvas, rectangle);
-        Text title = new Text("REPORTE FOTOGRÁFICO DE SERVICIO INTERNO").setFont(bold).setFontColor(ColorConstants.RED).setFontSize(10);
-        Text Space = new Text(".  .").setFont(font).setUnderline().setFontSize(9).setFontColor(ColorConstants.WHITE);
+        Text title = new Text("REPORTE FOTOGRÁFICO DE SERVICIO INTERNO").setFont(bold).setFontColor(ColorConstants.BLUE).setFontSize(10);
+        Text title2 = new Text("").setFont(font).setFontColor(ColorConstants.BLACK).setFontSize(10);
+        Text Space = new Text(".          .").setFont(font).setUnderline().setFontSize(9).setFontColor(ColorConstants.WHITE);
         Paragraph a = new Paragraph().add(title).add(Space).setTextAlignment(TextAlignment.RIGHT);
-        InsertaImagenLogo(imageData,canvas,50,715,190);
+        InsertaImagenLogo(imageData,canvas,50,700+20,190);
         canvas.add(a);
         canvas.close();
     }
+
     private void InsertaImagenLogo(ImageData imageData,Canvas canvas,int left,int bottom,int width){
         Image img = new Image(imageData,left,bottom,width);
         canvas.add(img).close();
@@ -75,7 +79,37 @@ public class Interno {
         pdfCanvas.rectangle(rectangle2);
         pdfCanvas.stroke().closePathStroke();
         Canvas canvas2 = new Canvas(pdfCanvas, rectangle2);
-        Text DatosEquipo = new Text("Datos del equipo").setFont(bold).setFontSize(8);
+        Text DatosEquipo = new Text("Datos del permisionario / concesionario").setFont(bold).setFontSize(8);
+        Paragraph b = new Paragraph().add(DatosEquipo).setTextAlignment(TextAlignment.CENTER);
+        canvas2.add(b).close();
+        canvas.close();
+        canvas2.close();
+    }
+    private void CuadroDatos3(PdfCanvas pdfCanvas,PdfFont bold,int x,int y, int w,int h){
+        Rectangle rectangle = new Rectangle(x, y, w, h);
+        pdfCanvas.rectangle(rectangle);
+        pdfCanvas.stroke().closePathStroke();
+        Canvas canvas = new Canvas(pdfCanvas, rectangle);
+        Rectangle rectangle2 = new Rectangle(x, y+h, w, 15);
+        pdfCanvas.rectangle(rectangle2);
+        pdfCanvas.stroke().closePathStroke();
+        Canvas canvas2 = new Canvas(pdfCanvas, rectangle2);
+        Text DatosEquipo = new Text("Datos de la persona designada para atención 24 horas del equipo transreceptor").setFont(bold).setFontSize(8);
+        Paragraph b = new Paragraph().add(DatosEquipo).setTextAlignment(TextAlignment.CENTER);
+        canvas2.add(b).close();
+        canvas.close();
+        canvas2.close();
+    }
+    private void CuadroDatos4(PdfCanvas pdfCanvas,PdfFont bold,int x,int y, int w,int h){
+        Rectangle rectangle = new Rectangle(x, y, w, h);
+        pdfCanvas.rectangle(rectangle);
+        pdfCanvas.stroke().closePathStroke();
+        Canvas canvas = new Canvas(pdfCanvas, rectangle);
+        Rectangle rectangle2 = new Rectangle(x, y+h, w, 15);
+        pdfCanvas.rectangle(rectangle2);
+        pdfCanvas.stroke().closePathStroke();
+        Canvas canvas2 = new Canvas(pdfCanvas, rectangle2);
+        Text DatosEquipo = new Text("Datos de la embarcación").setFont(bold).setFontSize(8);
         Paragraph b = new Paragraph().add(DatosEquipo).setTextAlignment(TextAlignment.CENTER);
         canvas2.add(b).close();
         canvas.close();

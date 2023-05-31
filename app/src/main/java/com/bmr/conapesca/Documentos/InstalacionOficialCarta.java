@@ -1415,7 +1415,7 @@ public class InstalacionOficialCarta {
         pdfCanvas.stroke();
         Canvas canvas = new Canvas(pdfCanvas, rectangle);
         Text NReporte = new Text("No de oficio:").setFont(font).setFontSize(9);
-        Text title = new Text("REPORTE FOTOGÁFICO DE INSTALACIÓN").setFont(bold).setFontColor(ColorConstants.BLUE).setFontSize(10);
+        Text title = new Text("REPORTE FOTOGRÁFICO DE INSTALACIÓN").setFont(bold).setFontColor(ColorConstants.BLUE).setFontSize(10);
         Text TICKET = new Text("DGIV.-"+sh.getString("DatosTicket12","")).setFont(font).setUnderline().setFontSize(9);
         Text Space = new Text(".  .").setFont(font).setUnderline().setFontSize(9).setFontColor(ColorConstants.WHITE);
         Paragraph a = new Paragraph().add(title).add(Space).setTextAlignment(TextAlignment.RIGHT);
@@ -1589,7 +1589,7 @@ public class InstalacionOficialCarta {
         pdfCanvas.rectangle(rectangle);
         pdfCanvas.stroke().closePathStroke();
         Canvas canvas = new Canvas(pdfCanvas, rectangle);
-        Text title = new Text("REPORTE FOTOGÁFICO DE INSTALACIÓN").setFont(bold).setFontColor(ColorConstants.BLUE).setFontSize(10);
+        Text title = new Text("REPORTE FOTOGRÁFICO DE INSTALACIÓN").setFont(bold).setFontColor(ColorConstants.BLUE).setFontSize(10);
         Text title2 = new Text("").setFont(font).setFontColor(ColorConstants.BLACK).setFontSize(10);
         Text Space = new Text(".          .").setFont(font).setUnderline().setFontSize(9).setFontColor(ColorConstants.WHITE);
         Paragraph a = new Paragraph().add(title).add(Space).setTextAlignment(TextAlignment.RIGHT);
