@@ -62,21 +62,24 @@ public class Convenios {
             nelementos = 0;
             conteoelementos=1;
 
-            PdfCanvas pdfCanvas = new PdfCanvas(CreaPagina(pdfDocument));
-            System.out.println(y);
-            fin = ContenidoElementos(pdfCanvas, "cuerpo")[1];
-            if (fin == 0) {
-                System.out.println("NuevaPagina");
-                System.out.println("N elemento donde se quedo" + nelementos);
-            } else System.out.println("Documento terminado");
+            while (fin == 0){
+                PdfCanvas pdfCanvas = new PdfCanvas(CreaPagina(pdfDocument));
+                System.out.println(y);
+                fin = ContenidoElementos(pdfCanvas, "cuerpo")[1];
+                if (fin == 0) {
+                    System.out.println("NuevaPagina");
+                    System.out.println("N elemento donde se quedo" + nelementos);
+                } else{ System.out.println("Documento terminado");break;};
 
-           pdfCanvas = new PdfCanvas(CreaPagina(pdfDocument));
+            }
+
+           /*pdfCanvas = new PdfCanvas(CreaPagina(pdfDocument));
            System.out.println(y);
            fin = ContenidoElementos(pdfCanvas, "cuerpo")[1];
            if (fin == 0) {
               System.out.println("NuevaPagina");
               System.out.println("N elemento donde se quedo" + nelementos);
-           } else System.out.println("Documento terminado");
+           } else System.out.println("Documento terminado");*/
         ///Cuerpo
     }
     PdfPage CreaPagina(PdfDocument pdf) throws IOException {

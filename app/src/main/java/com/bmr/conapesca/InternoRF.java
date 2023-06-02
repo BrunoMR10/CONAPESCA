@@ -57,7 +57,7 @@ public class InternoRF extends AppCompatActivity implements View.OnClickListener
         EquipoRFC = (TextView) findViewById(R.id.EquipoRFC);
         SerieRFC = (TextView) findViewById(R.id.SerieRFC);
         UbicacionRFC = (TextView) findViewById(R.id.UbicacionRFC);
-        FotosView = (RecyclerView) findViewById(R.id.FotosRFC);
+        //FotosView = (RecyclerView) findViewById(R.id.FotosRFC);
         FotosView.setLayoutManager(new LinearLayoutManager(this));
 
         if (savedInstanceState == null) {
@@ -77,8 +77,8 @@ public class InternoRF extends AppCompatActivity implements View.OnClickListener
         }
         if (ID!=null)ActualizaEstadoReporte();
 
-        View AñadeFoto = findViewById(R.id.añadefoto);
-        AñadeFoto.setOnClickListener(this);
+        //View AñadeFoto = findViewById(R.id.añadefoto);
+       // AñadeFoto.setOnClickListener(this);
         View SubeFotos = findViewById(R.id.Subefotos);
         SubeFotos.setOnClickListener(this);
         View CreaDocumento = findViewById(R.id.CreaDocumento);
@@ -144,7 +144,7 @@ public class InternoRF extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.CreaDocumento:
                 //CreaDocumento();
-                CrearArchivo();
+                //CrearArchivo();
                 break;
             case R.id.RFC:
                 //ToRDC();
@@ -164,7 +164,7 @@ public class InternoRF extends AppCompatActivity implements View.OnClickListener
         startActivity(i);
     }
 
-    private  void CrearArchivo(){
+    private  void CrearArchivoCorrectivo(){
         try {
             Bitmap bitmap;
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.seguritech);

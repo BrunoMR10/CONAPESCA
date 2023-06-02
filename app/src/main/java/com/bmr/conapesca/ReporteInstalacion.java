@@ -27,10 +27,14 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bmr.conapesca.Adapters.AdapterFotos;
 import com.bmr.conapesca.Datos.Datos;
 import com.bmr.conapesca.Documentos.Convenios;
+import com.bmr.conapesca.Documentos.Correctivo;
+import com.bmr.conapesca.Documentos.Correctivos;
 import com.bmr.conapesca.Documentos.InstalacionOficial;
 import com.bmr.conapesca.Documentos.InstalacionOficialCarta;
+import com.bmr.conapesca.Entidades.Fotos;
 import com.bmr.conapesca.Entidades.RFP;
 import com.bmr.conapesca.Herramientas.Firebase;
 import com.bmr.conapesca.ServiceHelper.DriveServiceHelper;
@@ -69,6 +73,8 @@ public class ReporteInstalacion extends AppCompatActivity {
     Firebase fb = new Firebase();
     InstalacionOficial instalacionOficial = new InstalacionOficial();
     Convenios convenios = new Convenios();
+    Correctivo correctivo = new Correctivo();
+    Correctivos correctivos = new Correctivos();
     InstalacionOficialCarta instalacionOficialCarta  = new InstalacionOficialCarta();
     public FirebaseDatabase database = FirebaseDatabase.getInstance();
     public DatabaseReference refUsuarios = database.getReference("Usuarios");
@@ -78,19 +84,26 @@ public class ReporteInstalacion extends AppCompatActivity {
     private SheetsServiceHelper mSheetServiceHelper;
     private static final int REQUEST_CODE_SIGN_IN = 1;
     RadioButton DatosVer,EquiposIns,FotosVer;
-    LinearLayout Controles,DatosView,Entraslado,EquiposInstalados,CambioEs,DatosPermisionario;
+
+    LinearLayout Controles,DatosView,Entraslado,EquiposInstalados,CambioEs,DatosPermisionario,FotosCorrectivo,
+            SolucionCorrectivo,Seriesconbox,Seriesblue;
     ProgressBar Charging;
-    RecyclerView FotosRFP;
+    RecyclerView FotosRFP,FotosView;
     TextView CancelaV;
     ImageButton Cancela,Save2;
     RFPAdapter adapterFotos;
+    AdapterFotos adapterFotos2;
     String []Datos,DatosBarco;
     String Ticket,NombreBarco,Noficio,CrearArchivo;
     Datos dt = new Datos();
     TextView CambioEstatus;
-    EditText VBateria,NoSelloTrans,NoSelloConBox,Justificacion,OtrosPermiso,Domicilio,NombrePermisionariov,INEResponsable,DireccionResponsable,CargoResponsable,CorreoResponsable,Observaciones,Contacto;
+    EditText VBateria,NoSelloTrans,NoSelloConBox,Justificacion,OtrosPermiso,Domicilio,NombrePermisionariov,INEResponsable,DireccionResponsable,CargoResponsable,CorreoResponsable,Observaciones,Contacto,
+            Fallareportada,Diagnostico,Solucion,Reemplazodeequipos,
+            SerieAnteriorConbox,SerieNuevaConbox,SerieAnteriorBlue,SerieNuevaBlue;
     CheckBox Button1,Button2,Button3,Button4,Button5,Button6,Button7,Button8,Button9,Button10,Button11,
-            Button12,Button13,Button14,Button15,Button16,Button17,Button18,Button19;
+            Button12,Button13,Button14,Button15,Button16,Button17,Button18,Button19,
+            SiConbox,NoConbox,SiBlue,NoBlue;
+
     TextView NSerieIridium,IMEIIridium,NSerieTransreceptor,NSerieConBox;
     TextView FechaOficio,NoOficio,NoReporte,FechaInstalacion,LocalidadPuerto;
     TextView Permisionariov,RLegalV,RNPATV,CorreoEV,TelefonoFijoV,TelefonoMovilV,Estado,Municipio,Localidad;
@@ -98,17 +111,24 @@ public class ReporteInstalacion extends AppCompatActivity {
     TextView Permiso1,Permiso2,Permiso3,Permiso4,Permiso5,FeInicial1,FeInicial2,FeInicial3,FeInicial4,FeInicial5,FeFinal1,FeFinal2,FeFinal3,FeFinal4,FeFinal5,Pesqueria;
     TextView NombreSeguritechVi;
     TextView permiso1,permiso2,permiso3,permiso4,permiso5;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reporte_instalacion);
+        FotosView = (RecyclerView) findViewById(R.id.FotosRFC);
+        FotosView.setLayoutManager(new LinearLayoutManager(this));
         DatosView = (LinearLayout)findViewById(R.id.DatosView);
+        SolucionCorrectivo = (LinearLayout)findViewById(R.id.SolucionCorrectivo);
         EquiposInstalados = (LinearLayout)findViewById(R.id.EquiposInstalados);
         Entraslado = (LinearLayout)findViewById(R.id.Entraslado);
         CambioEs = (LinearLayout)findViewById(R.id.CambioEs);
         Controles = (LinearLayout)findViewById(R.id.Controles);
+        FotosCorrectivo = (LinearLayout)findViewById(R.id.FotosCorrectivo);
         DatosPermisionario = (LinearLayout)findViewById(R.id.DatosPermisionario);
+        Seriesconbox = (LinearLayout)findViewById(R.id.Seriesconbox);
+        Seriesblue = (LinearLayout)findViewById(R.id.Seriesblue);
         FotosRFP = (RecyclerView) findViewById(R.id.FotosRFP);
         DatosVer = (RadioButton) findViewById(R.id.DatosVer) ;
         EquiposIns = (RadioButton) findViewById(R.id.EquiposIns) ;
@@ -139,13 +159,30 @@ public class ReporteInstalacion extends AppCompatActivity {
         Button17= (CheckBox) findViewById(R.id.Button17);
         Button18= (CheckBox) findViewById(R.id.Button18);
         Button19= (CheckBox) findViewById(R.id.Button19);
+
+        SiConbox= (CheckBox) findViewById(R.id.SiConbox);
+        NoConbox= (CheckBox) findViewById(R.id.NoConbox);
+        SiBlue= (CheckBox) findViewById(R.id.SiBlue);
+        NoBlue= (CheckBox) findViewById(R.id.NoBlue);
+
         VBateria = (EditText) findViewById(R.id.VBateria);
         Contacto = (EditText) findViewById(R.id.Contacto);
+        Fallareportada = (EditText) findViewById(R.id.Fallareportada);
+        Diagnostico = (EditText) findViewById(R.id.Diagnostico);
+        Solucion = (EditText) findViewById(R.id.Solucion);
+        Reemplazodeequipos = (EditText) findViewById(R.id.Reemplazodeequipos);
+
         NombrePermisionariov = (EditText) findViewById(R.id.NombrePermisionariov);
 
         INEResponsable = (EditText) findViewById(R.id.INEResponsable);
         DireccionResponsable = (EditText) findViewById(R.id.DireccionResponsable);
         CorreoResponsable = (EditText) findViewById(R.id.CorreoResponsable);
+
+        SerieAnteriorConbox = (EditText) findViewById(R.id.SerieAnteriorConbox);
+        SerieNuevaConbox = (EditText) findViewById(R.id.SerieNuevaConbox);
+        SerieAnteriorBlue = (EditText) findViewById(R.id.SerieAnteriorBlue);
+        SerieNuevaBlue = (EditText) findViewById(R.id.SerieNuevaBlue);
+
 
         CargoResponsable = (EditText) findViewById(R.id.CargoResponsable);
         NoSelloTrans = (EditText) findViewById(R.id.NoSelloTrans);
@@ -315,6 +352,9 @@ public class ReporteInstalacion extends AppCompatActivity {
             DatosView.setVisibility(View.GONE);
             FotosRFP.setVisibility(View.GONE);
             CambioEstatus.setText("Poner en curso");
+            if (sh.getString("DatosTicket3", "").contains("C-")) {
+                ListadeTickets();}
+
         }
         else if (sh.getString("DatosTicket7","").equals("En curso")){
             if (sh.getString("DatosTicket4", "").equals("Cancelado")){
@@ -328,16 +368,22 @@ public class ReporteInstalacion extends AppCompatActivity {
                 Save2.setVisibility(View.VISIBLE);
                 DatosPermisionario.setVisibility(View.GONE);
                 RutinaCancelado();
+            }
+            else if (sh.getString("DatosTicket3", "").contains("C-")) {
+                Controles.setVisibility(View.VISIBLE);
+                Charging.setVisibility(View.GONE);
+                MuestraFotosCorrectivo();
+
             }else {
 
                 CambioEstatus.setText("Cerrar Servicio");
                 Entraslado.setVisibility(View.GONE);
                 Charging.setVisibility(View.GONE);
                 Controles.setVisibility(View.VISIBLE);
-                if (sh.getString("Pantalla", "").equals("Fotos")) RutinaFotos();
-                else if (sh.getString("Pantalla", "").equals("Equipos")) RutinaEquipos();
-                else RutinaDatos();
             }
+            if (sh.getString("Pantalla", "").equals("Fotos")) RutinaFotos();
+            else if (sh.getString("Pantalla", "").equals("Equipos")) RutinaEquipos();
+            else RutinaDatos();
         }
         else if (sh.getString("DatosTicket7","").equals("Cerrado")){
             if (sh.getString("DatosTicket4", "").equals("Cancelado")){
@@ -351,7 +397,14 @@ public class ReporteInstalacion extends AppCompatActivity {
                 Save2.setVisibility(View.VISIBLE);
                 DatosPermisionario.setVisibility(View.GONE);
                 RutinaCancelado();
-            }else {
+            }    else if (sh.getString("DatosTicket3", "").contains("C-")) {
+                Controles.setVisibility(View.VISIBLE);
+                //EquiposIns.setVisibility(View.GONE);
+                Charging.setVisibility(View.GONE);
+                MuestraFotosCorrectivo();
+            }
+
+            else {
                 CambioEstatus.setText("Genera Documento Instalacion");
                 Entraslado.setVisibility(View.GONE);
                 Charging.setVisibility(View.GONE);
@@ -379,11 +432,11 @@ public class ReporteInstalacion extends AppCompatActivity {
             Entraslado.setVisibility(View.GONE);
             Charging.setVisibility(View.GONE);
             Controles.setVisibility(View.VISIBLE);
-            if (sh.getString("Pantalla","").equals("Fotos"))RutinaFotos();
-            else if (sh.getString("Pantalla","").equals("Equipos"))RutinaEquipos();
-            else RutinaDatos();
-        }
 
+        }
+        if (sh.getString("Pantalla","").equals("Fotos"))RutinaFotos();
+        else if (sh.getString("Pantalla","").equals("Equipos"))RutinaEquipos();
+        else RutinaDatos();
 
 
 
@@ -449,7 +502,7 @@ public class ReporteInstalacion extends AppCompatActivity {
                     NoSelloTrans.setText(sh.getString("SelloBlueTraker",""));
 
 
-                    for (int i=0; i<ObtenCheck().length;i++){
+                    for (int i=0; i<ObtenCheck().length-4;i++){
                         myEdit.putBoolean("CheckSec"+i,dataSnapshot.child("Check"+i).getValue(Boolean.class));
                         myEdit.commit();
                     }
@@ -475,6 +528,11 @@ public class ReporteInstalacion extends AppCompatActivity {
     private void SetDatos(){
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
 
+        Fallareportada.setText(sh.getString("Fallareportada",""));
+        Diagnostico.setText(sh.getString("Diagnostico",""));
+        Solucion.setText(sh.getString("Solucion",""));
+        Reemplazodeequipos.setText(sh.getString("Reemplazodeequipos",""));
+
         Contacto.setText(sh.getString("Contacto",""));
         VBateria.setText(sh.getString("VoltajeBateria",""));
         NoSelloConBox.setText(sh.getString("SelloConBox",""));
@@ -486,6 +544,9 @@ public class ReporteInstalacion extends AppCompatActivity {
         NSerieConBox.setText(sh.getString("NSerieConBox",""));
         Justificacion.setText(sh.getString("Justificacion",""));
         OtrosPermiso.setText(sh.getString("OtrosPermiso",""));
+
+        SerieAnteriorConbox.setText(sh.getString("NSerieConBox",""));
+        SerieAnteriorBlue.setText(sh.getString("NSerieTransreceptor",""));
 
         NombrePermisionariov.setText(sh.getString("NombreResponable",""));
         CargoResponsable.setText(sh.getString("CargoResponsable",""));
@@ -680,9 +741,20 @@ public class ReporteInstalacion extends AppCompatActivity {
                 NSerieConBox.getText().toString(),
                 INEResponsable.getText().toString(),
                 DireccionResponsable.getText().toString(),
-                CorreoResponsable.getText().toString()
+                CorreoResponsable.getText().toString(),
+
+
+                Fallareportada.getText().toString(),
+                Diagnostico.getText().toString(),
+                Solucion.getText().toString(),
+                Reemplazodeequipos.getText().toString()
         };
 
+
+        myEdit.putString("Fallareportada",Fallareportada.getText().toString());
+        myEdit.putString("Diagnostico",Diagnostico.getText().toString());
+        myEdit.putString("Solucion",Solucion.getText().toString());
+        myEdit.putString("Reemplazodeequipos",Reemplazodeequipos.getText().toString());
 
 
         myEdit.putString("CredResponsable",INEResponsable.getText().toString());
@@ -851,36 +923,152 @@ public class ReporteInstalacion extends AppCompatActivity {
     private void RutinaFotos(){
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sh.edit();
+       System.out.println("Datos 3 : "+sh.getString("DatosTicket3",""));
+        if (sh.getString("DatosTicket3","").contains("C-")){
+            System.out.println("Correctivo");
+            FotosRFP.setVisibility(View.GONE);
+            FotosCorrectivo.setVisibility(View.VISIBLE);
+        }else{
+            FotosRFP.setVisibility(View.VISIBLE);
+            FotosCorrectivo.setVisibility(View.GONE);
+        }
+        FotosVer.setChecked(true);
         DatosVer.setChecked(false);
         EquiposIns.setChecked(false);
         FotosVer.setChecked(true);
         DatosView.setVisibility(View.GONE);
         EquiposInstalados.setVisibility(View.GONE);
-        FotosRFP.setVisibility(View.VISIBLE);
+        SolucionCorrectivo.setVisibility(View.GONE);
         myEdit.putString("Pantalla","Fotos");
         myEdit.commit();
     }
+    public void AñadeFotoCorrectivo(View view){
+        Intent i = new Intent(this,SelectFoto.class);
+        SharedPreferences sh = getSharedPreferences(Datos[3], MODE_PRIVATE);
+
+        SharedPreferences.Editor myEdit = sh.edit();
+        int ID = sh.getInt("ID", 1);
+        i.putExtra("Datos",Datos);
+        i.putExtra("ID",String.valueOf(ID));
+        i.putExtra("Where","Correctivo");
+        System.out.println(Datos[3]+String.valueOf(ID));
+        startActivity(i);
+    }
+    private  void CrearArchivoCorrectivo(){
+        try {
+            Bitmap bitmap;
+            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.seguritech);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] bitmapData = stream.toByteArray();
+            ImageData imageData = ImageDataFactory.create(bitmapData);
+            SharedPreferences sh = getSharedPreferences(Datos[3], MODE_PRIVATE);
+            SharedPreferences.Editor myEdit = sh.edit();
+            int ID = sh.getInt("ID", 1);
+            //correctivos.CreaDocumento(Ticket);
+            correctivo.CreaArchivo2(Ticket,imageData);
+            correctivo.CreaRF(Datos,imageData,ID-1,ObtenComentariosCorrectivo());
+            //else interno.CreaRF(Datos,imageData,ID-1,ObtenComentarios());
+            /*¿Intent intent = new Intent(this,PDFViewer.class);
+            intent.putExtra("Iden","RFD");
+            intent.putExtra("Datos",Datos);
+            startActivity(intent);*/
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this,e.toString(),Toast.LENGTH_SHORT).show();
+        }
+    }
+    private String[]  ObtenComentariosCorrectivo(){
+        SharedPreferences sh = getSharedPreferences(Datos[3], MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sh.edit();
+        int ID = sh.getInt("ID", 1);
+        String [] Descripciones = new String[ID-1];
+        String Desc;
+        Boolean ReporteFoto;
+        for (int i = 1;i<ID;i++){
+            ReporteFoto=sh.getBoolean("ReporteFoto"+(i),true);
+            Desc = sh.getString("ComentarioFoto"+(i),"");
+            if (ReporteFoto) Descripciones[i-1] = Desc;
+            else Descripciones[i-1] = "";
+            System.out.println("Desc:"+Descripciones[i-1]);
+        }
+        return Descripciones;
+    }
+
+    private void MuestraFotosCorrectivo() {
+        ArrayList<Fotos> ListaFotos = new ArrayList<>();
+        String Desc;
+        Boolean ReporteFoto;
+        SharedPreferences sh = getSharedPreferences(Datos[3], MODE_PRIVATE);
+        int ID = sh.getInt("ID", 1);
+        if (ID > 1) {
+            for (int i =1;i<ID;i++){
+                ReporteFoto=sh.getBoolean("ReporteFoto"+(i),true);
+                Desc = sh.getString("ComentarioFoto"+(i),"");
+                Bitmap bitmapi;
+                bitmapi = ObtenImagen(Datos[3],i);
+                Fotos fotos = null;
+                fotos = new Fotos();
+                fotos.setDescripcion2(Desc);
+                fotos.setId2((i));
+                fotos.setFoto2(bitmapi);
+                fotos.setDatos(Datos);
+                fotos.setReporteFotos(ReporteFoto);
+                ListaFotos.add(fotos);
+                adapterFotos2 = new AdapterFotos(ListaFotos);
+                FotosView.setAdapter(adapterFotos2);
+                System.out.println(Desc);
+
+            }
+        }
+
+    }
+
     private void RutinaEquipos(){
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sh.edit();
+        if (sh.getString("DatosTicket3","").contains("C-")){
+            System.out.println("Correctivo");
+            EquiposInstalados.setVisibility(View.GONE);
+            SolucionCorrectivo.setVisibility(View.VISIBLE);
+            if (ObtenCheckGuardadas()[19]){
+                Seriesconbox.setVisibility(View.VISIBLE);
+            }else{
+                Seriesconbox.setVisibility(View.GONE);
+            }
+            if (ObtenCheckGuardadas()[21]){
+                Seriesblue.setVisibility(View.VISIBLE);
+            }else{
+                Seriesblue.setVisibility(View.GONE);
+            }
+
+        }else{
+            EquiposInstalados.setVisibility(View.VISIBLE);
+            SolucionCorrectivo.setVisibility(View.GONE);
+        }
         DatosVer.setChecked(false);
         EquiposIns.setChecked(true);
         FotosVer.setChecked(false);
         DatosView.setVisibility(View.GONE);
-        EquiposInstalados.setVisibility(View.VISIBLE);
+
         FotosRFP.setVisibility(View.GONE);
+        FotosCorrectivo.setVisibility(View.GONE);
         myEdit.putString("Pantalla","Equipos");
         myEdit.commit();
     }
     private void RutinaDatos(){
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sh.edit();
+
+        DatosView.setVisibility(View.VISIBLE);
         DatosVer.setChecked(true);
         EquiposIns.setChecked(false);
         FotosVer.setChecked(false);
-        DatosView.setVisibility(View.VISIBLE);
         EquiposInstalados.setVisibility(View.GONE);
         FotosRFP.setVisibility(View.GONE);
+        FotosCorrectivo.setVisibility(View.GONE);
+        SolucionCorrectivo.setVisibility(View.GONE);
         myEdit.putString("Pantalla","Datos");
         myEdit.commit();
     }
@@ -890,6 +1078,7 @@ public class ReporteInstalacion extends AppCompatActivity {
         DatosView.setVisibility(View.GONE);
         FotosRFP.setVisibility(View.GONE);
         EquiposInstalados.setVisibility(View.GONE);
+        FotosCorrectivo.setVisibility(View.GONE);
     }
     private void RutinaCreaArchivoInstalacion(boolean first){
         try{
@@ -975,6 +1164,10 @@ public class ReporteInstalacion extends AppCompatActivity {
 
         return true;
     }
+    private boolean ValidaCorrectivo(){
+
+        return true;
+    }
     /////CHECK
     private Boolean[] ObtenCheck(){
      Boolean [] Check = new Boolean[]{
@@ -997,16 +1190,100 @@ public class ReporteInstalacion extends AppCompatActivity {
              Button17 .isChecked(),///Sec8
              Button18 .isChecked(),///Sec8
              Button19 .isChecked(),///Sec8
+             SiConbox.isChecked(),
+             NoConbox.isChecked(),
+             SiBlue.isChecked(),
+             NoBlue.isChecked()
+
      };
      return Check;
 
  }
+
+    private void ListadeTickets(){
+        SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
+        System.out.println("Buscando ticket en barco: "+sh.getString("DatoBarco4",""));
+        refBarcos.child(sh.getString("DatoBarco4","")).child("Tickets").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String [] Tickets = new String[(int) snapshot.getChildrenCount()];
+                String [] TipoServicio = new String[(int) snapshot.getChildrenCount()];
+                int i = 0;
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+
+                    Tickets[i] = postSnapshot.getKey();
+                    TipoServicio[i] = postSnapshot.getValue().toString();
+                    if (postSnapshot.getKey().contains("S-")){
+                        ObtenNumerosdeSerie(postSnapshot.getKey(),postSnapshot.getValue().toString());
+                    }
+                    System.out.println("Ticket encontrado:"+postSnapshot.getValue());
+                    i++;
+                    //Toast.makeText(ListaServicios.this,postSnapshot.getKey(),Toast.LENGTH_SHORT).show();
+                    System.out.println(postSnapshot.getKey());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void ObtenNumerosdeSerie(String Ticket,String TipoServicio){
+        SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sh.edit();
+        System.out.println("Tipo de servicio"+TipoServicio);
+        System.out.println("Ticket"+Ticket);
+        refTickets.child(TipoServicio).child(Ticket).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    System.out.println("Ticket encontrado");
+                    String NumerodeSerieBlueTraker = snapshot.child("NSerieTransreceptor").getValue(String.class);
+                    String NumerodeSerieConBox = snapshot.child("NSerieConBox").getValue(String.class);
+                    String NumerodeSerieIridium = snapshot.child("NSerieIridium").getValue(String.class);
+                    String IMEIiridium = snapshot.child("IMEIIridium").getValue(String.class);
+                    String SelloconBox = snapshot.child("NoSelloConBox").getValue(String.class);
+                    String SelloBlueTraker = snapshot.child("NoSelloTrans").getValue(String.class);
+
+                    myEdit.putString("NoSelloConBox",SelloconBox);
+                    myEdit.putString("NoSelloTrans",SelloBlueTraker);
+                    myEdit.putString("NSerieIridium",NumerodeSerieIridium);
+                    myEdit.putString("IMEIIridium",IMEIiridium);
+                    myEdit.putString("NSerieTransreceptor",NumerodeSerieBlueTraker);
+                    myEdit.putString("NSerieConBox",NumerodeSerieConBox);
+
+                    NSerieIridium.setText(IMEIiridium);
+                    IMEIIridium.setText(NumerodeSerieIridium);
+                    NSerieTransreceptor.setText(NumerodeSerieBlueTraker);
+                    NSerieConBox.setText(NumerodeSerieConBox);
+
+                    SerieAnteriorConbox.setText(NumerodeSerieConBox);
+                    SerieAnteriorBlue.setText(NumerodeSerieBlueTraker);
+
+                    System.out.println("Serie Transreceptor: "+NumerodeSerieBlueTraker);
+                    System.out.println("Serie Conboc: "+NumerodeSerieConBox);
+                }
+                else{
+                    System.out.println("Ticket NO encontrado");
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
     private void GuardaCheck(){
         SharedPreferences sharedPreferences = getSharedPreferences(Ticket,MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sharedPreferences.edit();
 
         for (int i=0;i<ObtenCheck().length;i++){
                 myEdit.putBoolean("CheckSec"+(i), ObtenCheck()[i]);
+
         }
         myEdit.commit();
     }
@@ -1030,6 +1307,11 @@ public class ReporteInstalacion extends AppCompatActivity {
         Button17.setChecked(ObtenCheckGuardadas()[16]);///Sec11
         Button18.setChecked(ObtenCheckGuardadas()[17]);///Sec11
         Button19.setChecked(ObtenCheckGuardadas()[18]);///Sec11
+
+        SiConbox.setChecked(ObtenCheckGuardadas()[19]);
+        NoConbox.setChecked(ObtenCheckGuardadas()[20]);
+        SiBlue.setChecked(ObtenCheckGuardadas()[21]);
+        NoBlue.setChecked(ObtenCheckGuardadas()[22]);
     }
     private Boolean[] ObtenCheckGuardadas(){
         Boolean [] Check = new Boolean[ObtenCheck().length];
@@ -1037,12 +1319,42 @@ public class ReporteInstalacion extends AppCompatActivity {
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
 
         for (int i=0;i<ObtenCheck().length;i++){
-            Check[i] = sh.getBoolean("CheckSec"+(i), false);
+            if (i==20||i==22)Check[i] = sh.getBoolean("CheckSec"+(i), true);
+            else Check[i] = sh.getBoolean("CheckSec"+(i), false);
+
         }
 
         return Check;
 
     }
+    public void rutinasiconbox(View view){
+        NoConbox.setChecked(false);
+        SiConbox.setChecked(true);
+        GuardaCheck();
+        Seriesconbox.setVisibility(View.VISIBLE);
+
+    }
+
+    public void rutinanoconbox(View view){
+        SiConbox.setChecked(false);
+        NoConbox.setChecked(true);
+        GuardaCheck();
+        Seriesconbox.setVisibility(View.GONE);
+    }
+
+    public void rutinasibluetraker(View view){
+        Seriesblue.setVisibility(View.VISIBLE);
+        NoBlue.setChecked(false);
+        SiBlue.setChecked(true);
+        GuardaCheck();
+    }
+    public void rutinanobluetraker(View view){
+        Seriesblue.setVisibility(View.GONE);
+        SiBlue.setChecked(false);
+        NoBlue.setChecked(true);
+        GuardaCheck();
+    }
+
     private String[] ObtenDatosTickets(){
         String [] DatosTickets = new String[dt.DatosTicketAReporte.length];
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
@@ -1077,7 +1389,9 @@ public class ReporteInstalacion extends AppCompatActivity {
     }
     public void VerFotos(View view){
         GuardaDatosInstalacion();
-        MostrarFotos(Ticket);
+        SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
+        if (sh.getString("DatosTicket3", "").contains("C-")) MuestraFotosCorrectivo();
+        else MostrarFotos(Ticket);
         RutinaFotos();
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -1121,10 +1435,18 @@ public class ReporteInstalacion extends AppCompatActivity {
                         i.putExtra("Iden", "NI");
                         i.putExtra("Datos", ObtenDatosTicket());
                         startActivity(i);
-                    }else {
+                    }else if (sh2.getString("DatosTicket3","").contains("C-")){
+                        CrearArchivoCorrectivo();
+                        Intent i = new Intent(this, PDFViewer.class);
+                        i.putExtra("Iden", "RD");
+                        i.putExtra("Datos", ObtenDatosTicket());
+                        startActivity(i);
+                    }
+                    else {
                         RutinaCreaArchivoInstalacion(false);
                     }
-                } else {
+                }
+                else {
                     if (!ValidaJuatificacion()) {
                         Toast.makeText(this, "Añada justificacion", Toast.LENGTH_SHORT).show();
                         RutinaFotos();
@@ -1179,7 +1501,18 @@ public class ReporteInstalacion extends AppCompatActivity {
                     ActualizaEstatus("FechaCerrado", "HoraCerrado", "Cerrado", 4);
                     Toast.makeText(this, "Cambiando Estatus", Toast.LENGTH_SHORT).show();
                 }
-            }else {
+            }else if (sh2.getString("DatosTicket3", "").contains("C-")){
+                if (!ValidaCorrectivo()) {
+                    Toast.makeText(this, "Complete los campos requeridos", Toast.LENGTH_SHORT).show();
+                    RutinaFotos();
+                } else {
+                    RutinaCharging();
+                    ActualizaEstatus("FechaCerrado", "HoraCerrado", "Cerrado", 4);
+                    Toast.makeText(this, "Cambiando Estatus", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            else {
                 if (!ValidaInstalacion()) {
                     Toast.makeText(this, "Complete los campos requeridos", Toast.LENGTH_SHORT).show();
                     RutinaEquipos();
@@ -1199,6 +1532,12 @@ public class ReporteInstalacion extends AppCompatActivity {
                 RutinaCreaArchivoNOInstalacion();
                 Intent i = new Intent(this, PDFViewer.class);
                 i.putExtra("Iden", "NI");
+                i.putExtra("Datos", ObtenDatosTicket());
+                startActivity(i);
+            }else if (sh2.getString("DatosTicket3","").contains("C-")){
+                CrearArchivoCorrectivo();
+                Intent i = new Intent(this, PDFViewer.class);
+                i.putExtra("Iden", "RD");
                 i.putExtra("Datos", ObtenDatosTicket());
                 startActivity(i);
             }
@@ -1243,7 +1582,15 @@ public class ReporteInstalacion extends AppCompatActivity {
             System.out.println("Cerrando servicio");
             if(sh.getString("DatosTicket4","").equals("Cancelado")){
                 RutinaCreaArchivoNOInstalacion();
-            }else{RutinaCreaArchivoInstalacion(false); }
+            }else if (sh.getString("DatosTicket3","").contains("C-")){
+                CrearArchivoCorrectivo();
+                Intent i = new Intent(this, PDFViewer.class);
+                i.putExtra("Where", "Correctivo");
+                i.putExtra("Iden", "RD");
+                i.putExtra("Datos", ObtenDatosTicket());
+                startActivity(i);
+            }
+            else{RutinaCreaArchivoInstalacion(false); }
             mSheetServiceHelper.Escribeentabla4(HoraFecha,Ticket)
                     .addOnSuccessListener(ok ->mSheetServiceHelper.ActualizaBitacora(ObtenDatosTicket()[10],"Ticket"+Estatus,HoraFecha[1],HoraFecha[0],"-",0)
                             .addOnSuccessListener(OK -> fb.ActualizaEstatus(ObtenDatosTicket(),this,HoraFecha,Estatus,ID)  )

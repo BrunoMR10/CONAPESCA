@@ -288,7 +288,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketsVie
                                  }
                             Intent intent2;
                             Context context2 = v.getContext();
-                            if (TipoServicio.equals("Correctivo")) intent2 = new Intent(context2, InternoRF.class);
+                            if (TipoServicio.equals("Correctivo")) intent2 = new Intent(context2, ReporteInstalacion.class);
                             else if (TipoServicio.equals("Interno")) intent2 = new Intent(context2, ReporteInstalacion.class);
                             else if (TipoServicio.equals("Instalacion")) intent2 = new Intent(context2, ReporteInstalacion.class);
                             else if (TipoServicio.equals("Cancelado")) intent2 = new Intent(context2, ReporteInstalacion.class);

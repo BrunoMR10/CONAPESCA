@@ -43,27 +43,6 @@ public class CorrectivoRD {
             "",//LeterAlig    16 Alineacion de letra
             "",//Tipoletra    17 Tipo de letra
 
-            //Elemento2
-            //Parametros de cuadro
-            "Text1",//Label      0 Indentificador
-            "",//Parent     1 Si va dentro de algun otro cuadro
-            "center",//Alignament 2 center,right,left
-            "0",//PosX       3 Si no se añadio alineacion
-            "0",//PosY       4 Si no se añadio alineacion
-            "198",//Weight     5 Ancho de cuadro Max (para Maximoposible) Auto(ParaAutomatico en desarrollo no habilitado)
-            "80",//Height     6 Altura de cuadro Max (para Maximoposible) Auto(ParaAutomatico en desarrollo no habilitado)
-            "0",//Marginint  7 MargenInterno de cuadro
-            "0",//Spaceint   8 Espacio entre elementos internos
-            "0",//GrosorM    9 Grosor de marco
-            "0",//SpaceHori 10 Disntancia en horizontal entre elementos
-            "false",//SaltoHori  12 true o false Si es false hace el salto en vertical
-            "true",//Marco      12 true o false Si es false oculta el marco
-            //Parametros de contenido
-            "text",//Type       13 Tipo de contenido (imagen,text)
-            "9",//LSize-Ncar 14 Tamaño de letra o ruta de carpeta
-            "Seguritech Privada",//Text-Nima  15 Texto o nombre de la imagen
-            "right",//LeterAlig    16 Alineacion de letra
-            "normal",//Tipoletra    17 Tipo de letra
     };
 
     public String[] Cuerpo = new String[]{

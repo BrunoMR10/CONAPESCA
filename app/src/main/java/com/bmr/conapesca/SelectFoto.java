@@ -460,7 +460,7 @@ public class SelectFoto extends AppCompatActivity {
 
     private void Regresa(){
         Intent i;
-        if (Datos[4].equals("Correctivo")) i = new Intent(this,InternoRF.class);
+        if (Datos[4].equals("Correctivo")) i = new Intent(this,ReporteInstalacion.class);
         else if (Datos[4].equals("Preventivo")) i = new Intent(this,PreventivoRF.class);
         else if (Datos[4].equals("Instalacion")) i = new Intent(this,ReporteInstalacion.class);
         else i = new Intent(this,ReporteInstalacion.class);
