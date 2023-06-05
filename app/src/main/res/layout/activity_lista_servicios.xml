@@ -17,7 +17,9 @@
     <SearchView
         android:id="@+id/buscarTickets"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" >
+
+    </SearchView>
 
     <LinearLayout
         android:layout_width="match_parent"

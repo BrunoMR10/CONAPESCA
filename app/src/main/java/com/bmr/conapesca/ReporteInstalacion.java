@@ -99,7 +99,9 @@ public class ReporteInstalacion extends AppCompatActivity {
     TextView CambioEstatus;
     EditText VBateria,NoSelloTrans,NoSelloConBox,Justificacion,OtrosPermiso,Domicilio,NombrePermisionariov,INEResponsable,DireccionResponsable,CargoResponsable,CorreoResponsable,Observaciones,Contacto,
             Fallareportada,Diagnostico,Solucion,Reemplazodeequipos,
-            SerieAnteriorConbox,SerieNuevaConbox,SerieAnteriorBlue,SerieNuevaBlue;
+            SerieAnteriorConbox,SerieNuevaConbox,SerieAnteriorBlue,SerieNuevaBlue,
+            Selloanteriorconbox,Sellonuevoconbox,Selloanteriorblue,Sellonuevoblue,
+            SerieAnteriorIridium,SerieNuevaIridium,IMEIanterior,IMEINuevo,Horacerrado;
     CheckBox Button1,Button2,Button3,Button4,Button5,Button6,Button7,Button8,Button9,Button10,Button11,
             Button12,Button13,Button14,Button15,Button16,Button17,Button18,Button19,
             SiConbox,NoConbox,SiBlue,NoBlue;
@@ -171,6 +173,7 @@ public class ReporteInstalacion extends AppCompatActivity {
         Diagnostico = (EditText) findViewById(R.id.Diagnostico);
         Solucion = (EditText) findViewById(R.id.Solucion);
         Reemplazodeequipos = (EditText) findViewById(R.id.Reemplazodeequipos);
+        Horacerrado = (EditText) findViewById(R.id.Horacerrado);
 
         NombrePermisionariov = (EditText) findViewById(R.id.NombrePermisionariov);
 
@@ -182,6 +185,15 @@ public class ReporteInstalacion extends AppCompatActivity {
         SerieNuevaConbox = (EditText) findViewById(R.id.SerieNuevaConbox);
         SerieAnteriorBlue = (EditText) findViewById(R.id.SerieAnteriorBlue);
         SerieNuevaBlue = (EditText) findViewById(R.id.SerieNuevaBlue);
+
+        Selloanteriorconbox = (EditText) findViewById(R.id.Selloanteriorconbox);
+        Sellonuevoconbox = (EditText) findViewById(R.id.Sellonuevoconbox);
+        Selloanteriorblue = (EditText) findViewById(R.id.Selloanteriorblue);
+        Sellonuevoblue = (EditText) findViewById(R.id.Sellonuevoblue);
+        SerieAnteriorIridium = (EditText) findViewById(R.id.SerieAnteriorIridium);
+        SerieNuevaIridium = (EditText) findViewById(R.id.SerieNuevaIridium);
+        IMEIanterior = (EditText) findViewById(R.id.IMEIanterior);
+        IMEINuevo = (EditText) findViewById(R.id.IMEINuevo);
 
 
         CargoResponsable = (EditText) findViewById(R.id.CargoResponsable);
@@ -334,8 +346,8 @@ public class ReporteInstalacion extends AppCompatActivity {
         }else {
             //NombreBarco = "";
             // Noficio ="";
-
-            if (Noficio.equals("")||Datos[7].equals("Actualizacion")||Datos[7].equals("Re-asignacion")) GuardaDatosTicket();
+            GuardaDatosTicket();
+            //if (Noficio.equals("")||Datos[7].equals("Actualizacion")||Datos[7].equals("Re-asignacion")) GuardaDatosTicket();
             requestSignIn();
         }
     }
@@ -494,6 +506,9 @@ public class ReporteInstalacion extends AppCompatActivity {
                     myEdit.putString("NSerieTransreceptor",dataSnapshot.child("NSerieTransreceptor").getValue(String.class));
                     myEdit.putString("NSerieConBox",dataSnapshot.child("NSerieConBox").getValue(String.class));
                     myEdit.putString("NombreSeguritech",dataSnapshot.child("NombreIngeniero").getValue(String.class));
+                    myEdit.putString("NombreSeguritech",dataSnapshot.child("NombreIngeniero").getValue(String.class));
+                    myEdit.putString("HoraCerrado",dataSnapshot.child("HoraCerrado").getValue(String.class));
+                    myEdit.putString("FechaCerrado",dataSnapshot.child("FechaCerrado").getValue(String.class));
                     myEdit.putString("UID",dataSnapshot.child("UID").getValue(String.class));
                     myEdit.commit();
 
@@ -545,8 +560,26 @@ public class ReporteInstalacion extends AppCompatActivity {
         Justificacion.setText(sh.getString("Justificacion",""));
         OtrosPermiso.setText(sh.getString("OtrosPermiso",""));
 
-        SerieAnteriorConbox.setText(sh.getString("NSerieConBox",""));
-        SerieAnteriorBlue.setText(sh.getString("NSerieTransreceptor",""));
+        SerieAnteriorConbox.setText(sh.getString("NSerieConBoxanterior",""));
+        SerieNuevaConbox.setText(sh.getString("NSerieConBoxnuevo",""));
+
+        SerieAnteriorBlue.setText(sh.getString("NSerieTransreceptoranterior",""));
+        SerieNuevaBlue.setText(sh.getString("NSerieTransreceptornueva",""));
+
+        Selloanteriorconbox.setText(sh.getString("SelloAnteriorConbox",""));
+        Sellonuevoconbox.setText(sh.getString("SelloNuevoConbox",""));
+
+        Selloanteriorblue.setText(sh.getString("SelloAnteriorBlue",""));
+        Sellonuevoblue.setText(sh.getString("SelloNuevoBlue",""));
+
+
+        Selloanteriorblue = (EditText) findViewById(R.id.Selloanteriorblue);
+        Sellonuevoblue = (EditText) findViewById(R.id.Sellonuevoblue);
+        SerieAnteriorIridium = (EditText) findViewById(R.id.SerieAnteriorIridium);
+        SerieNuevaIridium = (EditText) findViewById(R.id.SerieNuevaIridium);
+        IMEIanterior = (EditText) findViewById(R.id.IMEIanterior);
+        IMEINuevo = (EditText) findViewById(R.id.IMEINuevo);
+
 
         NombrePermisionariov.setText(sh.getString("NombreResponable",""));
         CargoResponsable.setText(sh.getString("CargoResponsable",""));
@@ -560,6 +593,7 @@ public class ReporteInstalacion extends AppCompatActivity {
         NoOficio.setText(sh.getString("DatosTicket12",""));
         NoReporte.setText(sh.getString("DatosTicket3",""));
         FechaInstalacion.setText(sh.getString("FechaCerrado",""));
+        Horacerrado.setText(sh.getString("HoraCerrado",""));
         NombreSeguritechVi.setText(sh.getString("DatosUsuario1",""));
 
         LocalidadPuerto .setText(sh.getString("DatoBarco25",""));
@@ -742,12 +776,12 @@ public class ReporteInstalacion extends AppCompatActivity {
                 INEResponsable.getText().toString(),
                 DireccionResponsable.getText().toString(),
                 CorreoResponsable.getText().toString(),
-
-
                 Fallareportada.getText().toString(),
                 Diagnostico.getText().toString(),
                 Solucion.getText().toString(),
-                Reemplazodeequipos.getText().toString()
+                Reemplazodeequipos.getText().toString(),
+                FechaInstalacion.getText().toString(),
+                Horacerrado.getText().toString()
         };
 
 
@@ -1216,6 +1250,9 @@ public class ReporteInstalacion extends AppCompatActivity {
                     if (postSnapshot.getKey().contains("S-")){
                         ObtenNumerosdeSerie(postSnapshot.getKey(),postSnapshot.getValue().toString());
                     }
+                    else if (postSnapshot.getKey().contains("C-")){
+                        ObtenNumerosdeSerie(postSnapshot.getKey(),postSnapshot.getValue().toString());
+                    }
                     System.out.println("Ticket encontrado:"+postSnapshot.getValue());
                     i++;
                     //Toast.makeText(ListaServicios.this,postSnapshot.getKey(),Toast.LENGTH_SHORT).show();
@@ -1561,6 +1598,33 @@ public class ReporteInstalacion extends AppCompatActivity {
 
         }
     }
+
+    private String [] RegistraNumerosdeserieCorrect(){
+         String [] NumerosdeSerie = new String[]{
+                 "Bluetraker antes",
+                 "Bluetraker despues",
+                 "Conbox antes",
+                 "Conbox despues",
+                 "IMEI antes",
+                 "IMEI despues",
+                 "Serie Iridium antes",
+                 "Serie Iridium despues",
+                 "Sello antes",
+                 "Sello despues"
+
+         };
+         if (SerieNuevaConbox.equals("")){
+
+         }
+         if (SerieNuevaBlue.equals("")){
+
+         }
+
+
+        //SerieAnteriorConbox,SerieNuevaConbox,SerieAnteriorBlue,SerieNuevaBlue;
+
+         return NumerosdeSerie;
+    }
     //Estatus
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void ActualizaEstatus(String sh1,String sh2,String Estatus, int ID) {
@@ -1579,6 +1643,8 @@ public class ReporteInstalacion extends AppCompatActivity {
 
         };
         if ((Estatus).equals("Cerrado")){
+
+            ///Rutina de actualizacion en firebase
             System.out.println("Cerrando servicio");
             if(sh.getString("DatosTicket4","").equals("Cancelado")){
                 RutinaCreaArchivoNOInstalacion();
@@ -1596,7 +1662,8 @@ public class ReporteInstalacion extends AppCompatActivity {
                             .addOnSuccessListener(OK -> fb.ActualizaEstatus(ObtenDatosTicket(),this,HoraFecha,Estatus,ID)  )
                             .addOnFailureListener(Fail -> System.out.println(Fail)))
                     .addOnFailureListener(Fail -> System.out.println(Fail));
-        }else if ((Estatus).equals("Cancelado")){
+        }
+        else if ((Estatus).equals("Cancelado")){
             GuardaComentariosFotos("Cancelado");
             mSheetServiceHelper.Escribeentabla5(HoraFecha,Ticket)
                     .addOnSuccessListener(ok ->mSheetServiceHelper.ActualizaBitacora(ObtenDatosTicket()[10],"Ticket"+Estatus,HoraFecha[1],HoraFecha[0],"-",0)
@@ -1683,6 +1750,7 @@ public class ReporteInstalacion extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
+        GuardaDatosInstalacion();
         Datos = ObtenSharedPreference();
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
         Datos[8]= sh.getString("DatosTicket4","");

@@ -245,6 +245,8 @@ public class RegistroBarco extends AppCompatActivity {
         RegistrandoBarco.setVisibility(View.VISIBLE);
         mSheetServiceHelper.RegistraBarco().addOnSuccessListener(ok-> RegistrandoBarco.setVisibility(View.GONE))
                 .addOnFailureListener(Fail ->Toast.makeText(this,Fail.toString(),Toast.LENGTH_SHORT).show());
+        /*mSheetServiceHelper.RegistraHoraCierre().addOnSuccessListener(ok-> RegistrandoBarco.setVisibility(View.GONE))
+                .addOnFailureListener(Fail ->Toast.makeText(this,Fail.toString(),Toast.LENGTH_SHORT).show());*/
     }
     public void ValidaBarco(View view){
 

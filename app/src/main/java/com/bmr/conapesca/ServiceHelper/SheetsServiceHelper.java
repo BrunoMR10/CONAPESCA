@@ -864,7 +864,71 @@ public class SheetsServiceHelper {
         });
 
     }
+    public Task<Boolean> RegistraHoraCierre() {
+        return Tasks.call(mExecutor, () -> {
+            String spreadsheetId = "1b1G86lx9GagfW72X58GUJm3U9y7sAbGC8o1lmx2oDhY"; //spreadsheetID;
+            String range = "B1:B1";
+            int Numero = 0;
+            ValueRange response = mSheetsService.spreadsheets().values().get(spreadsheetId,range).execute();
+            List<List<Object>> values = response.getValues();
+            if (values!=null){
+                for (List row : values){
+                    row.get(0).toString();
+                    Numero = Integer.parseInt(row.get(0).toString());
+                }
 
+            }
+            String HoraCierre,FechaCierre,Ticket;
+            for (int k = 2; k<Numero;k++){
+
+                range = "!A"+(k+1)+":VO"+(k+1);
+                //String spreadsheetId = "1WDW6MUKIBTqIkClC0LqV0jOlrSeBaMqd2bOWSd-SBIk"; //Completa;
+                response = mSheetsService.spreadsheets().values().get(spreadsheetId,range).execute();
+
+                Ticket = response.getValues().get(0).get(4).toString();
+                HoraCierre = response.getValues().get(0).get(18).toString();
+                FechaCierre=response.getValues().get(0).get(17).toString();
+
+                System.out.println("Ticket: "+Ticket+"Fecha Cierre: "+FechaCierre+"Hora Cierre: "+HoraCierre);
+                /*for (int i = 0;i<67;i++){
+                    String Dato;
+                    try{
+                        //System.out.println(newresponse.getValues().get(0).get(i).toString());
+                        Dato = response.getValues().get(0).get(i).toString();
+                    }
+                    catch (Exception E){
+                        //System.out.println("Dato no registrado");
+                        Dato = "Dato no registrado";
+                    }*/
+
+                    Map<String, Object> UsuarioNuevo = new HashMap<>();
+                    UsuarioNuevo.put("FechaCerrado", FechaCierre);
+                     UsuarioNuevo.put("HoraCerrado", HoraCierre);
+                    refTickets.child("Instalacion").child(Ticket).updateChildren(UsuarioNuevo, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                            if (error == null && ref != null) {
+                                System.out.println("Se subio");
+                                // there was no error and the value is modified
+                            } else {
+                                // there was an error. try to update again
+                            }
+                        }
+                    });
+                //}
+                Thread.sleep(1000);
+            }
+
+
+
+
+
+            //}
+
+            return true;
+        });
+
+    }
     public Task<Boolean> RegistraBarco() {
         return Tasks.call(mExecutor, () -> {
             String spreadsheetId = "1yGsTs7e4VDk505s7laWoDO66YXf_-R2sIAh7Gh4GWX0"; //spreadsheetID;

@@ -40,7 +40,6 @@ public class PantallaPrincipal extends AppCompatActivity {
     Button ToServicios,ToUsuarios,ToANAM;
     TextView Usuario;
     String[]Datos;
-
     PruebaMetododocumentos pruebaMetododocumentos = new PruebaMetododocumentos();
     Convenios convenios = new Convenios();
 

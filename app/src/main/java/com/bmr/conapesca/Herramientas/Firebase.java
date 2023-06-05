@@ -466,6 +466,8 @@ public class Firebase {
         UsuarioNuevo.put("Diagnostico",DatosTicket2[16]);
         UsuarioNuevo.put("Solucion",DatosTicket2[17]);
         UsuarioNuevo.put("Reemplazodeequipos",DatosTicket2[18]);
+        UsuarioNuevo.put("FechaCerrado",DatosTicket2[19]);
+        UsuarioNuevo.put("HoraCerrado",DatosTicket2[20]);
 
 
         for (int i=0; i<Checks.length;i++){
