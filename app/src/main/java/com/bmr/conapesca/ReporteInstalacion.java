@@ -61,6 +61,10 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.colors.ColorConstants;
+import com.itextpdf.kernel.pdf.PdfPage;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.time.LocalDateTime;
@@ -346,8 +350,8 @@ public class ReporteInstalacion extends AppCompatActivity {
         }else {
             //NombreBarco = "";
             // Noficio ="";
-            GuardaDatosTicket();
-            //if (Noficio.equals("")||Datos[7].equals("Actualizacion")||Datos[7].equals("Re-asignacion")) GuardaDatosTicket();
+            //GuardaDatosTicket();
+            if (Noficio.equals("")||Datos[7].equals("Actualizacion")||Datos[7].equals("Re-asignacion")) GuardaDatosTicket();
             requestSignIn();
         }
     }
@@ -362,7 +366,10 @@ public class ReporteInstalacion extends AppCompatActivity {
             Entraslado.setVisibility(View.VISIBLE);
             Charging.setVisibility(View.GONE);
             DatosView.setVisibility(View.GONE);
+            SolucionCorrectivo.setVisibility(View.GONE);
+            FotosCorrectivo.setVisibility(View.GONE);
             FotosRFP.setVisibility(View.GONE);
+            EquiposInstalados.setVisibility(View.GONE);
             CambioEstatus.setText("Poner en curso");
             if (sh.getString("DatosTicket3", "").contains("C-")) {
                 ListadeTickets();}
@@ -537,9 +544,6 @@ public class ReporteInstalacion extends AppCompatActivity {
         Toast.makeText(this, "Datos de Ticket guardados",Toast.LENGTH_SHORT).show();
 
     }
-
-
-
     private void SetDatos(){
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
 
@@ -560,17 +564,20 @@ public class ReporteInstalacion extends AppCompatActivity {
         Justificacion.setText(sh.getString("Justificacion",""));
         OtrosPermiso.setText(sh.getString("OtrosPermiso",""));
 
-        SerieAnteriorConbox.setText(sh.getString("NSerieConBoxanterior",""));
-        SerieNuevaConbox.setText(sh.getString("NSerieConBoxnuevo",""));
+        SerieAnteriorConbox.setText(sh.getString("NSerieConBoxAnterior",""));
+        SerieNuevaConbox.setText(sh.getString("NSerieConBoxNuevo",""));
+        SerieAnteriorBlue.setText(sh.getString("NSerieTransreceptorAnterior",""));
+        SerieNuevaBlue.setText(sh.getString("NSerieTransreceptorNuevo",""));
+        Selloanteriorconbox.setText(sh.getString("NoSelloConBoxAnterior",""));
+        Sellonuevoconbox.setText(sh.getString("NoSelloConBoxNuevo",""));
+        Selloanteriorblue.setText(sh.getString("NoSelloTransAnterior",""));
+        Sellonuevoblue.setText(sh.getString("NoSelloTransNuevo",""));
+        IMEINuevo.setText(sh.getString("IMEIIridiumNuevo",""));
+        IMEIanterior.setText(sh.getString("IMEIIridiumAnterior",""));
+        SerieNuevaIridium.setText(sh.getString("NSerieIridiumNuevo",""));
+        SerieAnteriorIridium.setText(sh.getString("NSerieIridiumAnterior",""));
 
-        SerieAnteriorBlue.setText(sh.getString("NSerieTransreceptoranterior",""));
-        SerieNuevaBlue.setText(sh.getString("NSerieTransreceptornueva",""));
 
-        Selloanteriorconbox.setText(sh.getString("SelloAnteriorConbox",""));
-        Sellonuevoconbox.setText(sh.getString("SelloNuevoConbox",""));
-
-        Selloanteriorblue.setText(sh.getString("SelloAnteriorBlue",""));
-        Sellonuevoblue.setText(sh.getString("SelloNuevoBlue",""));
 
 
         Selloanteriorblue = (EditText) findViewById(R.id.Selloanteriorblue);
@@ -811,6 +818,23 @@ public class ReporteInstalacion extends AppCompatActivity {
         myEdit.putString("NSerieTransreceptor",NSerieTransreceptor.getText().toString());
         myEdit.putString("NSerieConBox",NSerieConBox.getText().toString());
 
+
+        myEdit.putString("NoSelloConBoxAnterior", Selloanteriorconbox .getText().toString());
+        myEdit.putString("NoSelloTransAnterior", Selloanteriorblue .getText().toString());
+        myEdit.putString("NSerieIridiumAnterior", SerieAnteriorIridium .getText().toString());
+        myEdit.putString("IMEIIridiumAnterior", IMEIanterior .getText().toString());
+        myEdit.putString("NSerieTransreceptorAnterior", SerieAnteriorBlue.getText().toString());
+        myEdit.putString("NSerieConBoxAnterior", SerieAnteriorConbox.getText().toString());
+
+
+        myEdit.putString("NoSelloConBoxNuevo", Sellonuevoconbox .getText().toString());
+        myEdit.putString("NoSelloTransNuevo", Sellonuevoblue .getText().toString());
+        myEdit.putString("NSerieIridiumNuevo", SerieNuevaIridium.getText().toString());
+        myEdit.putString("IMEIIridiumNuevo", IMEINuevo .getText().toString());
+        myEdit.putString("NSerieTransreceptorNuevo", SerieNuevaBlue.getText().toString());
+        myEdit.putString("NSerieConBoxNuevo", SerieNuevaConbox.getText().toString());
+
+
         myEdit.putString("OtrosPermiso",OtrosPermiso.getText().toString());
         myEdit.putString("DatosTicket26",Domicilio.getText().toString());
         myEdit.putString("DatosTicket13",FechaOficio.getText().toString());
@@ -1029,7 +1053,6 @@ public class ReporteInstalacion extends AppCompatActivity {
         }
         return Descripciones;
     }
-
     private void MuestraFotosCorrectivo() {
         ArrayList<Fotos> ListaFotos = new ArrayList<>();
         String Desc;
@@ -1058,7 +1081,6 @@ public class ReporteInstalacion extends AppCompatActivity {
         }
 
     }
-
     private void RutinaEquipos(){
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sh.edit();
@@ -1233,7 +1255,6 @@ public class ReporteInstalacion extends AppCompatActivity {
      return Check;
 
  }
-
     private void ListadeTickets(){
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
         System.out.println("Buscando ticket en barco: "+sh.getString("DatoBarco4",""));
@@ -1276,30 +1297,79 @@ public class ReporteInstalacion extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
                     System.out.println("Ticket encontrado");
-                    String NumerodeSerieBlueTraker = snapshot.child("NSerieTransreceptor").getValue(String.class);
-                    String NumerodeSerieConBox = snapshot.child("NSerieConBox").getValue(String.class);
-                    String NumerodeSerieIridium = snapshot.child("NSerieIridium").getValue(String.class);
-                    String IMEIiridium = snapshot.child("IMEIIridium").getValue(String.class);
-                    String SelloconBox = snapshot.child("NoSelloConBox").getValue(String.class);
-                    String SelloBlueTraker = snapshot.child("NoSelloTrans").getValue(String.class);
 
-                    myEdit.putString("NoSelloConBox",SelloconBox);
-                    myEdit.putString("NoSelloTrans",SelloBlueTraker);
-                    myEdit.putString("NSerieIridium",NumerodeSerieIridium);
-                    myEdit.putString("IMEIIridium",IMEIiridium);
-                    myEdit.putString("NSerieTransreceptor",NumerodeSerieBlueTraker);
-                    myEdit.putString("NSerieConBox",NumerodeSerieConBox);
+                    if (Ticket.contains("S-")) {
+                        System.out.println("Ticket" + Ticket);
+                        String NumerodeSerieBlueTraker = snapshot.child("NSerieTransreceptor").getValue(String.class);
+                        String NumerodeSerieConBox = snapshot.child("NSerieConBox").getValue(String.class);
+                        String NumerodeSerieIridium = snapshot.child("NSerieIridium").getValue(String.class);
+                        String IMEIiridium = snapshot.child("IMEIIridium").getValue(String.class);
+                        String SelloconBox = snapshot.child("NoSelloConBox").getValue(String.class);
+                        String SelloBlueTraker = snapshot.child("NoSelloTrans").getValue(String.class);
 
-                    NSerieIridium.setText(IMEIiridium);
-                    IMEIIridium.setText(NumerodeSerieIridium);
-                    NSerieTransreceptor.setText(NumerodeSerieBlueTraker);
-                    NSerieConBox.setText(NumerodeSerieConBox);
+                        myEdit.putString("NoSelloConBoxAnterior", SelloconBox);
+                        myEdit.putString("NoSelloTransAnterior", SelloBlueTraker);
+                        myEdit.putString("NSerieIridiumAnterior", NumerodeSerieIridium);
+                        myEdit.putString("IMEIIridiumAnterior", IMEIiridium);
+                        myEdit.putString("NSerieTransreceptorAnterior", NumerodeSerieBlueTraker);
+                        myEdit.putString("NSerieConBoxAnterior", NumerodeSerieConBox);
 
-                    SerieAnteriorConbox.setText(NumerodeSerieConBox);
-                    SerieAnteriorBlue.setText(NumerodeSerieBlueTraker);
 
-                    System.out.println("Serie Transreceptor: "+NumerodeSerieBlueTraker);
-                    System.out.println("Serie Conboc: "+NumerodeSerieConBox);
+                        Selloanteriorconbox .setText(SelloconBox);
+                        //Sellonuevoconbox = (EditText) findViewById(R.id.Sellonuevoconbox);
+                        Selloanteriorblue.setText(SelloBlueTraker);
+                        //Sellonuevoblue = (EditText) findViewById(R.id.Sellonuevoblue);
+                        SerieAnteriorIridium.setText(NumerodeSerieIridium);
+                        //SerieNuevaIridium = (EditText) findViewById(R.id.SerieNuevaIridium);
+                        IMEIanterior.setText(IMEIiridium);
+                        //IMEINuevo = (EditText) findViewById(R.id.IMEINuevo);
+                        SerieAnteriorConbox.setText(NumerodeSerieConBox);
+                        SerieAnteriorBlue.setText(NumerodeSerieBlueTraker);
+
+                        /*NSerieIridium.setText(IMEIiridium);
+                        IMEIIridium.setText(NumerodeSerieIridium);
+                        NSerieTransreceptor.setText(NumerodeSerieBlueTraker);
+                        NSerieConBox.setText(NumerodeSerieConBox);*/
+
+
+
+                        System.out.println("Serie Transreceptor: " + NumerodeSerieBlueTraker);
+                        System.out.println("Serie Conboc: " + NumerodeSerieConBox);
+                    }
+                    if (Ticket.contains("C-")&&!Ticket.equals(sh.getString("DatosTicket3",""))){
+
+                        System.out.println("Ticket" + Ticket);
+
+                        String NumerodeSerieBlueTraker = snapshot.child("NSerieTransreceptorAnterior").getValue(String.class);
+                        String NumerodeSerieConBox = snapshot.child("NSerieConBoxAnterior").getValue(String.class);
+                        String NumerodeSerieIridium = snapshot.child("NSerieIridiumAnterior").getValue(String.class);
+                        String IMEIiridium = snapshot.child("NSerieIridiumAnterior").getValue(String.class);
+                        String SelloconBox = snapshot.child("NoSelloConBoxAnterior").getValue(String.class);
+                        String SelloBlueTraker = snapshot.child("NoSelloTransAnterior").getValue(String.class);
+
+
+
+                        myEdit.putString("NoSelloConBoxAnterior", SelloconBox);
+                        myEdit.putString("NoSelloTransAnterior", SelloBlueTraker);
+                        myEdit.putString("NSerieIridiumAnterior", NumerodeSerieIridium);
+                        myEdit.putString("IMEIIridiumAnterior", IMEIiridium);
+                        myEdit.putString("NSerieTransreceptorAnterior", NumerodeSerieBlueTraker);
+                        myEdit.putString("NSerieConBoxAnterior", NumerodeSerieConBox);
+
+                        Selloanteriorconbox .setText(SelloconBox);
+                        //Sellonuevoconbox = (EditText) findViewById(R.id.Sellonuevoconbox);
+                        Selloanteriorblue.setText(SelloBlueTraker);
+                        //Sellonuevoblue = (EditText) findViewById(R.id.Sellonuevoblue);
+                        SerieAnteriorIridium.setText(NumerodeSerieIridium);
+                        //SerieNuevaIridium = (EditText) findViewById(R.id.SerieNuevaIridium);
+                        IMEIanterior.setText(IMEIiridium);
+                        //IMEINuevo = (EditText) findViewById(R.id.IMEINuevo);
+                        SerieAnteriorConbox.setText(NumerodeSerieConBox);
+                        SerieAnteriorBlue.setText(NumerodeSerieBlueTraker);
+
+                        System.out.println("Serie Transreceptor: " + NumerodeSerieBlueTraker);
+                        System.out.println("Serie Conboc: " + NumerodeSerieConBox);
+                    }
                 }
                 else{
                     System.out.println("Ticket NO encontrado");
@@ -1313,7 +1383,6 @@ public class ReporteInstalacion extends AppCompatActivity {
             }
         });
     }
-
     private void GuardaCheck(){
         SharedPreferences sharedPreferences = getSharedPreferences(Ticket,MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sharedPreferences.edit();
@@ -1371,14 +1440,12 @@ public class ReporteInstalacion extends AppCompatActivity {
         Seriesconbox.setVisibility(View.VISIBLE);
 
     }
-
     public void rutinanoconbox(View view){
         SiConbox.setChecked(false);
         NoConbox.setChecked(true);
         GuardaCheck();
         Seriesconbox.setVisibility(View.GONE);
     }
-
     public void rutinasibluetraker(View view){
         Seriesblue.setVisibility(View.VISIBLE);
         NoBlue.setChecked(false);
@@ -1391,7 +1458,6 @@ public class ReporteInstalacion extends AppCompatActivity {
         NoBlue.setChecked(true);
         GuardaCheck();
     }
-
     private String[] ObtenDatosTickets(){
         String [] DatosTickets = new String[dt.DatosTicketAReporte.length];
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
@@ -1613,18 +1679,16 @@ public class ReporteInstalacion extends AppCompatActivity {
                  "Sello despues"
 
          };
-         if (SerieNuevaConbox.equals("")){
 
-         }
-         if (SerieNuevaBlue.equals("")){
 
-         }
+
 
 
         //SerieAnteriorConbox,SerieNuevaConbox,SerieAnteriorBlue,SerieNuevaBlue;
 
          return NumerosdeSerie;
     }
+
     //Estatus
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void ActualizaEstatus(String sh1,String sh2,String Estatus, int ID) {

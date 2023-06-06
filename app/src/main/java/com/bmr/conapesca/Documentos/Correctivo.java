@@ -653,6 +653,20 @@ public class Correctivo{
         canvas.close();
         pdfCanvas.setColor(ColorConstants.WHITE,false).stroke().closePathStroke();
     }
+    private void AgregaContenidoCuadroDatosLEFTunderline(PdfFont font,PdfPage page,int x, int y,int w,int h,String Comentario, int tamaño){
+        PdfCanvas pdfCanvas = new PdfCanvas(page);
+        Rectangle rectangle = new Rectangle(x, y, w, h);
+
+        pdfCanvas.rectangle(rectangle);
+
+        Canvas canvas = new Canvas(pdfCanvas, rectangle);
+        Text Comen1 = new Text(Comentario.replaceAll("(\n|\r)", " ")).setFont(font).setFontSize(tamaño).setUnderline();
+        Paragraph a = new Paragraph().add(Comen1)
+                .setTextAlignment(TextAlignment.LEFT);
+        canvas.add(a).close();
+        canvas.close();
+        pdfCanvas.setColor(ColorConstants.WHITE,false).stroke().closePathStroke();
+    }
     private void AgregaContenidoCuadroDatosCENTER(PdfFont font,PdfPage page,int x, int y,int w,int h,String Comentario, int tamaño){
         PdfCanvas pdfCanvas = new PdfCanvas(page);
         Rectangle rectangle = new Rectangle(x, y, w, h);
@@ -1123,13 +1137,49 @@ public class Correctivo{
     }
     private void AgregaContenidoCuadro8Archivo2(PdfPage page,String Ticket){
         try {
-            SharedPreferences sh = getApplicationContext().getSharedPreferences(Ticket,Context.MODE_PRIVATE);
 
             PdfFont font = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
             PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
             PdfFont italic = PdfFontFactory.createFont(StandardFonts.TIMES_ITALIC);
+            SharedPreferences sh = getApplicationContext().getSharedPreferences(Ticket,Context.MODE_PRIVATE);
+            Boolean checksiblue,checksiconbox;
 
-            AgregaContenidoCuadroDatosLEFT(font, page, 40, 360+111-(7*10)-(3*75), 520, 43,sh.getString("Reemplazodeequipos",""),8);
+            checksiblue = sh.getBoolean("CheckSec21",false);
+            checksiconbox = sh.getBoolean("CheckSec19",false);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 360+111-(7*10)-(3*75)+30, 200, 13,"¿Se reemplazo Transreceptor?       Si                No",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 320+40, 360+111-(7*10)-(3*75)+30, 200, 13,"¿Se reemplazo Conbox?       Si                No",8);
+
+            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 360+111-(7*10)-(3*75)+10, 80, 13,"No. de serie retirado:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 170, 360+111-(7*10)-(3*75)+10, 80, 13,"No. de serie instalado:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 360+111-(7*10)-(3*75)-5, 55, 13,"IMEI retirado:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 170, 360+111-(7*10)-(3*75)-5, 80, 13,"IMEI instalado:",8);
+
+            AgregaContenidoCuadroDatosLEFT(bold, page, 320+40, 360+111-(7*10)-(3*75)+10, 80, 13,"No. de serie retirado:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 320+40, 360+111-(7*10)-(3*75)-5, 80, 13,"No. de serie instalado:",8);
+
+
+            if (checksiblue){
+                AgregaContenidoCuadroDatosLEFTunderline(font, page, 121, 360+111-(7*10)-(3*75)+10, 40, 13,sh.getString("NSerieTransreceptorAnterior",""),8);
+                AgregaContenidoCuadroDatosLEFTunderline(font, page, 251, 360+111-(7*10)-(3*75)+10, 79, 13,sh.getString("NSerieTransreceptorNuevo",""),8);
+                AgregaContenidoCuadroDatosLEFTunderline(font, page, 96, 360+111-(7*10)-(3*75)-5, 79, 13,sh.getString("IMEIIridiumAnterior",""),8);
+                AgregaContenidoCuadroDatosLEFTunderline(font, page, 231, 360+111-(7*10)-(3*75)-5, 79, 13,sh.getString("IMEIIridiumNuevo",""),8);
+
+            }else{
+                AgregaContenidoCuadroDatosLEFTunderline(font, page, 121, 360+111-(7*10)-(3*75)+10, 40, 13,"No aplica.",8);
+                AgregaContenidoCuadroDatosLEFTunderline(font, page, 251, 360+111-(7*10)-(3*75)+10, 79, 13,"No aplica.",8);
+                AgregaContenidoCuadroDatosLEFTunderline(font, page, 96, 360+111-(7*10)-(3*75)-5, 79, 13,"No aplica.",8);
+                AgregaContenidoCuadroDatosLEFTunderline(font, page, 251, 360+111-(7*10)-(3*75)-5, 79, 13,"No aplica.",8);
+            }
+            if (checksiconbox){
+                AgregaContenidoCuadroDatosLEFTunderline(font, page, 394+44, 360+111-(7*10)-(3*75)+10, 50, 13,sh.getString("NSerieTransreceptorAnterior",""),8);
+                AgregaContenidoCuadroDatosLEFTunderline(font, page, 394+44, 360+111-(7*10)-(3*75)-5, 50, 13,sh.getString("NSerieTransreceptorNuevo",""),8);
+            }else{
+                AgregaContenidoCuadroDatosLEFTunderline(font, page, 394+44, 360+111-(7*10)-(3*75)+10, 50, 13,"No aplica.",8);
+                AgregaContenidoCuadroDatosLEFTunderline(font, page, 394+44, 360+111-(7*10)-(3*75)-5, 50, 13,"No aplica.",8);
+            }
+            AgregaContenidoCuadroDatosLEFTunderline(bold, page, 40, 360+111-(7*10)-(3*75)-20, 23, 13,"Otros:",8);
+            if (sh.getString("Reemplazodeequipos","").equals(""))    AgregaContenidoCuadroDatosLEFTunderline(font, page, 68, 360+111-(7*10)-(3*75)-20, 495, 13,"No aplica.",8);
+            else AgregaContenidoCuadroDatosLEFTunderline(font, page, 68, 360+111-(7*10)-(3*75)-20, 495, 13,sh.getString("Reemplazodeequipos",""),8);
             //AgregaContenidoCuadroDatosLEFT(font, page, 475, 736, 100, 13,sh.getString("DatosTicket13",""),8);
             //AgregaContenidoCuadroDatosLEFT(font, page, 475, 716, 120, 13, sh.getString("DatosTicket5",""),8);
         } catch (IOException e) {
@@ -1181,7 +1231,9 @@ public class Correctivo{
                 .moveTo(337, 582-115+70)
                 .lineTo(380, 582-115+70)
                 .moveTo(473, 582-115+70)
-                .lineTo(560, 582-115+70) .setLineWidth(1).closePathStroke();///CUADRO4
+                .lineTo(560, 582-115+70) .
+
+                setLineWidth(1).closePathStroke();///CUADRO4
 
         /*canvas.moveTo(40,360+141-10)
                 .lineTo(560, 360+141-10)
@@ -1277,6 +1329,11 @@ public class Correctivo{
         else    square(page, 628+40, 450);
         if (sh.getBoolean("CheckSec18",false)) squareX(page, 628+40, 550);
         else   square(page, 628+40, 550);
+
+        if (sh.getBoolean("CheckSec21",false)) {squareX(page, 440-(7*10)-(2*75)-5, 175);square(page, 440-(7*10)-(2*75)-5, 217);}
+        else { square(page, 440-(7*10)-(2*75)-5, 175);squareX(page, 440-(7*10)-(2*75)-5, 217);}
+        if (sh.getBoolean("CheckSec19",false)){ squareX(page, 440-(7*10)-(2*75)-5, 473);square(page, 440-(7*10)-(2*75)-5, 515);}
+        else{square(page, 440-(7*10)-(2*75)-5, 473);squareX(page, 440-(7*10)-(2*75)-5, 515);}
 
     }
     private void square(PdfPage page,int y,int x){
