@@ -296,8 +296,9 @@ public class PDFViewer extends AppCompatActivity {
             i.putExtra("Datos",Datos);
             startActivity(i);
         }*/
-
-        Intent i = new Intent(this,ReporteInstalacion.class);
+        Intent i;
+        if (Datos[11].contains("T-")) i = new Intent(this,CorrectivosRD.class);
+        else i = new Intent(this,ReporteInstalacion.class);
         i.putExtra("Datos",Datos);
         startActivity(i);
 

@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.bmr.conapesca.AsignaTicket;
+import com.bmr.conapesca.CorrectivosRD;
 import com.bmr.conapesca.Datos.Datos;
 import com.bmr.conapesca.Entidades.Barcos;
 import com.bmr.conapesca.ListaBarcos;
@@ -470,6 +471,7 @@ public class Firebase {
         UsuarioNuevo.put("HoraCerrado",DatosTicket2[20]);
 
 
+        if(Checks!=null){
         for (int i=0; i<Checks.length;i++){
             UsuarioNuevo.put("Check"+i, Checks[i]);
         }
@@ -484,7 +486,7 @@ public class Firebase {
                     // there was an error. try to update again
                 }
             }
-        });
+        });}
     }
     public void AsignaTicket (String [] DatosTicket,Context context){
 
@@ -930,10 +932,13 @@ public class Firebase {
                                     }
                                 }
                                 else{
+                                    Intent i;
+                                    if (Datos[11].contains("T-"))i = new Intent(context, CorrectivosRD.class);
+                                    else   i = new Intent(context, ReporteInstalacion.class);
                                     System.out.println("NO CERRADO");
-                                    Intent i = new Intent(context, ReporteInstalacion.class);
                                     i.putExtra("Datos",Datos);
                                     context.startActivity(i);
+
                                 }
 
 

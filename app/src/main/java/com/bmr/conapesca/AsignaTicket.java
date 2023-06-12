@@ -16,6 +16,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -116,6 +117,7 @@ public class AsignaTicket extends AppCompatActivity {
         if (DatosTickets != null){Datos = DatosTickets;}
         ConfiguraInicio();
         requestSignIn();
+
     }
     private void ConfiguraInicio(){
         SharedPreferences sh = getSharedPreferences("AsignaTicket", MODE_PRIVATE);
@@ -534,5 +536,6 @@ public class AsignaTicket extends AppCompatActivity {
         },2023,mes,dia);
         dpd.show();
     }
+
 
 }

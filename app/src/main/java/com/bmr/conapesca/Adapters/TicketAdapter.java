@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bmr.conapesca.AsignaTicket;
 import com.bmr.conapesca.CorrectivosRD;
 import com.bmr.conapesca.CorrectivosRF;
+import com.bmr.conapesca.Datos.CorrectivoRD;
 import com.bmr.conapesca.Datos.Datos;
 import com.bmr.conapesca.DetalleBitacora;
 import com.bmr.conapesca.Entidades.Barcos;
@@ -124,6 +125,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketsVie
                 holder.FechaHora2Edit.setText(HoraInicio);
                 holder.RNBarco.setText(RNPBarco);
                 holder.NBarco.setText(NombreBarco);
+                holder.Barco = RNPBarco;
 
 
 
@@ -288,7 +290,10 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketsVie
                                  }
                             Intent intent2;
                             Context context2 = v.getContext();
-                            if (TipoServicio.equals("Correctivo")) intent2 = new Intent(context2, ReporteInstalacion.class);
+                            if (TipoServicio.equals("Correctivo")){
+                                if (Barco.contains("T-"))   intent2 = new Intent(context2, CorrectivosRD.class);
+                                else    intent2 = new Intent(context2, ReporteInstalacion.class);
+                            }
                             else if (TipoServicio.equals("Interno")) intent2 = new Intent(context2, ReporteInstalacion.class);
                             else if (TipoServicio.equals("Instalacion")) intent2 = new Intent(context2, ReporteInstalacion.class);
                             else if (TipoServicio.equals("Cancelado")) intent2 = new Intent(context2, ReporteInstalacion.class);

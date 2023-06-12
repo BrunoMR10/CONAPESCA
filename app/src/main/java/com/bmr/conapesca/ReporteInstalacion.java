@@ -456,15 +456,7 @@ public class ReporteInstalacion extends AppCompatActivity {
         if (sh.getString("Pantalla","").equals("Fotos"))RutinaFotos();
         else if (sh.getString("Pantalla","").equals("Equipos"))RutinaEquipos();
         else RutinaDatos();
-
-
-
-
         CambioEs.setVisibility(View.VISIBLE);
-
-
-
-
     }
     private String[]  ObtenComentarios(){
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
@@ -1604,17 +1596,18 @@ public class ReporteInstalacion extends AppCompatActivity {
                     ActualizaEstatus("FechaCerrado", "HoraCerrado", "Cerrado", 4);
                     Toast.makeText(this, "Cambiando Estatus", Toast.LENGTH_SHORT).show();
                 }
-            }else if (sh2.getString("DatosTicket3", "").contains("C-")){
+            }
+            else if (sh2.getString("DatosTicket3", "").contains("C-")){
                 if (!ValidaCorrectivo()) {
                     Toast.makeText(this, "Complete los campos requeridos", Toast.LENGTH_SHORT).show();
                     RutinaFotos();
-                } else {
+                }
+                else {
                     RutinaCharging();
                     ActualizaEstatus("FechaCerrado", "HoraCerrado", "Cerrado", 4);
                     Toast.makeText(this, "Cambiando Estatus", Toast.LENGTH_SHORT).show();
                 }
             }
-
             else {
                 if (!ValidaInstalacion()) {
                     Toast.makeText(this, "Complete los campos requeridos", Toast.LENGTH_SHORT).show();
@@ -1628,7 +1621,8 @@ public class ReporteInstalacion extends AppCompatActivity {
                     Toast.makeText(this, "Cambiando Estatus", Toast.LENGTH_SHORT).show();
                 }
             }
-        } else if (sh2.getString("DatosTicket7", "").equals("Cerrado")) {
+        }
+        else if (sh2.getString("DatosTicket7", "").equals("Cerrado")) {
 
             System.out.println("Intentanto generar archivo");
             if(sh2.getString("DatosTicket4","").equals("Cancelado")){
@@ -1664,7 +1658,6 @@ public class ReporteInstalacion extends AppCompatActivity {
 
         }
     }
-
     private String [] RegistraNumerosdeserieCorrect(){
          String [] NumerosdeSerie = new String[]{
                  "Bluetraker antes",
@@ -1688,7 +1681,6 @@ public class ReporteInstalacion extends AppCompatActivity {
 
          return NumerosdeSerie;
     }
-
     //Estatus
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void ActualizaEstatus(String sh1,String sh2,String Estatus, int ID) {
@@ -1734,7 +1726,8 @@ public class ReporteInstalacion extends AppCompatActivity {
                             .addOnSuccessListener(OK -> fb.ActualizaEstatus(ObtenDatosTicket(),this,HoraFecha,Estatus,ID)  )
                             .addOnFailureListener(Fail -> System.out.println(Fail)))
                     .addOnFailureListener(Fail -> System.out.println(Fail));
-        }else if ((Estatus).equals("En traslado")){
+        }
+        else if ((Estatus).equals("En traslado")){
                        mSheetServiceHelper.Escribeentabla2(HoraFecha,Ticket)
                     .addOnSuccessListener(ok ->mSheetServiceHelper.ActualizaBitacora(ObtenDatosTicket()[10],"Ticket en Traslado",HoraFecha[0],HoraFecha[1],"-",0)
                             .addOnSuccessListener(OK -> fb.ActualizaEstatus(ObtenDatosTicket(),this,HoraFecha,Estatus,ID) )
