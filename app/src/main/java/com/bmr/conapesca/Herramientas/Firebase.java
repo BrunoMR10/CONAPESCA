@@ -458,17 +458,30 @@ public class Firebase {
         UsuarioNuevo.put("IMEIIridium",DatosTicket2[9]);
         UsuarioNuevo.put("NSerieTransreceptor",DatosTicket2[10]);
         UsuarioNuevo.put("NSerieConBox",DatosTicket2[11]);
-
         UsuarioNuevo.put("CredResponsable",DatosTicket2[12]);
         UsuarioNuevo.put("DireccionResponsable",DatosTicket2[13]);
         UsuarioNuevo.put("CorreoResposable",DatosTicket2[14]);
-
         UsuarioNuevo.put("Fallareportada",DatosTicket2[15]);
         UsuarioNuevo.put("Diagnostico",DatosTicket2[16]);
         UsuarioNuevo.put("Solucion",DatosTicket2[17]);
         UsuarioNuevo.put("Reemplazodeequipos",DatosTicket2[18]);
         UsuarioNuevo.put("FechaCerrado",DatosTicket2[19]);
         UsuarioNuevo.put("HoraCerrado",DatosTicket2[20]);
+
+        UsuarioNuevo.put("NoSelloConBoxAnterior",DatosTicket2[21]);
+        UsuarioNuevo.put("NoSelloTransAnterior",DatosTicket2[22]);
+        UsuarioNuevo.put("NSerieIridiumAnterior",DatosTicket2[23]);
+        UsuarioNuevo.put("IMEIIridiumAnterior",DatosTicket2[24]);
+        UsuarioNuevo.put("NSerieTransreceptorAnterior",DatosTicket2[25]);
+        UsuarioNuevo.put("NSerieConBoxAnterior",DatosTicket2[26]);
+
+        UsuarioNuevo.put("NoSelloConBoxNuevo",DatosTicket2[27]);
+        UsuarioNuevo.put("NoSelloTransNuevo",DatosTicket2[28]);
+        UsuarioNuevo.put("NSerieIridiumNuevo",DatosTicket2[29]);
+        UsuarioNuevo.put("IMEIIridiumNuevo",DatosTicket2[30]);
+        UsuarioNuevo.put("NSerieTransreceptorNuevo",DatosTicket2[31]);
+        UsuarioNuevo.put("NSerieConBoxNuevo",DatosTicket2[32]);
+
 
 
         if(Checks!=null){

@@ -372,7 +372,8 @@ public class ReporteInstalacion extends AppCompatActivity {
             EquiposInstalados.setVisibility(View.GONE);
             CambioEstatus.setText("Poner en curso");
             if (sh.getString("DatosTicket3", "").contains("C-")) {
-                ListadeTickets();}
+                ListadeTickets();
+            }
 
         }
         else if (sh.getString("DatosTicket7","").equals("En curso")){
@@ -780,9 +781,38 @@ public class ReporteInstalacion extends AppCompatActivity {
                 Solucion.getText().toString(),
                 Reemplazodeequipos.getText().toString(),
                 FechaInstalacion.getText().toString(),
-                Horacerrado.getText().toString()
+                Horacerrado.getText().toString(),
+
+                Selloanteriorconbox .getText().toString(),
+                Selloanteriorblue .getText().toString(),
+                SerieAnteriorIridium .getText().toString(),
+                IMEIanterior .getText().toString(),
+                SerieAnteriorBlue .getText().toString(),
+                SerieAnteriorConbox .getText().toString(),
+
+                Sellonuevoconbox .getText().toString(),
+                Sellonuevoblue .getText().toString(),
+                SerieNuevaIridium .getText().toString(),
+                IMEINuevo .getText().toString(),
+                SerieNuevaBlue .getText().toString(),
+                SerieNuevaConbox .getText().toString()
+
         };
 
+        myEdit.putString("NoSelloConBoxAnterior", Selloanteriorconbox .getText().toString());
+        myEdit.putString("NoSelloTransAnterior", Selloanteriorblue .getText().toString());
+        myEdit.putString("NSerieIridiumAnterior", SerieAnteriorIridium .getText().toString());
+        myEdit.putString("IMEIIridiumAnterior", IMEIanterior .getText().toString());
+        myEdit.putString("NSerieTransreceptorAnterior", SerieAnteriorBlue.getText().toString());
+        myEdit.putString("NSerieConBoxAnterior", SerieAnteriorConbox.getText().toString());
+
+
+        myEdit.putString("NoSelloConBoxNuevo", Sellonuevoconbox .getText().toString());
+        myEdit.putString("NoSelloTransNuevo", Sellonuevoblue .getText().toString());
+        myEdit.putString("NSerieIridiumNuevo", SerieNuevaIridium.getText().toString());
+        myEdit.putString("IMEIIridiumNuevo", IMEINuevo .getText().toString());
+        myEdit.putString("NSerieTransreceptorNuevo", SerieNuevaBlue.getText().toString());
+        myEdit.putString("NSerieConBoxNuevo", SerieNuevaConbox.getText().toString());
 
         myEdit.putString("Fallareportada",Fallareportada.getText().toString());
         myEdit.putString("Diagnostico",Diagnostico.getText().toString());
@@ -1264,7 +1294,9 @@ public class ReporteInstalacion extends AppCompatActivity {
                         ObtenNumerosdeSerie(postSnapshot.getKey(),postSnapshot.getValue().toString());
                     }
                     else if (postSnapshot.getKey().contains("C-")){
+
                         ObtenNumerosdeSerie(postSnapshot.getKey(),postSnapshot.getValue().toString());
+                        if (postSnapshot.getKey().equals(Ticket))break;
                     }
                     System.out.println("Ticket encontrado:"+postSnapshot.getValue());
                     i++;
@@ -1279,18 +1311,18 @@ public class ReporteInstalacion extends AppCompatActivity {
             }
         });
     }
-    private void ObtenNumerosdeSerie(String Ticket,String TipoServicio){
+    private void ObtenNumerosdeSerie(String Inspeccion,String TipoServicio){
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sh.edit();
         System.out.println("Tipo de servicio"+TipoServicio);
-        System.out.println("Ticket"+Ticket);
-        refTickets.child(TipoServicio).child(Ticket).addListenerForSingleValueEvent(new ValueEventListener() {
+        System.out.println("Ticket"+Inspeccion);
+        refTickets.child(TipoServicio).child(Inspeccion).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
                     System.out.println("Ticket encontrado");
-
-                    if (Ticket.contains("S-")) {
+                    System.out.println("Ticket actual:"+Ticket+"Ticket en inspeccion:"+Inspeccion);
+                    if (Inspeccion.contains("S-")) {
                         System.out.println("Ticket" + Ticket);
                         String NumerodeSerieBlueTraker = snapshot.child("NSerieTransreceptor").getValue(String.class);
                         String NumerodeSerieConBox = snapshot.child("NSerieConBox").getValue(String.class);
@@ -1328,18 +1360,26 @@ public class ReporteInstalacion extends AppCompatActivity {
                         System.out.println("Serie Transreceptor: " + NumerodeSerieBlueTraker);
                         System.out.println("Serie Conboc: " + NumerodeSerieConBox);
                     }
-                    if (Ticket.contains("C-")&&!Ticket.equals(sh.getString("DatosTicket3",""))){
-
-                        System.out.println("Ticket" + Ticket);
-
-                        String NumerodeSerieBlueTraker = snapshot.child("NSerieTransreceptorAnterior").getValue(String.class);
+                    if (Inspeccion.contains("C-")&&!Inspeccion.equals(Ticket)){
+                        /*String NumerodeSerieBlueTraker = snapshot.child("NSerieTransreceptorAnterior").getValue(String.class);
                         String NumerodeSerieConBox = snapshot.child("NSerieConBoxAnterior").getValue(String.class);
                         String NumerodeSerieIridium = snapshot.child("NSerieIridiumAnterior").getValue(String.class);
                         String IMEIiridium = snapshot.child("NSerieIridiumAnterior").getValue(String.class);
                         String SelloconBox = snapshot.child("NoSelloConBoxAnterior").getValue(String.class);
-                        String SelloBlueTraker = snapshot.child("NoSelloTransAnterior").getValue(String.class);
+                        String SelloBlueTraker = snapshot.child("NoSelloTransAnterior").getValue(String.class);*/
 
-
+                        String NumerodeSerieBlueTraker = snapshot.child("NSerieTransreceptorNuevo").getValue(String.class);
+                        if (NumerodeSerieBlueTraker.equals(""))NumerodeSerieBlueTraker= snapshot.child("NSerieTransreceptorAnterior").getValue(String.class);
+                        String NumerodeSerieConBox = snapshot.child("NSerieConBoxNuevo").getValue(String.class);
+                        if (NumerodeSerieConBox.equals(""))NumerodeSerieConBox= snapshot.child("NSerieConBoxAnterior").getValue(String.class);
+                        String NumerodeSerieIridium = snapshot.child("NSerieIridiumNuevo").getValue(String.class);
+                        if (NumerodeSerieIridium.equals(""))NumerodeSerieIridium= snapshot.child("NSerieIridiumAnterior").getValue(String.class);
+                        String IMEIiridium = snapshot.child("IMEIIridiumNuevo").getValue(String.class);
+                        if (IMEIiridium.equals(""))IMEIiridium= snapshot.child("IMEIIridiumAnterior").getValue(String.class);
+                        String SelloconBox = snapshot.child("NoSelloConBoxNuevo").getValue(String.class);
+                        if (SelloconBox.equals(""))SelloconBox= snapshot.child("NoSelloConBoxAnterior").getValue(String.class);
+                        String SelloBlueTraker = snapshot.child("NoSelloTransNuevo").getValue(String.class);
+                        if (SelloBlueTraker.equals(""))SelloBlueTraker= snapshot.child("NoSelloTransAnterior").getValue(String.class);
 
                         myEdit.putString("NoSelloConBoxAnterior", SelloconBox);
                         myEdit.putString("NoSelloTransAnterior", SelloBlueTraker);
@@ -1361,6 +1401,7 @@ public class ReporteInstalacion extends AppCompatActivity {
 
                         System.out.println("Serie Transreceptor: " + NumerodeSerieBlueTraker);
                         System.out.println("Serie Conboc: " + NumerodeSerieConBox);
+
                     }
                 }
                 else{
@@ -1435,8 +1476,11 @@ public class ReporteInstalacion extends AppCompatActivity {
     public void rutinanoconbox(View view){
         SiConbox.setChecked(false);
         NoConbox.setChecked(true);
+        SerieNuevaConbox.setText("");
+        Sellonuevoconbox.setText("");
         GuardaCheck();
         Seriesconbox.setVisibility(View.GONE);
+        GuardaDatosInstalacion();
     }
     public void rutinasibluetraker(View view){
         Seriesblue.setVisibility(View.VISIBLE);
@@ -1446,8 +1490,13 @@ public class ReporteInstalacion extends AppCompatActivity {
     }
     public void rutinanobluetraker(View view){
         Seriesblue.setVisibility(View.GONE);
+        Sellonuevoblue.setText("");
+        SerieNuevaBlue.setText("");
+        IMEINuevo.setText("");
+        SerieNuevaIridium.setText("");
         SiBlue.setChecked(false);
         NoBlue.setChecked(true);
+        GuardaDatosInstalacion();
         GuardaCheck();
     }
     private String[] ObtenDatosTickets(){

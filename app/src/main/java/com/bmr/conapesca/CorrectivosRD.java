@@ -68,9 +68,10 @@ public class CorrectivosRD extends AppCompatActivity {
     RecyclerView FotosView;
     Correctivos2 correctivos2 = new Correctivos2();
     Firebase fb = new Firebase();
-    String[] Datos;
-    EditText Servicio, Tecnologia, FallaReportada, Diagnosticco, Soluciones, Refacciones,Citronella,FechaCerrado,Horacerrado;
-    String Ticket, Noficio;
+    String[] Datos,DatosBarco;
+    EditText Servicio, Tecnologia, FallaReportada, Diagnosticco, Soluciones, Refacciones,Citronella,FechaCerrado,Horacerrado,
+            Ubicacion;
+    String Ticket, Noficio,NombreBarco;
     LinearLayout Entransito, Correctivo,CambiaEstatus,Controles,FotosCorrectivo;
     ProgressBar Charging;
     RadioButton DatosVer,EquiposIns,FotosVer;
@@ -97,6 +98,7 @@ public class CorrectivosRD extends AppCompatActivity {
         Citronella = (EditText) findViewById(R.id.Citronella);
         FechaCerrado = (EditText) findViewById(R.id.FechaCerrado);
         Horacerrado = (EditText) findViewById(R.id.Horacerrado);
+        Ubicacion = (EditText)  findViewById(R.id.Ubicacion);
         Entransito = (LinearLayout) findViewById(R.id.Entransito);
         Correctivo = (LinearLayout) findViewById(R.id.Correctivo);
         CambiaEstatus = (LinearLayout) findViewById(R.id.CambiaEstatus);
@@ -112,9 +114,11 @@ public class CorrectivosRD extends AppCompatActivity {
 
             } else {
                 Datos = extras.getStringArray("Datos");
+                DatosBarco = extras.getStringArray("DatosBarco");
             }
         } else {
             Datos = (String[]) savedInstanceState.getSerializable("Datos");
+            DatosBarco = (String[]) savedInstanceState.getSerializable("DatosBarco");
         }
         if (Datos != null) {
             Ticket = Datos[3];
@@ -131,13 +135,21 @@ public class CorrectivosRD extends AppCompatActivity {
         myEdit3.commit();
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
         Noficio = sh.getString("DatosTicket1", "");
-
+        NombreBarco = sh.getString("DatoBarco0", "");
         if (Noficio.equals("") || Datos[7].equals("Actualizacion") || Datos[7].equals("Re-asignacion")) GuardaDatosTicket();
         requestSignIn();
 
 
     }
+    private String[] ObtenDatosBarcosH(){
+        Datos = new String[dt.DatosBarcoDepurado.length];
+        SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
+        for (int i = 0;i<dt.DatosBarcoDepurado.length;i++){
+            Datos[i]=sh.getString("DatoBarco"+String.valueOf(i), "");
+        }
+        return Datos;
 
+    }
     private void GuardaDatosTicket() {
         System.out.println("Guardando Datos Ticket");
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
@@ -158,7 +170,6 @@ public class CorrectivosRD extends AppCompatActivity {
                     myEdit.putString("CredResponsable", dataSnapshot.child("CredResponsable").getValue(String.class));
                     myEdit.putString("CorreoResposable", dataSnapshot.child("CorreoResposable").getValue(String.class));
                     myEdit.putString("DireccionResponsable", dataSnapshot.child("DireccionResponsable").getValue(String.class));
-
                     myEdit.putString("Contacto", dataSnapshot.child("Contacto").getValue(String.class));
                     myEdit.putString("NombreResponable", dataSnapshot.child("NombreResponable").getValue(String.class));
                     myEdit.putString("CargoResponsable", dataSnapshot.child("CargoResponsable").getValue(String.class));
@@ -207,6 +218,10 @@ public class CorrectivosRD extends AppCompatActivity {
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sh.edit();
         System.out.println("DatosTicket 7: " + sh.getString("DatosTicket7", ""));
+        if (sh.getString("DatosTicket7", "").equals("Actualizacion")){
+            myEdit.putString("DatosTicket7","En curso");
+            myEdit.commit();
+        }
         setDatos();
         if (sh.getString("DatosTicket7", "").equals("Asignado")) {
             RutinaActualiza();
@@ -286,7 +301,23 @@ public class CorrectivosRD extends AppCompatActivity {
         fb.GuardaInformacionTicket(DatosTicket,null,ObtenDatosTicket(),this);
 
     }
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void GuardaDatosBarco() {
+        System.out.println("GuardaDatosBarco");
+        SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sh.edit();
+        for (int i = 0; i < 67; i++) {
+            if (Datos[7].equals("Re-asignacion")) {
+                System.out.println("Conservando Estatus");
+            } else {
+                myEdit.putString("DatoBarco" + i, DatosBarco[i]);
+                System.out.println("Saving :" + DatosBarco[i]);
+                myEdit.commit();
+            }
 
+        }
+        Toast.makeText(this,"Datos de tecnología guardados",Toast.LENGTH_SHORT).show();
+    }
     private void setDatos(){
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
 
@@ -296,7 +327,7 @@ public class CorrectivosRD extends AppCompatActivity {
         Refacciones.setText(sh.getString("Reemplazodeequipos",""));
         Servicio.setText(sh.getString("DatosTicket3",""));
         Tecnologia.setText(sh.getString("DatosTicket11",""));
-
+        Ubicacion.setText(sh.getString("DatosTicket14",""));
         Citronella.setText(sh.getString("DatosTicket12",""));
         FechaCerrado .setText(sh.getString("FechaCerrado",""));
         Horacerrado.setText(sh.getString("HoraCerrado",""));;
@@ -623,7 +654,10 @@ public class CorrectivosRD extends AppCompatActivity {
                     SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
                     System.out.println("Nombre Barco"+sh.getString("DatoBarco0",""));
                     System.out.println(Ticket);
-                    ConfiguraIncio();
+                    if (DatosBarco!=null) {
+                        if(NombreBarco.equals("")||Datos[7].equals("Actualizacion")||Datos[7].equals("Re-asignacion"))GuardaDatosBarco();
+                        ConfiguraIncio();
+                    }else ConfiguraIncio();
 
                     // The DriveServiceHelper encapsulates all REST API and SAF functionality.
                     // Its instantiation is required before handling any onClick actions

@@ -47,13 +47,13 @@ public class Correctivos2 {
         PdfFont font = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
         PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
 
-        //AñadirLineas3(page);
+        AñadirLineas3(page);
         CuadroDatosArchivo3(pdfCanvas,font,bold,36, 683, 530, 77,imageData);
         CuadroDatos2(pdfCanvas,bold,36, 565, 530, 70);
         CuadroDatos4(pdfCanvas,bold,36, 460+30, 530, 60);
         AgregaContenidoCuadro1Archivo3(page,Ticket);
         AgregaContenidoCuadro2Archivo3(page,Ticket);
-       // AgregaContenidoCuadro4Archivo3(page,Ticket);
+        AgregaContenidoCuadro4Archivo3(page,Ticket);
         //Fotos(page,pdf,Datos,font,bold,imageData,id,Comentarios,rutacarpetaImagenes);
         Fotos2(page,pdf,Datos,font,bold,imageData,id,Comentarios,Datos[3]);
         InsertaPiedePagina(pdf);
@@ -449,7 +449,7 @@ public class Correctivos2 {
                 .lineTo(560, 582+0) ///CUADRO2
 
 
-                .moveTo(145, 621-115+30)
+                .moveTo(145+40, 621-115+30)
                 .lineTo(380, 621-115+30)
                 .moveTo(100, 608-115+30)
                 .lineTo(380, 608-115+30)
@@ -491,7 +491,7 @@ public class Correctivos2 {
                     +sh.getString("DatosTicket13","")+". A continuación se presenta lo siguiente:" ,10);
 
             AgregaContenidoCuadroDatosLEFT(font, page, 350, 713+0, 150, 13, sh.getString("DatosTicket12",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page, 350, 700+0, 150, 13, sh.getString("DatoBarco25",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 350, 700+0, 150, 13, sh.getString("DatoBarco24",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page, 350, 687+0, 150, 13, sh.getString("FechaCerrado",""),8);
 
             //AgregaContenidoCuadroDatosLEFT(font, page, 445, 713, 100, 13, " Aqui va el número",8);
@@ -504,7 +504,7 @@ public class Correctivos2 {
         }
     }
     private void AgregaContenidoCuadro2Archivo3(PdfPage page,String Ticket){
-        /*try {
+        try {
             SharedPreferences sh = getApplicationContext().getSharedPreferences(Ticket,Context.MODE_PRIVATE);
 
             PdfFont font = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
@@ -522,13 +522,13 @@ public class Correctivos2 {
             AgregaContenidoCuadroDatosLEFT(bold, page, 40, 581+0, 80, 13,"Domicilio:",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 120, 568+0, 440, 13,"Calle y No.                Colonia                Municipio                Ciudad o Puerto                Entidad Federativa                Código Postal",8);
 
-            AgregaContenidoCuadroDatosLEFT(font, page, 180, 620+0, 200, 13, sh.getString("DatoBarco21",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page, 180, 607+0, 200, 13, sh.getString("DatoBarco28",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,460, 607+0, 100, 13, sh.getString("DatoBarco20",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,120, 594+0, 140, 13, sh.getString("DatoBarco29",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,315, 594+0, 75, 13, sh.getString("DatoBarco27",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,460, 594+0, 100, 13, sh.getString("DatoBarco67",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,120, 581+0, 440, 13, sh.getString("DatoBarco26",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 180, 620+0, 200, 13, sh.getString("DatoBarco21","N/A"),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 180, 607+0, 200, 13, sh.getString("DatoBarco28","N/A"),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,460, 607+0, 100, 13, sh.getString("DatoBarco20","N/A"),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,120, 594+0, 140, 13, sh.getString("DatoBarco29","N/A"),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,315, 594+0, 75, 13, sh.getString("DatoBarco27","N/A"),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,460, 594+0, 100, 13, "NA",8);
+            AgregaContenidoCuadroDatosLEFT(font, page,120, 581+0, 440, 13, sh.getString("DatoBarco26","N/A"),8);
 
 
             /*AgregaContenidoCuadroDatosLEFT(font, page, 180, 620, 200, 13, "Aqui va el nombre del permisionario/Conseción.",8);
@@ -537,12 +537,12 @@ public class Correctivos2 {
             AgregaContenidoCuadroDatosLEFT(font, page,120, 594, 140, 13, "Aqui va el correo electronico",8);
             AgregaContenidoCuadroDatosLEFT(font, page,315, 594, 75, 13, "(000) 0000000",8);
             AgregaContenidoCuadroDatosLEFT(font, page,460, 594, 100, 13, "(000) 0000000",8);
-            AgregaContenidoCuadroDatosLEFT(font, page,120, 581, 440, 13, "Aqui va la direccion",8);
+            AgregaContenidoCuadroDatosLEFT(font, page,120, 581, 440, 13, "Aqui va la direccion",8);*/
             //AgregaContenidoCuadroDatosLEFT(font, page, 475, 736, 100, 13,sh.getString("DatosTicket13",""),8);
             //AgregaContenidoCuadroDatosLEFT(font, page, 475, 716, 120, 13, sh.getString("DatosTicket5",""),8);
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
     private void AgregaContenidoCuadro4Archivo3(PdfPage page,String Ticket){
         try {
@@ -552,7 +552,7 @@ public class Correctivos2 {
             PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
             PdfFont italic = PdfFontFactory.createFont(StandardFonts.TIMES_ITALIC);
 
-            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 620-115+30, 100, 13,"Nombre de la embarcación:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 620-115+30, 140, 13,"Nombre de la embarcación o tecnología:",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 390, 607-115+30, 82, 13,"R.N.P.A. Embarcación:",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 40, 607-115+30, 55, 13,"Puerto Base:",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 40, 594-115+30, 55, 13,"Matrícula:",8);
@@ -562,15 +562,15 @@ public class Correctivos2 {
             AgregaContenidoCuadroDatosLEFT(bold, page, 260, 581-115+30, 76, 13,"Potencia Motor (HP):",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 390, 581-115+30, 65, 13,"Eslora (Mts):",8);
 
-            AgregaContenidoCuadroDatosLEFT(font, page, 145, 620-115+30, 235, 13, sh.getString("DatoBarco3",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page, 100, 607-115+30, 280, 13, sh.getString("DatoBarco2",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,473, 607-115+30, 80, 13, sh.getString("DatoBarco4",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,100, 594-115+30, 160, 13,sh.getString("DatoBarco5",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,337, 594-115+30, 43, 13, sh.getString("DatoBarco11",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,473, 594-115+30, 80, 13, sh.getString("DatoBarco12",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,100, 581-115+30, 460, 13, sh.getString("DatoBarco18",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,337, 581-115+30, 43, 13, sh.getString("DatoBarco19",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,473, 581-115+30, 80, 13, sh.getString("DatoBarco15",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 145+40, 620-115+30, 235, 13, sh.getString("DatosTicket11","N/A"),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 100, 607-115+30, 280, 13, sh.getString("DatoBarco2","N/A"),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,473, 607-115+30, 80, 13, sh.getString("DatoBarco14","N/A"),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,100, 594-115+30, 160, 13,sh.getString("DatoBarco5","N/A"),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,337, 594-115+30, 43, 13, sh.getString("DatoBarco11","N/A"),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,473, 594-115+30, 80, 13, sh.getString("DatoBarco12","N/A"),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,100, 581-115+30, 460, 13, sh.getString("DatoBarco18","N/A"),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,337, 581-115+30, 43, 13, sh.getString("DatoBarco19","N/A"),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,473, 581-115+30, 80, 13, sh.getString("DatoBarco15","N/A"),8);
 
 
             //AgregaContenidoCuadroDatosLEFT(font, page, 475, 736, 100, 13,sh.getString("DatosTicket13",""),8);
@@ -608,7 +608,7 @@ public class Correctivos2 {
         PdfCanvas pdfCanvas = new PdfCanvas(page);
         PdfFont font = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
         PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
-        //AñadirLineas2(page);
+        AñadirLineas2(page);
         //InsertaSquare(page,Ticket);
         CuadroDatosArchivo2(pdfCanvas,font,bold,36, 660+64, 530, 93,imageData);
         CuadroDatos2(pdfCanvas,bold,36, 565+40, 530, 70);
@@ -627,7 +627,7 @@ public class Correctivos2 {
         AgregaContenidoCuadro7Archivo2(page,Ticket);
         AgregaContenidoCuadro8Archivo2(page,Ticket);
         //AgregaContenidoCuadro6Archivo2(page,Ticket);
-        //InsertaSquare2(page,Ticket);
+        InsertaSquare2(page,Ticket);
         //InseraImagenes1(page,Ticket);
         InsertaPie(pdf);
         pdf.close();
@@ -657,7 +657,7 @@ public class Correctivos2 {
         pdfCanvas.rectangle(rectangle2);
         pdfCanvas.stroke().closePathStroke();
         Canvas canvas2 = new Canvas(pdfCanvas, rectangle2);
-        Text DatosEquipo = new Text("Datos de la embarcación").setFont(bold).setFontSize(8);
+        Text DatosEquipo = new Text("Datos de la embarcación o tecnología").setFont(bold).setFontSize(8);
         Paragraph b = new Paragraph().add(DatosEquipo).setTextAlignment(TextAlignment.CENTER);
         canvas2.add(b).close();
         canvas.close();
@@ -932,7 +932,7 @@ public class Correctivos2 {
                     +sh.getString("DatosTicket13","")+" A continuación presento lo siguiente:" ,10);*/
 
             AgregaContenidoCuadroDatosLEFT(font, page, 350, 713+40, 150, 13,sh.getString("DatosTicket12",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page, 350, 700+40, 150, 13, sh.getString("DatosTicket14",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 350, 700+40, 150, 13, sh.getString("DatoBarco24",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page, 350, 687+40, 150, 13, sh.getString("FechaCerrado",""),8);
 
             //AgregaContenidoCuadroDatosLEFT(font, page, 445, 713, 100, 13, " Aqui va el número",8);
@@ -945,7 +945,7 @@ public class Correctivos2 {
         }
     }
     private void AgregaContenidoCuadro2Archivo2(PdfPage page,String Ticket){
-       /* try {
+       try {
             SharedPreferences sh = getApplicationContext().getSharedPreferences(Ticket,Context.MODE_PRIVATE);
 
             PdfFont font = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
@@ -968,7 +968,7 @@ public class Correctivos2 {
             AgregaContenidoCuadroDatosLEFT(font, page,460, 607+40, 100, 13, sh.getString("DatoBarco20",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page,120, 594+40, 140, 13, sh.getString("DatoBarco29",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page,315, 594+40, 75, 13, sh.getString("DatoBarco27",""),8);
-            AgregaContenidoCuadroDatosLEFT(font, page,460, 594+40, 100, 13, sh.getString("DatoBarco67",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page,460, 594+40, 100, 13, "NA",8);
             AgregaContenidoCuadroDatosLEFT(font, page,120, 581+40, 440, 13, sh.getString("DatoBarco26",""),8);
 
 
@@ -978,22 +978,22 @@ public class Correctivos2 {
             AgregaContenidoCuadroDatosLEFT(font, page,120, 594, 140, 13, "Aqui va el correo electronico",8);
             AgregaContenidoCuadroDatosLEFT(font, page,315, 594, 75, 13, "(000) 0000000",8);
             AgregaContenidoCuadroDatosLEFT(font, page,460, 594, 100, 13, "(000) 0000000",8);
-            AgregaContenidoCuadroDatosLEFT(font, page,120, 581, 440, 13, "Aqui va la direccion",8);
+            AgregaContenidoCuadroDatosLEFT(font, page,120, 581, 440, 13, "Aqui va la direccion",8);*/
             //AgregaContenidoCuadroDatosLEFT(font, page, 475, 736, 100, 13,sh.getString("DatosTicket13",""),8);
             //AgregaContenidoCuadroDatosLEFT(font, page, 475, 716, 120, 13, sh.getString("DatosTicket5",""),8);
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
     private void AgregaContenidoCuadro4Archivo2(PdfPage page,String Ticket){
-       /* try {
+        try {
             SharedPreferences sh = getApplicationContext().getSharedPreferences(Ticket,Context.MODE_PRIVATE);
 
             PdfFont font = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
             PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
             PdfFont italic = PdfFontFactory.createFont(StandardFonts.TIMES_ITALIC);
 
-            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 620-115+40+30, 100, 13,"Nombre de la embarcación:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 620-115+40+30, 140, 13,"Nombre de la embarcación o tecnología:",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 390, 607-115+40+30, 82, 13,"R.N.P.A. Embarcación:",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 40, 607-115+40+30, 55, 13,"Puerto Base:",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 40, 594-115+40+30, 55, 13,"Matrícula:",8);
@@ -1003,7 +1003,7 @@ public class Correctivos2 {
             AgregaContenidoCuadroDatosLEFT(bold, page, 260, 581-115+40+30, 76, 13,"Potencia Motor (HP):",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 390, 581-115+40+30, 65, 13,"Eslora (Mts):",8);
 
-            AgregaContenidoCuadroDatosLEFT(font, page, 145, 620-115+40+30, 235, 13, sh.getString("DatoBarco3",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 145+40, 620-115+40+30, 235, 13, sh.getString("DatoBarco3",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page, 100, 607-115+40+30, 280, 13, sh.getString("DatoBarco2",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page,473, 607-115+40+30, 100, 13, sh.getString("DatoBarco4",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page,100, 594-115+40+30, 160, 13,sh.getString("DatoBarco5",""),8);
@@ -1018,7 +1018,7 @@ public class Correctivos2 {
             //AgregaContenidoCuadroDatosLEFT(font, page, 475, 716, 120, 13, sh.getString("DatosTicket5",""),8);
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
     private void AgregaContenidoCuadro5Archivo2(PdfPage page,String Ticket){
         try {
@@ -1066,55 +1066,20 @@ public class Correctivos2 {
         }
     }
     private void AgregaContenidoCuadro8Archivo2(PdfPage page,String Ticket){
-        /*try {
+        try {
 
             PdfFont font = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
             PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
             PdfFont italic = PdfFontFactory.createFont(StandardFonts.TIMES_ITALIC);
             SharedPreferences sh = getApplicationContext().getSharedPreferences(Ticket,Context.MODE_PRIVATE);
-            Boolean checksiblue,checksiconbox;
 
-            checksiblue = sh.getBoolean("CheckSec21",false);
-            checksiconbox = sh.getBoolean("CheckSec19",false);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 360+111-(7*10)-(3*75)+30, 200, 13,"¿Se reemplazo Transreceptor?       Si                No",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 320+40, 360+111-(7*10)-(3*75)+30, 200, 13,"¿Se reemplazo Conbox?       Si                No",8);
-
-            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 360+111-(7*10)-(3*75)+10, 80, 13,"No. de serie retirado:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 170, 360+111-(7*10)-(3*75)+10, 80, 13,"No. de serie instalado:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 360+111-(7*10)-(3*75)-5, 55, 13,"IMEI retirado:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 170, 360+111-(7*10)-(3*75)-5, 80, 13,"IMEI instalado:",8);
-
-            AgregaContenidoCuadroDatosLEFT(bold, page, 320+40, 360+111-(7*10)-(3*75)+10, 80, 13,"No. de serie retirado:",8);
-            AgregaContenidoCuadroDatosLEFT(bold, page, 320+40, 360+111-(7*10)-(3*75)-5, 80, 13,"No. de serie instalado:",8);
-
-
-            if (checksiblue){
-                AgregaContenidoCuadroDatosLEFTunderline(font, page, 121, 360+111-(7*10)-(3*75)+10, 40, 13,sh.getString("NSerieTransreceptorAnterior",""),8);
-                AgregaContenidoCuadroDatosLEFTunderline(font, page, 251, 360+111-(7*10)-(3*75)+10, 79, 13,sh.getString("NSerieTransreceptorNuevo",""),8);
-                AgregaContenidoCuadroDatosLEFTunderline(font, page, 96, 360+111-(7*10)-(3*75)-5, 79, 13,sh.getString("IMEIIridiumAnterior",""),8);
-                AgregaContenidoCuadroDatosLEFTunderline(font, page, 231, 360+111-(7*10)-(3*75)-5, 79, 13,sh.getString("IMEIIridiumNuevo",""),8);
-
-            }else{
-                AgregaContenidoCuadroDatosLEFTunderline(font, page, 121, 360+111-(7*10)-(3*75)+10, 40, 13,"No aplica.",8);
-                AgregaContenidoCuadroDatosLEFTunderline(font, page, 251, 360+111-(7*10)-(3*75)+10, 79, 13,"No aplica.",8);
-                AgregaContenidoCuadroDatosLEFTunderline(font, page, 96, 360+111-(7*10)-(3*75)-5, 79, 13,"No aplica.",8);
-                AgregaContenidoCuadroDatosLEFTunderline(font, page, 251, 360+111-(7*10)-(3*75)-5, 79, 13,"No aplica.",8);
-            }
-            if (checksiconbox){
-                AgregaContenidoCuadroDatosLEFTunderline(font, page, 394+44, 360+111-(7*10)-(3*75)+10, 50, 13,sh.getString("NSerieTransreceptorAnterior",""),8);
-                AgregaContenidoCuadroDatosLEFTunderline(font, page, 394+44, 360+111-(7*10)-(3*75)-5, 50, 13,sh.getString("NSerieTransreceptorNuevo",""),8);
-            }else{
-                AgregaContenidoCuadroDatosLEFTunderline(font, page, 394+44, 360+111-(7*10)-(3*75)+10, 50, 13,"No aplica.",8);
-                AgregaContenidoCuadroDatosLEFTunderline(font, page, 394+44, 360+111-(7*10)-(3*75)-5, 50, 13,"No aplica.",8);
-            }
-            AgregaContenidoCuadroDatosLEFTunderline(bold, page, 40, 360+111-(7*10)-(3*75)-20, 23, 13,"Otros:",8);
-            if (sh.getString("Reemplazodeequipos","").equals(""))    AgregaContenidoCuadroDatosLEFTunderline(font, page, 68, 360+111-(7*10)-(3*75)-20, 495, 13,"No aplica.",8);
-            else AgregaContenidoCuadroDatosLEFTunderline(font, page, 68, 360+111-(7*10)-(3*75)-20, 495, 13,sh.getString("Reemplazodeequipos",""),8);
+            if (sh.getString("Reemplazodeequipos","").equals(""))    AgregaContenidoCuadroDatosLEFTunderline(font, page, 40, 360+111-(7*10)-(3*75)-20, 495, 13,"No aplica.",8);
+            else AgregaContenidoCuadroDatosLEFTunderline(font, page, 40, 360+111-(7*10)-(3*75), 495, 43,sh.getString("Reemplazodeequipos",""),8);
             //AgregaContenidoCuadroDatosLEFT(font, page, 475, 736, 100, 13,sh.getString("DatosTicket13",""),8);
             //AgregaContenidoCuadroDatosLEFT(font, page, 475, 716, 120, 13, sh.getString("DatosTicket5",""),8);
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
     private void AñadirLineas2(PdfPage page){
         PdfCanvas canvas = new PdfCanvas(page);
@@ -1143,7 +1108,7 @@ public class Correctivos2 {
                 .lineTo(560, 582+40) ///CUADRO2
 
 
-                .moveTo(145, 621-115+70)
+                .moveTo(145+40, 621-115+70)
                 .lineTo(380, 621-115+70)
                 .moveTo(100, 608-115+70)
                 .lineTo(380, 608-115+70)
@@ -1233,7 +1198,6 @@ public class Correctivos2 {
         canvas.add(img).close();
         canvas.close();
     }
-
     private void InsertaSquare2(PdfPage page,String Ticket){
         SharedPreferences sh = getApplicationContext().getSharedPreferences(Ticket,Context.MODE_PRIVATE);
         if (sh.getBoolean("CheckSec17",false)) squareX(page, 628+40, 450);
@@ -1241,10 +1205,10 @@ public class Correctivos2 {
         if (sh.getBoolean("CheckSec18",false)) squareX(page, 628+40, 550);
         else   square(page, 628+40, 550);
 
-        if (sh.getBoolean("CheckSec21",false)) {squareX(page, 440-(7*10)-(2*75)-5, 175);square(page, 440-(7*10)-(2*75)-5, 217);}
+       /* if (sh.getBoolean("CheckSec21",false)) {squareX(page, 440-(7*10)-(2*75)-5, 175);square(page, 440-(7*10)-(2*75)-5, 217);}
         else { square(page, 440-(7*10)-(2*75)-5, 175);squareX(page, 440-(7*10)-(2*75)-5, 217);}
         if (sh.getBoolean("CheckSec19",false)){ squareX(page, 440-(7*10)-(2*75)-5, 473);square(page, 440-(7*10)-(2*75)-5, 515);}
-        else{square(page, 440-(7*10)-(2*75)-5, 473);squareX(page, 440-(7*10)-(2*75)-5, 515);}
+        else{square(page, 440-(7*10)-(2*75)-5, 473);squareX(page, 440-(7*10)-(2*75)-5, 515);}*/
 
     }
     private void square(PdfPage page,int y,int x){

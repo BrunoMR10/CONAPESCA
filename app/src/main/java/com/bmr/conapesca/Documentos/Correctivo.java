@@ -456,7 +456,7 @@ public class Correctivo{
                 .lineTo(560, 582+0) ///CUADRO2
 
 
-                .moveTo(145, 621-115+30)
+                .moveTo(145+40, 621-115+30)
                 .lineTo(380, 621-115+30)
                 .moveTo(100, 608-115+30)
                 .lineTo(380, 608-115+30)
@@ -559,7 +559,7 @@ public class Correctivo{
             PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
             PdfFont italic = PdfFontFactory.createFont(StandardFonts.TIMES_ITALIC);
 
-            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 620-115+30, 100, 13,"Nombre de la embarcación:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 620-115+30, 140, 13,"Nombre de la embarcación o tecnología:",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 390, 607-115+30, 82, 13,"R.N.P.A. Embarcación:",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 40, 607-115+30, 55, 13,"Puerto Base:",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 40, 594-115+30, 55, 13,"Matrícula:",8);
@@ -569,7 +569,7 @@ public class Correctivo{
             AgregaContenidoCuadroDatosLEFT(bold, page, 260, 581-115+30, 76, 13,"Potencia Motor (HP):",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 390, 581-115+30, 65, 13,"Eslora (Mts):",8);
 
-            AgregaContenidoCuadroDatosLEFT(font, page, 145, 620-115+30, 235, 13, sh.getString("DatoBarco3",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 145+40, 620-115+30, 235, 13, sh.getString("DatoBarco3",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page, 100, 607-115+30, 280, 13, sh.getString("DatoBarco2",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page,473, 607-115+30, 80, 13, sh.getString("DatoBarco4",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page,100, 594-115+30, 160, 13,sh.getString("DatoBarco5",""),8);
@@ -610,7 +610,7 @@ public class Correctivo{
         pdfCanvas.rectangle(rectangle2);
         pdfCanvas.stroke().closePathStroke();
         Canvas canvas2 = new Canvas(pdfCanvas, rectangle2);
-        Text DatosEquipo = new Text("Datos de la embarcación").setFont(bold).setFontSize(8);
+        Text DatosEquipo = new Text("Datos de la embarcación o tecnología").setFont(bold).setFontSize(8);
         Paragraph b = new Paragraph().add(DatosEquipo).setTextAlignment(TextAlignment.CENTER);
         canvas2.add(b).close();
         canvas.close();
@@ -1063,7 +1063,7 @@ public class Correctivo{
             PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
             PdfFont italic = PdfFontFactory.createFont(StandardFonts.TIMES_ITALIC);
 
-            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 620-115+40+30, 100, 13,"Nombre de la embarcación:",8);
+            AgregaContenidoCuadroDatosLEFT(bold, page, 40, 620-115+40+30, 140, 13,"Nombre de la embarcación o tecnología:",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 390, 607-115+40+30, 82, 13,"R.N.P.A. Embarcación:",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 40, 607-115+40+30, 55, 13,"Puerto Base:",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 40, 594-115+40+30, 55, 13,"Matrícula:",8);
@@ -1073,7 +1073,7 @@ public class Correctivo{
             AgregaContenidoCuadroDatosLEFT(bold, page, 260, 581-115+40+30, 76, 13,"Potencia Motor (HP):",8);
             AgregaContenidoCuadroDatosLEFT(bold, page, 390, 581-115+40+30, 65, 13,"Eslora (Mts):",8);
 
-            AgregaContenidoCuadroDatosLEFT(font, page, 145, 620-115+40+30, 235, 13, sh.getString("DatoBarco3",""),8);
+            AgregaContenidoCuadroDatosLEFT(font, page, 145+40, 620-115+40+30, 235, 13, sh.getString("DatoBarco3",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page, 100, 607-115+40+30, 280, 13, sh.getString("DatoBarco2",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page,473, 607-115+40+30, 100, 13, sh.getString("DatoBarco4",""),8);
             AgregaContenidoCuadroDatosLEFT(font, page,100, 594-115+40+30, 160, 13,sh.getString("DatoBarco5",""),8);
@@ -1213,7 +1213,7 @@ public class Correctivo{
                 .lineTo(560, 582+40) ///CUADRO2
 
 
-                .moveTo(145, 621-115+70)
+                .moveTo(145+40, 621-115+70)
                 .lineTo(380, 621-115+70)
                 .moveTo(100, 608-115+70)
                 .lineTo(380, 608-115+70)
