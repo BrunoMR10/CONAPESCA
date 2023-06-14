@@ -75,8 +75,10 @@ public class DetalleBarco extends AppCompatActivity {
 
                     Tickets[i] = postSnapshot.getKey();
                     TipoServicio[i] = postSnapshot.getValue().toString();
-                    if (postSnapshot.getKey().contains("S-")){
-                        ObtenNumerosdeSerie(postSnapshot.getKey(),postSnapshot.getValue().toString());
+                    if (postSnapshot.getKey().contains("S-")||postSnapshot.getKey().contains("C-")){
+                        if (postSnapshot.getKey().contains("S-")&&i>0) break;
+                        else  ObtenNumerosdeSerie(postSnapshot.getKey(),postSnapshot.getValue().toString());
+
                     }
                     System.out.println(postSnapshot.getValue());
                     i++;
@@ -100,20 +102,45 @@ public class DetalleBarco extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
-                    System.out.println("Ticket encontrado");
-                    String NumerodeSerieBlueTraker = snapshot.child("NSerieTransreceptor").getValue(String.class);
-                    String NumerodeSerieConBox = snapshot.child("NSerieConBox").getValue(String.class);
-                    String NumerodeSerieIridium = snapshot.child("NSerieIridium").getValue(String.class);
-                    String IMEIiridium = snapshot.child("IMEIIridium").getValue(String.class);
-                    String SelloconBox = snapshot.child("NoSelloConBox").getValue(String.class);
-                    String SelloBlueTraker = snapshot.child("NoSelloTrans").getValue(String.class);
-                    NoSerieConBox .setText(NumerodeSerieConBox);
-                    NoSerieBlueTraker.setText(NumerodeSerieBlueTraker);
-                    NoSerieIridium.setText(NumerodeSerieIridium);
-                    IMEIIridium.setText(IMEIiridium);
-                    SelloConBox.setText(SelloconBox);
-                    SelloBlueTrajer.setText(SelloBlueTraker);
+
+                    if (Ticket.contains("C-")){
+                        String NumerodeSerieBlueTraker = snapshot.child("NSerieTransreceptorNuevo").getValue(String.class);
+                        if (NumerodeSerieBlueTraker.equals(""))NumerodeSerieBlueTraker= snapshot.child("NSerieTransreceptorAnterior").getValue(String.class);
+                        String NumerodeSerieConBox = snapshot.child("NSerieConBoxNuevo").getValue(String.class);
+                        if (NumerodeSerieConBox.equals(""))NumerodeSerieConBox= snapshot.child("NSerieConBoxAnterior").getValue(String.class);
+                        String NumerodeSerieIridium = snapshot.child("NSerieIridiumNuevo").getValue(String.class);
+                        if (NumerodeSerieIridium.equals(""))NumerodeSerieIridium= snapshot.child("NSerieIridiumAnterior").getValue(String.class);
+                        String IMEIiridium = snapshot.child("IMEIIridiumNuevo").getValue(String.class);
+                        if (IMEIiridium.equals(""))IMEIiridium= snapshot.child("IMEIIridiumAnterior").getValue(String.class);
+                        String SelloconBox = snapshot.child("NoSelloConBoxNuevo").getValue(String.class);
+                        if (SelloconBox.equals(""))SelloconBox= snapshot.child("NoSelloConBoxAnterior").getValue(String.class);
+                        String SelloBlueTraker = snapshot.child("NoSelloTransNuevo").getValue(String.class);
+                        if (SelloBlueTraker.equals(""))SelloBlueTraker= snapshot.child("NoSelloTransAnterior").getValue(String.class);
+                        NoSerieConBox .setText(SelloconBox);
+                        NoSerieBlueTraker.setText(SelloBlueTraker);
+                        NoSerieIridium.setText(NumerodeSerieIridium);
+                        IMEIIridium.setText(IMEIiridium);
+                        SelloConBox.setText(NumerodeSerieConBox);
+                        SelloBlueTrajer.setText(NumerodeSerieBlueTraker);
+                    }
+                    else{
+                        System.out.println("Ticket encontrado");
+                        String NumerodeSerieBlueTraker = snapshot.child("NSerieTransreceptor").getValue(String.class);
+                        String NumerodeSerieConBox = snapshot.child("NSerieConBox").getValue(String.class);
+                        String NumerodeSerieIridium = snapshot.child("NSerieIridium").getValue(String.class);
+                        String IMEIiridium = snapshot.child("IMEIIridium").getValue(String.class);
+                        String SelloconBox = snapshot.child("NoSelloConBox").getValue(String.class);
+                        String SelloBlueTraker = snapshot.child("NoSelloTrans").getValue(String.class);
+                        NoSerieConBox .setText(NumerodeSerieConBox);
+                        NoSerieBlueTraker.setText(NumerodeSerieBlueTraker);
+                        NoSerieIridium.setText(NumerodeSerieIridium);
+                        IMEIIridium.setText(IMEIiridium);
+                        SelloConBox.setText(SelloconBox);
+                        SelloBlueTrajer.setText(SelloBlueTraker);
+                    }
+
                 }
+
                 else{
                     System.out.println("Ticket NO encontrado");
                 }

@@ -362,7 +362,15 @@ public class ReporteInstalacion extends AppCompatActivity {
         MostrarFotos(Ticket);
         SetCheckSec();
         SetDatos();
+        Charging.setVisibility(View.GONE);
+        DatosView.setVisibility(View.GONE);
+        SolucionCorrectivo.setVisibility(View.GONE);
+        FotosCorrectivo.setVisibility(View.GONE);
+        FotosRFP.setVisibility(View.GONE);
+        EquiposInstalados.setVisibility(View.GONE);
+
         if (sh.getString("DatosTicket7","").equals("En traslado")){
+            System.out.println("Rutina en Traslado");
             Entraslado.setVisibility(View.VISIBLE);
             Charging.setVisibility(View.GONE);
             DatosView.setVisibility(View.GONE);
@@ -377,6 +385,7 @@ public class ReporteInstalacion extends AppCompatActivity {
 
         }
         else if (sh.getString("DatosTicket7","").equals("En curso")){
+            System.out.println("Rutina en Curso");
             if (sh.getString("DatosTicket4", "").equals("Cancelado")){
                 CambioEstatus.setText("Genera Documento No Instalacion");
                 Entraslado.setVisibility(View.GONE);
@@ -454,9 +463,10 @@ public class ReporteInstalacion extends AppCompatActivity {
             Controles.setVisibility(View.VISIBLE);
 
         }
-        if (sh.getString("Pantalla","").equals("Fotos"))RutinaFotos();
-        else if (sh.getString("Pantalla","").equals("Equipos"))RutinaEquipos();
-        else RutinaDatos();
+
+        /*if (sh.getString("Pantalla","").equals("Fotos")&&!sh.getString("DatosTicket7","").equals("En traslado"))RutinaFotos();
+        else if (sh.getString("Pantalla","").equals("Equipos")&&!sh.getString("DatosTicket7","").equals("En traslado"))RutinaEquipos();
+        else RutinaDatos();*/
         CambioEs.setVisibility(View.VISIBLE);
     }
     private String[]  ObtenComentarios(){
@@ -510,6 +520,23 @@ public class ReporteInstalacion extends AppCompatActivity {
                     myEdit.putString("HoraCerrado",dataSnapshot.child("HoraCerrado").getValue(String.class));
                     myEdit.putString("FechaCerrado",dataSnapshot.child("FechaCerrado").getValue(String.class));
                     myEdit.putString("UID",dataSnapshot.child("UID").getValue(String.class));
+
+                    myEdit.putString("NSerieConBoxAnterior",dataSnapshot.child("NSerieConBoxAnterior").getValue(String.class));
+                    myEdit.putString("NSerieConBoxNuevo",dataSnapshot.child("NSerieConBoxNuevo").getValue(String.class));
+                    myEdit.putString("NSerieTransreceptorAnterior",dataSnapshot.child("NSerieTransreceptorAnterior").getValue(String.class));
+                    myEdit.putString("NSerieTransreceptorNuevo",dataSnapshot.child("NSerieTransreceptorNuevo").getValue(String.class));
+                    myEdit.putString("NoSelloConBoxAnterior",dataSnapshot.child("NoSelloConBoxAnterior").getValue(String.class));
+                    myEdit.putString("NoSelloConBoxNuevo",dataSnapshot.child("NoSelloConBoxNuevo").getValue(String.class));
+                    myEdit.putString("NoSelloTransAnterior",dataSnapshot.child("NoSelloTransAnterior").getValue(String.class));
+                    myEdit.putString("NoSelloTransNuevo",dataSnapshot.child("NoSelloTransNuevo").getValue(String.class));
+                    myEdit.putString("IMEIIridiumNuevo",dataSnapshot.child("IMEIIridiumNuevo").getValue(String.class));
+                    myEdit.putString("IMEIIridiumAnterior",dataSnapshot.child("IMEIIridiumAnterior").getValue(String.class));
+                    myEdit.putString("NSerieIridiumNuevo",dataSnapshot.child("NSerieIridiumNuevo").getValue(String.class));
+                    myEdit.putString("NSerieIridiumAnterior",dataSnapshot.child("NSerieIridiumAnterior").getValue(String.class));
+                    myEdit.putString("Fallareportada",dataSnapshot.child("Fallareportada").getValue(String.class));
+                    myEdit.putString("Diagnostico",dataSnapshot.child("Diagnostico").getValue(String.class));
+                    myEdit.putString("Solucion",dataSnapshot.child("Solucion").getValue(String.class));
+                    myEdit.putString("Reemplazodeequipos",dataSnapshot.child("Reemplazodeequipos").getValue(String.class));
                     myEdit.commit();
 
                     VBateria.setText(sh.getString("VoltajeBateria",""));
@@ -540,10 +567,7 @@ public class ReporteInstalacion extends AppCompatActivity {
     private void SetDatos(){
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
 
-        Fallareportada.setText(sh.getString("Fallareportada",""));
-        Diagnostico.setText(sh.getString("Diagnostico",""));
-        Solucion.setText(sh.getString("Solucion",""));
-        Reemplazodeequipos.setText(sh.getString("Reemplazodeequipos",""));
+
 
         Contacto.setText(sh.getString("Contacto",""));
         VBateria.setText(sh.getString("VoltajeBateria",""));
@@ -570,7 +594,10 @@ public class ReporteInstalacion extends AppCompatActivity {
         SerieNuevaIridium.setText(sh.getString("NSerieIridiumNuevo",""));
         SerieAnteriorIridium.setText(sh.getString("NSerieIridiumAnterior",""));
 
-
+        Fallareportada.setText(sh.getString("Fallareportada",""));
+        Diagnostico.setText(sh.getString("Diagnostico",""));
+        Solucion.setText(sh.getString("Solucion",""));
+        Reemplazodeequipos.setText(sh.getString("Reemplazodeequipos",""));
 
 
         Selloanteriorblue = (EditText) findViewById(R.id.Selloanteriorblue);
@@ -933,14 +960,17 @@ public class ReporteInstalacion extends AppCompatActivity {
 
         }
         SharedPreferences.Editor myEdit = sh.edit();
-        for (int i =0; i<NumeroFotos; i++){
-            if (Cancelado.equals("Cancelado")){
-            myEdit.putString("ComentarioFoto"+(i+1),dt.FotosNoInstalacion[i]);
-            myEdit.commit();}
-            else {
-                myEdit.putString("ComentarioFoto"+(i+1),dt.FotosReporteInstalacion[i]);
-                myEdit.commit();}
+        for (int i =0; i<NumeroFotos; i++) {
+            if (!Ticket.contains("C-")) {
+                if (Cancelado.equals("Cancelado")) {
+                    myEdit.putString("ComentarioFoto" + (i + 1), dt.FotosNoInstalacion[i]);
+                    myEdit.commit();
+                } else {
+                    myEdit.putString("ComentarioFoto" + (i + 1), dt.FotosReporteInstalacion[i]);
+                    myEdit.commit();
+                }
             }
+        }
         }
     ////Rutinas
     public void MostrarFotos(String Ticket) {
@@ -1136,6 +1166,7 @@ public class ReporteInstalacion extends AppCompatActivity {
         myEdit.commit();
     }
     private void RutinaDatos(){
+        System.out.println("RutinaDatos");
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sh.edit();
 
@@ -1282,7 +1313,9 @@ public class ReporteInstalacion extends AppCompatActivity {
         System.out.println("Buscando ticket en barco: "+sh.getString("DatoBarco4",""));
         refBarcos.child(sh.getString("DatoBarco4","")).child("Tickets").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
+
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int Counter=0;
                 String [] Tickets = new String[(int) snapshot.getChildrenCount()];
                 String [] TipoServicio = new String[(int) snapshot.getChildrenCount()];
                 int i = 0;
@@ -1296,7 +1329,8 @@ public class ReporteInstalacion extends AppCompatActivity {
                     else if (postSnapshot.getKey().contains("C-")){
 
                         ObtenNumerosdeSerie(postSnapshot.getKey(),postSnapshot.getValue().toString());
-                        if (postSnapshot.getKey().equals(Ticket))break;
+                        if (postSnapshot.getKey().equals(Ticket)&&Counter>0)break;
+                        Counter++;
                     }
                     System.out.println("Ticket encontrado:"+postSnapshot.getValue());
                     i++;

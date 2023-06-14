@@ -1171,8 +1171,8 @@ public class Correctivo{
                 AgregaContenidoCuadroDatosLEFTunderline(font, page, 251, 360+111-(7*10)-(3*75)-5, 79, 13,"No aplica.",8);
             }
             if (checksiconbox){
-                AgregaContenidoCuadroDatosLEFTunderline(font, page, 394+44, 360+111-(7*10)-(3*75)+10, 50, 13,sh.getString("NSerieTransreceptorAnterior",""),8);
-                AgregaContenidoCuadroDatosLEFTunderline(font, page, 394+44, 360+111-(7*10)-(3*75)-5, 50, 13,sh.getString("NSerieTransreceptorNuevo",""),8);
+                AgregaContenidoCuadroDatosLEFTunderline(font, page, 394+44, 360+111-(7*10)-(3*75)+10, 50, 13,sh.getString("NSerieConBoxAnterior",""),8);
+                AgregaContenidoCuadroDatosLEFTunderline(font, page, 394+44, 360+111-(7*10)-(3*75)-5, 50, 13,sh.getString("NSerieConBoxNuevo",""),8);
             }else{
                 AgregaContenidoCuadroDatosLEFTunderline(font, page, 394+44, 360+111-(7*10)-(3*75)+10, 50, 13,"No aplica.",8);
                 AgregaContenidoCuadroDatosLEFTunderline(font, page, 394+44, 360+111-(7*10)-(3*75)-5, 50, 13,"No aplica.",8);

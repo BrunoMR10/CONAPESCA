@@ -91,7 +91,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketsVie
 
         //holder.Barco = listaTickets.get(position).getNombreBarco();
         //holder.FechaInicio = listaTickets.get(position).getFechaInicio();
-
+        holder.RDigital.setVisibility(View.GONE);
         if (listaTickets.get(position).getTipoServicio().equals("Instalacion")||
                 listaTickets.get(position).getTipoServicio().equals("Interno")||
                   listaTickets.get(position).getTipoServicio().equals("Cancelado")) holder.RDigital.setVisibility(View.GONE);

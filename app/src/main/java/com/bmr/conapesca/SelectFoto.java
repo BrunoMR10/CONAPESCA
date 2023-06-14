@@ -155,15 +155,25 @@ public class SelectFoto extends AppCompatActivity {
         //Toast.makeText(this,ID,Toast.LENGTH_SHORT).show();
     }
     private void ConfiguraInicio(){
+
         SharedPreferences sh = getSharedPreferences(Ticket, MODE_PRIVATE);
         int IDint;
         if (ID == null) {IDint = 0;Modificacion = "false";}
         else{ IDint = Integer.parseInt(ID);Modificacion = "true";}
-        if (ID.equals("4")) Transreceptor.setVisibility(View.VISIBLE);
-        else  if (ID.equals("5")) IRIDIUM.setVisibility(View.VISIBLE);
-        else  if (ID.equals("7")) Conbox.setVisibility(View.VISIBLE);
-        else  if (ID.equals("9")) SelloConbox.setVisibility(View.VISIBLE);
-        else  if (ID.equals("10")) SelloBlue.setVisibility(View.VISIBLE);
+        if (Ticket.contains("C-")){
+            if (ID.equals("4")) Transreceptor.setVisibility(View.GONE);
+            else  if (ID.equals("5")) IRIDIUM.setVisibility(View.GONE);
+            else  if (ID.equals("7")) Conbox.setVisibility(View.GONE);
+            else  if (ID.equals("9")) SelloConbox.setVisibility(View.GONE);
+            else  if (ID.equals("10")) SelloBlue.setVisibility(View.GONE);
+        }else{
+            if (ID.equals("4")) Transreceptor.setVisibility(View.VISIBLE);
+            else  if (ID.equals("5")) IRIDIUM.setVisibility(View.VISIBLE);
+            else  if (ID.equals("7")) Conbox.setVisibility(View.VISIBLE);
+            else  if (ID.equals("9")) SelloConbox.setVisibility(View.VISIBLE);
+            else  if (ID.equals("10")) SelloBlue.setVisibility(View.VISIBLE);
+        }
+
 
         String Desc;
         Desc = sh.getString("ComentarioFoto"+(IDint),"");

@@ -280,7 +280,21 @@ public class CorrectivosRD extends AppCompatActivity {
                 Soluciones.getText().toString(),
                 Refacciones.getText().toString(),
                 FechaCerrado.getText().toString(),
-                Horacerrado.getText().toString()
+                Horacerrado.getText().toString(),
+
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+
+                "",
+                "",
+                "",
+                "",
+                "",
+               ""
         };
 
 

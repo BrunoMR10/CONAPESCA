@@ -434,40 +434,92 @@ public class SheetsServiceHelper {
             }
             if (Numero == 0) Numero = 3;
             else Numero = Numero+1;
-            Object p= new Object();
-            p = Datos[0];
-            Object q = new Object();
-            q = Datos[1];
-            Object r = new Object();
-            r = "-";
+            Object r= new Object();
+            r = Datos[0];
             Object s = new Object();
-            s = "-";
+            s = Datos[1];
             Object t = new Object();
-            t = Diferencia;
+            t = "-";
             Object u = new Object();
             u = "-";
             Object v = new Object();
-            v = "-";
+            v = Diferencia;
             Object w = new Object();
-            w = sh.getString("NSerieConBox","");;
+            w = "-";
             Object x = new Object();
-            x = sh.getString("NSerieTransreceptor","");;
+            x = "-";
             Object y = new Object();
-            y = sh.getString("NSerieIridium","");;
-            Object z = new Object();
-            z = sh.getString("IMEIIridium","");;
-            Object aa = new Object();
-            aa= sh.getString("SelloBlueTraker","");;
-            Object ab = new Object();
-            ab= sh.getString("SelloConBox","");;
-            Object ac= new Object();
-            ac= sh.getString("Contacto","");;
-
             ValueRange valueRange = new ValueRange();
-            valueRange.setValues(
-                    Arrays.asList(
-                            Arrays.asList(p,q,r,s,t,u,v,w,x,y,z,aa,ab,ac)));
-            range = "R"+((Numero-1))+":AE"+((Numero-1));
+            if (Ticket.contains("C-")) {
+                y = sh.getString("NSerieConBoxAnterior", "NA");
+                Object z = new Object();
+                z = sh.getString("NSerieTransreceptorAnterior", "NA");
+                Object aa = new Object();
+                aa = sh.getString("NSerieIridiumAnterior", "NA");
+                ;
+                Object ab = new Object();
+                ab = sh.getString("IMEIIridiumAnterior", "NA");
+                Object ac = new Object();
+                ac = sh.getString("NoSelloTransAnterior", "NA");
+                Object ad = new Object();
+                ad = sh.getString("NoSelloConBoxAnterior", "NA");
+
+                Object ae = new Object();
+                ae = sh.getString("NSerieConBoxNuevo", "NA");
+                Object af = new Object();
+                af = sh.getString("NSerieTransreceptorNuevo", "NA");
+                Object ag = new Object();
+                ag = sh.getString("NSerieIridiumNuevo", "NA");
+                ;
+                Object ah = new Object();
+                ah = sh.getString("IMEIIridiumNuevo", "NA");
+                Object ai = new Object();
+                ai = sh.getString("NoSelloTransNuevo", "NA");
+                Object aj = new Object();
+                aj = sh.getString("NoSelloConBoxNuevo", "NA");
+
+                Object ak = new Object();
+                ak = sh.getString("Fallareportada", "");
+                Object al = new Object();
+                al = sh.getString("Diagnostico", "");
+                Object am = new Object();
+                am = sh.getString("Solucion", "");
+                Object an = new Object();
+                an = sh.getString("Reemplazodeequipos", "");
+
+                Object ao = new Object();
+                ao = sh.getString("Contacto", "");
+
+
+                valueRange.setValues(
+                        Arrays.asList(
+                                Arrays.asList(r, s, t, u, v, w, x, y, z, aa, ab, ac, ad, ae, af, ag, ah, ai, aj, ak,al,am,an,ao)));
+                range = "R" + ((Numero - 1)) + ":AO" + ((Numero - 1));
+            }
+
+            else {
+                y = sh.getString("NSerieConBox", "");
+                Object z = new Object();
+                z = sh.getString("NSerieTransreceptor", "");
+                Object aa = new Object();
+                aa = sh.getString("NSerieIridium", "");
+                ;
+                Object ab = new Object();
+                ab = sh.getString("IMEIIridium", "");
+                Object ac = new Object();
+                ac = sh.getString("SelloBlueTraker", "");
+                Object ad = new Object();
+                ad = sh.getString("SelloConBox", "");
+
+                Object ae = new Object();
+                ae = sh.getString("Contacto", "");
+
+
+                valueRange.setValues(
+                        Arrays.asList(
+                                Arrays.asList(r, s, t, u, v, w, x, y, z, aa, ab, ac, ad, ae)));
+                range = "R" + ((Numero - 1)) + ":AE" + ((Numero - 1));
+            }
 
             this.mSheetsService.spreadsheets().values().update(spreadsheetId, range, valueRange)
                     .setValueInputOption("RAW")
@@ -650,32 +702,88 @@ public class SheetsServiceHelper {
            if (Numero == 0) Numero = 3;
             else Numero = Numero+1;
 
-            Object u= new Object();
-            u = FechaHoraInicio;
-            Object v = new Object();
-            v = Diferencia;
-            Object w = new Object();
-            w = sh.getString("NSerieConBox","");;
-            Object x = new Object();
-            x = sh.getString("NSerieTransreceptor","");;
-            Object y = new Object();
-            y = sh.getString("NSerieIridium","");;
-            Object z = new Object();
-            z = sh.getString("IMEIIridium","");;
-            Object aa = new Object();
-            aa= sh.getString("SelloBlueTraker","");;
-            Object ab = new Object();
-            ab= sh.getString("SelloConBox","");;
-            Object ac= new Object();
-            ac= sh.getString("Contacto","");;
-
-
 
             ValueRange valueRange = new ValueRange();
-            valueRange.setValues(
-                    Arrays.asList(
-                            Arrays.asList(u,v,w,x,y,z,aa,ab,ac)));
-            range = "W"+((Numero-1))+":AE"+((Numero-1));
+
+
+            Object w= new Object();
+            w = FechaHoraInicio;
+            Object x = new Object();
+            x= Diferencia;
+
+            if (Ticket.contains("C-")) {
+                Object y;
+                y = sh.getString("NSerieConBoxAnterior", "NA");
+                Object z = new Object();
+                z = sh.getString("NSerieTransreceptorAnterior", "NA");
+                Object aa = new Object();
+                aa = sh.getString("NSerieIridiumAnterior", "NA");
+                ;
+                Object ab = new Object();
+                ab = sh.getString("IMEIIridiumAnterior", "NA");
+                Object ac = new Object();
+                ac = sh.getString("NoSelloTransAnterior", "NA");
+                Object ad = new Object();
+                ad = sh.getString("NoSelloConBoxAnterior", "NA");
+
+                Object ae = new Object();
+                ae = sh.getString("NSerieConBoxNuevo", "NA");
+                Object af = new Object();
+                af = sh.getString("NSerieTransreceptorNuevo", "NA");
+                Object ag = new Object();
+                ag = sh.getString("NSerieIridiumNuevo", "NA");
+                ;
+                Object ah = new Object();
+                ah = sh.getString("IMEIIridiumNuevo", "NA");
+                Object ai = new Object();
+                ai = sh.getString("NoSelloTransNuevo", "NA");
+                Object aj = new Object();
+                aj = sh.getString("NoSelloConBoxNuevo", "NA");
+
+                Object ak = new Object();
+                ak = sh.getString("Fallareportada", "");
+                Object al = new Object();
+                al = sh.getString("Diagnostico", "");
+                Object am = new Object();
+                am = sh.getString("Solucion", "");
+                Object an = new Object();
+                an = sh.getString("Reemplazodeequipos", "");
+
+                Object ao = new Object();
+                ao = sh.getString("Contacto", "");
+
+
+                valueRange.setValues(
+                        Arrays.asList(
+                                Arrays.asList(w,x,y, z, aa, ab, ac, ad, ae, af, ag, ah, ai, aj, ak,al,am,an,ao)));
+                range = "W" + ((Numero - 1)) + ":AO" + ((Numero - 1));
+            }
+
+            else {
+                Object y;
+                y = sh.getString("NSerieConBox", "");
+                Object z = new Object();
+                z = sh.getString("NSerieTransreceptor", "");
+                Object aa = new Object();
+                aa = sh.getString("NSerieIridium", "");
+                ;
+                Object ab = new Object();
+                ab = sh.getString("IMEIIridium", "");
+                Object ac = new Object();
+                ac = sh.getString("SelloBlueTraker", "");
+                Object ad = new Object();
+                ad = sh.getString("SelloConBox", "");
+
+                Object ae = new Object();
+                ae = sh.getString("Contacto", "");
+
+
+                valueRange.setValues(
+                        Arrays.asList(
+                                Arrays.asList(w,x,y, z, aa, ab, ac, ad, ae)));
+                range = "W" + ((Numero - 1)) + ":AE" + ((Numero - 1));
+            }
+
 
             this.mSheetsService.spreadsheets().values().update(spreadsheetId, range, valueRange)
                     .setValueInputOption("RAW")

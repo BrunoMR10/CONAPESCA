@@ -51,8 +51,6 @@ public class AdapterActividades extends RecyclerView.Adapter<AdapterActividades.
         holder.Actividad.setText(listaActividades.get(position).getDescripcion());
         holder.HoraFecha.setText(listaActividades.get(position).getHora()+" "+listaActividades.get(position).getFecha());
         holder.TipoActividad.setText(listaActividades.get(position).getActividad());
-
-
     }
 
 
